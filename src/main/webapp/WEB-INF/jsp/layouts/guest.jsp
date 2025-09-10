@@ -1,41 +1,28 @@
 <!DOCTYPE html>
-<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
-<!--<![endif]-->
-
+<html lang="en">
 <head>
-    <!-- Basic Page Needs -->
-    <meta charset="utf-8">
-    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
-    <title>TerraFinder :: Login</title>
-
-    <meta name="author" content="themesflat.com">
-
-    <!-- Mobile Specific Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <!-- Theme Style -->
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/animation.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap-select.min.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/styles.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/custom.css">
-
-    <!-- Font -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/font/fonts.css">
-
-    <!-- Icon -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/icon/style.css">
-
-    <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/images/favicon.png">
-
-    <!-- Javascript -->
-    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-
+    <meta charset="utf-8" />
+    <title>Shared on THEMELOCK.COM - Sign In | Urbix Admin & Dashboards Template </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta content="Admin & Dashboards Template" name="description" />
+    <meta content="Pixeleyez" name="author" />
+    
+    <!-- layout setup -->
+    <script type="module" src="${pageContext.request.contextPath}/assets/js/layout-setup.js"></script>
+    
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon.png">  <!-- Simplebar Css -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/libs/simplebar/simplebar.min.css">
+    <!-- Swiper Css -->
+    <link href="${pageContext.request.contextPath}/assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Nouislider Css -->
+    <link href="${pageContext.request.contextPath}/assets/libs/nouislider/nouislider.min.css" rel="stylesheet">
+    <!-- Bootstrap Css -->
+    <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css">
+    <!--icons css-->
+    <link href="${pageContext.request.contextPath}/assets/css/icons.min.css" rel="stylesheet" type="text/css">
+    <!-- App Css-->
+    <link href="${pageContext.request.contextPath}/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -46,9 +33,11 @@
     <!-- /#wrapper -->
 
     <!-- Javascript -->
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap-select.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/libs/swiper/swiper-bundle.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/scroll-top.init.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/auth/auth.init.js"></script>
 
 </body>
 

@@ -33,7 +33,7 @@ public class SecurityConfig {
                 .loginPage("/login")
                 .loginProcessingUrl("/api/v1/auth_service/user_login") 
                 .defaultSuccessUrl("/dashboard", true)
-                .failureUrl("/login?error=true")
+                .failureUrl("/?error=true")
                 .permitAll()
             )
             .oauth2Login(oauth -> oauth
@@ -42,7 +42,7 @@ public class SecurityConfig {
                 .userInfoEndpoint(userInfo -> userInfo
                     .userService(oAuth2UserService())
                 )
-                .failureUrl("/login?error=oauth")
+                .failureUrl("/?error=oauth")
             )
             .logout(logout -> logout
                 .logoutSuccessUrl("/login?logout=true")
@@ -52,11 +52,11 @@ public class SecurityConfig {
             .sessionManagement(session -> session
                 .invalidSessionUrl("/login?session=invalid")
                 .maximumSessions(1)
-                .expiredUrl("/login?session=expired")
+                .expiredUrl("/?session=expired")
             )
             .exceptionHandling(exceptions -> exceptions
-                .accessDeniedPage("/login?error=access_denied")
-                .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login?error=unauthorized"))
+                .accessDeniedPage("/?error=access_denied")
+                .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/?error=unauthorized"))
             );
         
         return http.build();

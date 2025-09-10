@@ -45,7 +45,7 @@ public class PageController {
     public String dashboard(Model model, HttpSession session) {
         if (!isAuthenticated(session)) {
             model.addAttribute("sessionOut", "Authentication failed! Session has expired.");
-            return "redirect:/login";
+            return "redirect:/";
         }
         model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
         model.addAttribute("content", "../pages/dashboard.jsp");

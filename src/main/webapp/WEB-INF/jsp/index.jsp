@@ -3,14 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ERMS | Find Your Perfect Property</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/animation.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap-select.min.css">
+    <title>EREM | Find Your Perfect Property</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/libs/choices.js/public/assets/styles/choices.min.css">
+    <!-- Simplebar Css -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/libs/simplebar/simplebar.min.css">
+    <!-- Swiper Css -->
+    <link href="${pageContext.request.contextPath}/assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Nouislider Css -->
+    <link href="${pageContext.request.contextPath}/assets/libs/nouislider/nouislider.min.css" rel="stylesheet">
+    <!--icons css-->
+    <link href="${pageContext.request.contextPath}/assets/css/icons.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/animate_.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/animation_.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap_.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap-select_.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/custom.css">
+    <link href="${pageContext.request.contextPath}/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css">
     
     <style>
         :root {
@@ -36,23 +46,6 @@
             --card-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: "Inter", sans-serif;
-            font-weight: 400;
-            color: var(--Black);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            text-rendering: optimizeLegibility;
-            overflow-x: hidden;
-            overflow-y: auto;
-        }
-
         html {
             font-size: 80.5%;
             overflow-y: scroll;
@@ -64,9 +57,9 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-            <a class="navbar-brand" href="#">ERMS</a>
+            <a class="navbar-brand" href="#">EREM</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -78,9 +71,9 @@
                     <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
                 </ul>
                 <div class="d-flex align-items-center">
-                    <a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-heart" style="color: var(--salmon);"></i> Saved</a>
-                    <a href="${pageContext.request.contextPath}/login" class="btn btn-outline-primary me-2" >Login</a>
-                    <a href="${pageContext.request.contextPath}/registration" class="btn btn-warning">Register</a>
+                    <a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-heart" style="color: var(--salmon);"></i> Saved Properties</a>
+                    <!-- <a href="#" class="btn btn-outline-primary me-2" id="signInBtn"><i class="fas fa-user" style="color: var(--orchid);"></i> Sign In</a> -->
+                    <a href="#" class="btn btn-warning" id="signInBtn">Login or Register</a>
                 </div>
             </div>
         </div>
@@ -316,7 +309,7 @@
                         </div>
                     </div>
                     <div class="testimonial-content">
-                        "ERMS made finding our dream home so easy. The map feature helped us find exactly the right neighborhood!"
+                        "EREM made finding our dream home so easy. The map feature helped us find exactly the right neighborhood!"
                     </div>
                     <div class="rating">
                         <i class="fas fa-star"></i>
@@ -336,7 +329,7 @@
                         </div>
                     </div>
                     <div class="testimonial-content">
-                        "I sold my apartment in record time thanks to ERMS. Their platform reached serious buyers quickly."
+                        "I sold my apartment in record time thanks to EREM. Their platform reached serious buyers quickly."
                     </div>
                     <div class="rating">
                         <i class="fas fa-star"></i>
@@ -356,7 +349,7 @@
                         </div>
                     </div>
                     <div class="testimonial-content">
-                        "The investment properties I've found through ERMS have outperformed all my expectations. Great ROI!"
+                        "The investment properties I've found through EREM have outperformed all my expectations. Great ROI!"
                     </div>
                     <div class="rating">
                         <i class="fas fa-star"></i>
@@ -374,17 +367,17 @@
     <section class="py-5" style="background: var(--yellowgreen); color: black;">
         <div class="container py-5 text-center">
             <h2 class="mb-4">Ready to Find Your Dream Property?</h2>
-            <p class="lead mb-5">Join thousands of satisfied clients who found their perfect home through ERMS</p>
+            <p class="lead mb-5">Join thousands of satisfied clients who found their perfect home through EREM</p>
             <a href="#" class="btn btn-light btn-lg px-5 py-3">Get Started <i class="fas fa-arrow-right ms-2"></i></a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer_">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
-                    <h4 class="footer-title">ERMS</h4>
+                    <h4 class="footer-title">EREM</h4>
                     <p>Finding your perfect property has never been easier with our advanced search technology and dedicated agents.</p>
                     <div class="mt-3">
                         <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
@@ -413,7 +406,7 @@
                     <h4 class="footer-title">Contact Us</h4>
                     <p><i class="fas fa-map-marker-alt me-2"></i> 123 Estate Avenue, East Legon, Accra</p>
                     <p><i class="fas fa-phone me-2"></i> (233) 304 456 8037</p>
-                    <p><i class="fas fa-envelope me-2"></i> info@erms.com</p>
+                    <p><i class="fas fa-envelope me-2"></i> info@EREM.com</p>
                     <div class="mt-4">
                         <h5 class="footer-title">Newsletter</h5>
                         <div class="input-group">
@@ -429,15 +422,143 @@
                     <script type="text/javascript">
                         document.write(new Date().getFullYear());
                     </script>
-                    ERMS. All rights reserved.</p>
+                    EREM. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Offcanvas Sign-in Form -->
+    <div class="offcanvas_" id="signInForm">
+        <button class="btn-close" id="closeBtn">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <div class="card mx-xxl-8 shadow-none">
+            <div class="card-body p-8">
+                <h3 class="fw-medium text-center">Welcome back!</h3>
+                <p class="mb-8 text-muted text-center">Enter your credentials to sign in</p>
+                <form id="loginForm" class="mb-3">
+                    <div class="mb-4">
+                        <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="email" placeholder="name@example.com" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+                        <div class="password-container">
+                            <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                            <button type="button" class="btn-toggle-password" id="togglePassword">
+                                <i class="far fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-options">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                        </div>
+                        <a href="#" class="forgot-link">Forgot password?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn-login">Sign In</button>
+                    
+                    <div class="divider">
+                        <span class="divider-text">Or continue with</span>
+                    </div>
+                    
+                    <button type="button" class="btn-google">
+                        <img src="assets/images/google.png" alt="Google Logo" class="h-20px w-20px">
+                        Sign in with Google
+                    </button>
+                    
+                    <div class="signup-text">
+                        Don't have an account? <a href="#" class="signup-link">Sign up here</a>
+                    </div>
+                </form>
+                <!-- <div class="real-estate-bg">
+                    <div class="bg-content">
+                        <h5>Find Your Perfect Home</h5>
+                        <p>Thousands of premium listings waiting for you</p>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    
+    <div class="overlay" id="overlay"></div>
 
+    <script src="${pageContext.request.contextPath}/assets/libs/swiper/swiper-bundle.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/scroll-top.init.js"></script>
+    <!-- Select js -->
+    <script src="${pageContext.request.contextPath}/assets/libs/choices.js/public/assets/scripts/choices.min.js"></script>
+    <!-- App js -->
+    <!-- <script src="assets/js/app.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get DOM elements
+            const signInBtn = document.getElementById('signInBtn');
+            const closeBtn = document.getElementById('closeBtn');
+            const overlay = document.getElementById('overlay');
+            const signInForm = document.getElementById('signInForm');
+            const loginForm = document.getElementById('loginForm');
+            
+            // Open offcanvas
+            signInBtn.addEventListener('click', () => {
+                signInForm.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            // Close offcanvas
+            function closeOffcanvas() {
+                signInForm.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+            
+            closeBtn.addEventListener('click', closeOffcanvas);
+            overlay.addEventListener('click', closeOffcanvas);
+            
+            // Handle form submission
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                
+                // Here you would typically validate and send the data to a server
+                console.log('Sign in attempted with:', { email, password });
+                
+                // Show success message (in a real app, you would handle properly)
+                alert('Sign in successful! (This is just a demo)');
+                closeOffcanvas();
+            });
+            
+            // Close with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && signInForm.classList.contains('active')) {
+                    closeOffcanvas();
+                }
+            });
+        });
+
+        // Toggle password visibility
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            const icon = this.querySelector('i');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
         // Add subtle hover animations
         document.querySelectorAll('.process-card, .testimonial-card').forEach(card => {
             card.addEventListener('mouseenter', () => {

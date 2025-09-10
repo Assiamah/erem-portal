@@ -183,7 +183,7 @@ public class AuthController {
         } else {
             String error = resObj.getString("error");
             model.addAttribute("error", error);
-            return "redirect:/login";
+            return "redirect:/";
         }
     }
 
