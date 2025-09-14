@@ -50,7 +50,7 @@ public class SecurityConfig {
                 .deleteCookies("JSESSIONID")
             )
             .sessionManagement(session -> session
-                .invalidSessionUrl("/login?session=invalid")
+                .invalidSessionUrl("/?session=invalid")
                 .maximumSessions(1)
                 .expiredUrl("/?session=expired")
             )
