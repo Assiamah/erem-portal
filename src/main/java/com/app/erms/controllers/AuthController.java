@@ -62,18 +62,6 @@ public class AuthController {
         return "index";
     }
 
-    @GetMapping("/login")
-    public String showLoginPage(Model model) {
-        model.addAttribute("content", "../auth/login.jsp");
-        return "layouts/guest";
-    }
-
-    @GetMapping("/registration")
-    public String showRegistrationPage(Model model) {
-        model.addAttribute("content", "../auth/registration.jsp");
-        return "layouts/guest";
-    }
-
     @GetMapping("/logout")
     public String logout(HttpSession session, Model model) {
         // Invalidate the current session
@@ -83,9 +71,7 @@ public class AuthController {
         model.asMap().clear();
         
         // Redirect to login page with a success message
-        model.addAttribute("content", "../auth/login.jsp");
-        model.addAttribute("message", "You have been logged out successfully");
-        return "layouts/guest";
+        return "index";
     }
 
     @PostMapping("/user_authentication")

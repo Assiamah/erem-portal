@@ -63,6 +63,11 @@
     margin-bottom: 20px;
 }
 
+.swal2-container.swal2-backdrop-show {
+    backdrop-filter: blur(3px) !important;
+    -webkit-backdrop-filter: blur(3px) !important;
+}
+
 .form-group label {
     display: block;
     font-size: 14px;
@@ -126,7 +131,7 @@
     text-decoration: none;
 }
 
-.btn-primary {
+/* .btn-primary {
     width: 100%;
     padding: 14px;
     background-color: var(--primary-color);
@@ -137,7 +142,7 @@
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.3s;
-}
+} */
 
 /* .btn-primary:hover {
     background-color: var(--primary-light); 
@@ -163,6 +168,11 @@
 
 .divider::after {
     margin-left: 10px;
+}
+
+.modal-blur {
+    backdrop-filter: blur(3px) !important;
+    -webkit-backdrop-filter: blur(3px) !important;
 }
 
 .btn-google {
@@ -464,7 +474,7 @@
 
 
 
-.btn-primary {
+/* .btn-primary {
     background-color: var(--primary);
     border-color: var(--primary);
     padding: 0.5rem 1.5rem;
@@ -478,7 +488,7 @@
 .btn-outline-primary:hover {
     background-color: var(--primary);
     color: white;
-}
+} */
 
 .hero-section {
     padding: 5rem 0;
@@ -507,7 +517,7 @@
     outline: none;
 }
 
-.search-btn {
+.search-btn_ {
     background: var(--primary);
     color: white;
     border: none;
@@ -565,23 +575,6 @@
     padding: 0.25rem 0.75rem;
     border-radius: 50px;
     font-size: 0.8rem;
-}
-
-#map {
-    height: 500px;
-    border-radius: 10px;
-    z-index: 1;
-}
-
-.map-overlay {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 2;
-    background: white;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 }
 
 .feature-icon {
@@ -672,16 +665,22 @@
         border-radius: 10px;
     }
     
-    .search-btn {
+    .search-btn_ {
         width: 100%;
         margin-top: 1rem;
     }
 }
 
+#map {
+    height: 500px;
+    border-radius: 10px;
+    z-index: 1;
+}
+
 .map-overlay {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    bottom: 20px;
+    right: 10px;
     z-index: 2;
     background: white;
     padding: 20px;
@@ -864,7 +863,7 @@
     margin-bottom: 20px;
     font-size: 2.8rem;
     font-weight: 700;
-    color: var(--text-dark);
+    color: var(--primary-dark);
     position: relative;
     z-index: 1;
 }
@@ -1289,11 +1288,13 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    /* background: rgba(0, 0, 0, 0.5); */
     opacity: 0;
     visibility: hidden;
     transition: all 0.4s ease;
     z-index: 999;
+    backdrop-filter: blur(3px) !important;
+    -webkit-backdrop-filter: blur(3px) !important;
 }
 
 .overlay.active {
@@ -1356,7 +1357,7 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
-.btn-primary {
+/* .btn-primary {
     background-color: var(--primary);
     border-color: var(--primary);
     padding: 12px 30px;
@@ -1368,7 +1369,7 @@
     background-color: var(--primary-light);
     border-color: var(--primary);
     color: var(--primary);
-}
+} */
 
 /* Offcanvas styling */
 
@@ -1391,7 +1392,7 @@
     margin-top: 1rem;
 }
 
-.form-control {
+.form-control.auth-form-control {
     padding: 12px 16px;
     border-radius: 8px;
     border: 1px solid #e0e0e0;
@@ -1399,9 +1400,9 @@
     /* margin-bottom: 1.5rem; */
 }
 
-.form-control:focus {
+.form-control.auth-form-control:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 0 0.25rem rgba(44, 95, 170, 0.25);
+    box-shadow: 0 0 0 0.25rem rgba(86, 46, 194, 0.25);
 }
 
 .form-label {
@@ -1450,7 +1451,7 @@
 .btn-login {
     background-color: var(--primary);
     color: white;
-    border: none;
+    border: 1px solid #5b66eb;
     padding: 12px;
     border-radius: 8px;
     font-weight: 600;
@@ -1461,7 +1462,75 @@
 .btn-login:hover {
     background-color: var(--primary-dark);
     color: var(--primary);
-    border: 1px solid #0f0e0e;
+    border: 1px solid #5b66eb;
+}
+
+.btn-verify-login {
+    background-color: var(--primary);
+    color: white;
+    border: 1px solid #5b66eb;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.btn-verify-login:hover {
+    background-color: var(--primary-dark);
+    color: var(--primary);
+    border: 1px solid #5b66eb;
+}
+
+.btn-register {
+    background-color: var(--green);
+    color: white;
+    border: 1px solid var(--green);
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.btn-register:hover {
+    background-color: var(--primary-dark);
+    color: var(--green);
+    border: 1px solid var(--green);
+}
+
+.btn-forgot {
+    background-color: #ffc107;
+    color: rgb(22, 21, 21);
+    border: 1px solid #ffc107;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.btn-forgot:hover {
+    background-color: var(--primary-dark);
+    color: #ffc107;
+    border: 1px solid #ffc107;
+}
+
+.btn-create-reg-password {
+    background-color: #ffc107;
+    color: rgb(22, 21, 21);
+    border: 1px solid #ffc107;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.btn-create-reg-password:hover {
+    background-color: var(--primary-dark);
+    color: #ffc107;
+    border: 1px solid #ffc107;
 }
 
 .divider {
@@ -1580,4 +1649,67 @@
         width: 100% !important;
     }
     
+}
+
+.bottom-image {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    pointer-events: none; /* prevents blocking clicks on form */
+}
+
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    text-align: center;
+    z-index: 1000;
+    backdrop-filter: blur(3px) !important;
+    -webkit-backdrop-filter: blur(3px) !important;
+    display: none;
+}
+
+.cookie-buttons {
+    margin-top: 10px;
+}
+
+.cookie-btn {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.accept-btn {
+    background: #000000;
+    color: white;
+}
+
+.reject-btn {
+    background: #979393;
+    color: rgb(0, 0, 0);
+}
+
+.resend-link {
+    color: #4e73df;
+    cursor: pointer;
+    /* margin-top: 10px; */
+    display: inline-block;
+}
+
+.back-link {
+    color: #6c757d;
+    cursor: pointer;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.back-link:hover {
+    color: #4e73df;
 }

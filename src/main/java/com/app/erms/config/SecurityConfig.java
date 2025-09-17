@@ -45,7 +45,7 @@ public class SecurityConfig {
                 .failureUrl("/?error=oauth")
             )
             .logout(logout -> logout
-                .logoutSuccessUrl("/login?logout=true")
+                .logoutSuccessUrl("/?logout=true")
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
             )

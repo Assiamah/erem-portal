@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,11 +23,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/custom.css">
     <link href="${pageContext.request.contextPath}/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css" rel="stylesheet">
+    
+    <!-- Javascript -->
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     <style>
         :root {
             --white: #fff;
-            --primary: #161326;
+            --primary: #5b66eb;
             --yellowgreen: #C0FAA0;
             --orchid: #C388F7;
             --khaki: #ECFF79;
@@ -59,7 +69,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-            <a class="navbar-brand" href="#">EREM</a>
+            <a class="navbar-brand" href="#">SmartErem</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -71,9 +81,24 @@
                     <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
                 </ul>
                 <div class="d-flex align-items-center">
+                    <!-- <p>Welcome, ${userInfo.email}</p>
                     <a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-heart" style="color: var(--salmon);"></i> Saved Properties</a>
-                    <!-- <a href="#" class="btn btn-outline-primary me-2" id="signInBtn"><i class="fas fa-user" style="color: var(--orchid);"></i> Sign In</a> -->
-                    <a href="#" class="btn btn-warning" id="signInBtn">Login or Register</a>
+                     <a href="#" class="btn btn-warning"><i class="fas fa-user" style="color: var(--dark);"></i> My Dashboard</a>
+                    <a href="#" class="btn btn-warning" id="signInBtn">Login or Register</a> -->
+                    <c:choose>
+                        <c:when test="${not empty userInfo.email}">
+                            <!-- <p>Welcome, ${userInfo.first_name}</p> -->
+                            <a href="#" class="btn btn-outline-primary me-2">
+                                <i class="fas fa-heart" style="color: var(--salmon);"></i> Saved Properties
+                            </a>
+                            <a href="${pageContext.request.contextPath}/dashboard" class="btn btn-warning">
+                                <i class="fas fa-user" style="color: var(--dark);"></i> My Dashboard
+                            </a>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="#" class="btn btn-warning" id="signInBtn">Login or Register</a>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </div>
@@ -101,7 +126,7 @@
                                 </select>
                             </div>
                             <div class="col-md-4">
-                                <button class="search-btn w-100">Search <i class="fas fa-search ms-2"></i></button>
+                                <button class="search-btn_ w-100">Search <i class="fas fa-search ms-2"></i></button>
                             </div>
                         </div>
                     </div>
@@ -212,7 +237,9 @@
                     <hr>
                     <div class="form-group">
                         <label for="priceRange" class="form-label">Price Range</label>
-                        <input type="range" class="form-range" id="priceRange" min="0" max="1000000" step="50000">
+                         <div class="tab-pane fade show active" id="html-basic-range" role="tabpanel" aria-labelledby="html-basic-range-tab" tabindex="0">
+                            <input type="range" class="form-range" id="priceRange" min="0" max="1000000" step="50000">
+                        </div>
                         <div class="d-flex justify-content-between">
                             <small>GHS0</small>
                             <small>GHS10,000,000</small>
@@ -377,7 +404,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
-                    <h4 class="footer-title">EREM</h4>
+                    <h4 class="footer-title">SmartErem</h4>
                     <p>Finding your perfect property has never been easier with our advanced search technology and dedicated agents.</p>
                     <div class="mt-3">
                         <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
@@ -422,69 +449,23 @@
                     <script type="text/javascript">
                         document.write(new Date().getFullYear());
                     </script>
-                    EREM. All rights reserved.</p>
+                    SmartErem. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <!-- Offcanvas Sign-in Form -->
-    <div class="offcanvas_" id="signInForm">
-        <button class="btn-close" id="closeBtn">
-            <i class="fas fa-times"></i>
-        </button>
-        
-        <div class="card mx-xxl-8 shadow-none">
-            <div class="card-body p-8">
-                <h3 class="fw-medium text-center">Welcome back!</h3>
-                <p class="mb-8 text-muted text-center">Enter your credentials to sign in</p>
-                <form id="loginForm" class="mb-3">
-                    <div class="mb-4">
-                        <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="email" placeholder="name@example.com" required>
-                    </div>
-                    <div class="mb-4">
-                        <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
-                        <div class="password-container">
-                            <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
-                            <button type="button" class="btn-toggle-password" id="togglePassword">
-                                <i class="far fa-eye"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="form-options">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="rememberMe">
-                            <label class="form-check-label" for="rememberMe">Remember me</label>
-                        </div>
-                        <a href="#" class="forgot-link">Forgot password?</a>
-                    </div>
-                    
-                    <button type="submit" class="btn-login">Sign In</button>
-                    
-                    <div class="divider">
-                        <span class="divider-text">Or continue with</span>
-                    </div>
-                    
-                    <button type="button" class="btn-google">
-                        <img src="assets/images/google.png" alt="Google Logo" class="h-20px w-20px">
-                        Sign in with Google
-                    </button>
-                    
-                    <div class="signup-text">
-                        Don't have an account? <a href="#" class="signup-link">Sign up here</a>
-                    </div>
-                </form>
-                <!-- <div class="real-estate-bg">
-                    <div class="bg-content">
-                        <h5>Find Your Perfect Home</h5>
-                        <p>Thousands of premium listings waiting for you</p>
-                    </div>
-                </div> -->
-            </div>
+    <jsp:include page="auth/auth.jsp"></jsp:include>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div id="cookieBanner" class="cookie-banner">
+        <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.</p>
+        <div class="cookie-buttons">
+            <button id="acceptCookies" class="cookie-btn accept-btn">Accept All</button>
+            <button id="rejectCookies" class="cookie-btn reject-btn">Reject</button>
         </div>
     </div>
-    
-    <div class="overlay" id="overlay"></div>
 
     <script src="${pageContext.request.contextPath}/assets/libs/swiper/swiper-bundle.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -497,68 +478,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get DOM elements
-            const signInBtn = document.getElementById('signInBtn');
-            const closeBtn = document.getElementById('closeBtn');
-            const overlay = document.getElementById('overlay');
-            const signInForm = document.getElementById('signInForm');
-            const loginForm = document.getElementById('loginForm');
-            
-            // Open offcanvas
-            signInBtn.addEventListener('click', () => {
-                signInForm.classList.add('active');
-                overlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-            
-            // Close offcanvas
-            function closeOffcanvas() {
-                signInForm.classList.remove('active');
-                overlay.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-            
-            closeBtn.addEventListener('click', closeOffcanvas);
-            overlay.addEventListener('click', closeOffcanvas);
-            
-            // Handle form submission
-            loginForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const email = document.getElementById('email').value;
-                const password = document.getElementById('password').value;
-                
-                // Here you would typically validate and send the data to a server
-                console.log('Sign in attempted with:', { email, password });
-                
-                // Show success message (in a real app, you would handle properly)
-                alert('Sign in successful! (This is just a demo)');
-                closeOffcanvas();
-            });
-            
-            // Close with Escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && signInForm.classList.contains('active')) {
-                    closeOffcanvas();
-                }
-            });
-        });
-
-        // Toggle password visibility
-        document.getElementById('togglePassword').addEventListener('click', function() {
-            const passwordInput = document.getElementById('password');
-            const icon = this.querySelector('i');
-            
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                icon.classList.remove('fa-eye');
-                icon.classList.add('fa-eye-slash');
-            } else {
-                passwordInput.type = 'password';
-                icon.classList.remove('fa-eye-slash');
-                icon.classList.add('fa-eye');
-            }
-        });
         // Add subtle hover animations
         document.querySelectorAll('.process-card, .testimonial-card').forEach(card => {
             card.addEventListener('mouseenter', () => {
@@ -571,140 +490,82 @@
             });
         });
 
-        // Initialize map
-        var map = L.map('map').setView([40.7128, -74.0060], 13);
-        
-        // Add tile layer
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-        
-        // Sample property data
-        var properties = [
-            {
-                latlng: [40.7128, -74.0060], 
-                type: "sale", 
-                price: 550000, 
-                address: "Luxury Villa, Miami, FL",
-                beds: 4,
-                baths: 3,
-                area: 2500,
-                year: 2020
-            },
-            {
-                latlng: [40.7210, -74.0002], 
-                type: "rent", 
-                price: 2800, 
-                address: "Modern Apartment, New York, NY",
-                beds: 2,
-                baths: 2,
-                area: 1200,
-                year: 2018
-            },
-            {
-                latlng: [40.7050, -74.0090], 
-                type: "sale", 
-                price: 425000, 
-                address: "Country House, Austin, TX",
-                beds: 3,
-                baths: 2,
-                area: 2100,
-                year: 2015
-            },
-            {
-                latlng: [40.7180, -74.0150], 
-                type: "commercial", 
-                price: 675000, 
-                address: "Downtown Loft, New York, NY",
-                beds: 3,
-                baths: 3,
-                area: 2200,
-                year: 2019
-            },
-            {
-                latlng: [40.7080, -74.0050], 
-                type: "rent", 
-                price: 3200, 
-                address: "Waterfront Condo, New York, NY",
-                beds: 2,
-                baths: 2,
-                area: 1300,
-                year: 2021
-            },
-            {
-                latlng: [40.7150, -74.0120], 
-                type: "sale", 
-                price: 750000, 
-                address: "Penthouse Suite, New York, NY",
-                beds: 3,
-                baths: 3,
-                area: 2400,
-                year: 2022
-            },
-            {
-                latlng: [40.7100, -74.0080], 
-                type: "commercial", 
-                price: 1200000, 
-                address: "Office Building, New York, NY",
-                beds: 0,
-                baths: 4,
-                area: 5000,
-                year: 2010
-            }
-        ];
-        
-        // Create custom building icons using DivIcon
-        function createBuildingIcon(propertyType) {
-            let className = 'building-icon ';
-            let iconHtml = '<i class="fas fa-building"></i>';
-            
-            if (propertyType === 'sale') {
-                className += 'sale-marker';
-            } else if (propertyType === 'rent') {
-                className += 'rent-marker';
-            } else if (propertyType === 'commercial') {
-                className += 'commercial-marker';
-                iconHtml = '<i class="fas fa-store"></i>';
-            }
-            
-            return L.divIcon({
-                className: className,
-                html: iconHtml,
-                iconSize: [30, 30],
-                iconAnchor: [15, 15]
-            });
-        }
-        
-        // Add markers to map with building icons
-        var markers = [];
-        
-        properties.forEach(function(property) {
-            var icon = createBuildingIcon(property.type);
-            
-            var marker = L.marker(property.latlng, {icon: icon}).addTo(map);
-            
-            // Create detailed popup content
-            var popupContent = `
-                <div style="min-width: 250px;">
-                    <h3 style="margin: 0 0 10px; color: `+property.type === 'sale' ? '#2C5FAA' : property.type === 'rent' ? '#4CAF50' : '#FF6B6B'+`">`+property.address+`</h3>
-                    <p style="margin: 0 0 10px; font-size: 1.2em; font-weight: bold;">
-                        `+property.type === "sale" ? "For Sale" : property.type === "rent" ? "For Rent" : "Commercial"+`: GHS`+property.price.toLocaleString()+``+property.type === "rent" ? "/mo" : ""+`
-                    </p>
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-                        <span><i class="fas fa-bed"></i> `+property.beds+` Beds</span>
-                        <span><i class="fas fa-bath"></i> `+property.baths+` Baths</span>
-                        <span><i class="fas fa-ruler-combined"></i> `+property.area+` sq.ft.</span>
-                    </div>
-                    <p style="margin: 0; font-size: 0.9em; color: #666;">Year built: `+property.year+`</p>
-                    <button style="margin-top: 15px; padding: 8px 15px; background: #2C5FAA; color: white; border: none; border-radius: 4px; cursor: pointer; width: 100%;">
-                        View Details
-                    </button>
-                </div>
-            `;
-            
-            marker.bindPopup(popupContent);
-            markers.push(marker);
+        let map;
+
+        // Base Layers
+        const osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
         });
+
+        const satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: '© Esri'
+        });
+
+        const topoLayer = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenTopoMap contributors'
+        });
+
+        // Initialize map with default base layer
+        map = L.map('map', {
+            center: [5.6037, -0.1870],
+            zoom: 10,
+            layers: [osmLayer]
+        });
+
+        // GeoServer WMS Layer with error handling
+        try {
+            var gcsez_boundary = L.tileLayer.wms('http://localhost:2020/geoserver/wms', {
+                layers: 'smarterem:gcsez_boundary', // Example layer - replace with yours
+                format: 'image/png',
+                transparent: true,
+                version: '1.1.0',
+                attribution: 'GeoServer Data'
+            }).addTo(map);
+
+            var gcsez_parceldata_02 = L.tileLayer.wms('http://localhost:2020/geoserver/wms', {
+                layers: 'smarterem:gcsez_parceldata_02', // Example layer - replace with yours
+                format: 'image/png',
+                transparent: true,
+                version: '1.1.0',
+                attribution: 'GeoServer Data'
+            }).addTo(map);
+
+            var gcsez_stline = L.tileLayer.wms('http://localhost:2020/geoserver/wms', {
+                layers: 'smarterem:gcsez_stline', // Example layer - replace with yours
+                format: 'image/png',
+                transparent: true,
+                version: '1.1.0',
+                attribution: 'GeoServer Data'
+            }).addTo(map);
+
+            var gcsez_accessroad = L.tileLayer.wms('http://localhost:2020/geoserver/wms', {
+                layers: 'smarterem:gcsez_accessroad', // Example layer - replace with yours
+                format: 'image/png',
+                transparent: true,
+                version: '1.1.0',
+                attribution: 'GeoServer Data'
+            }).addTo(map);
+            
+            // Optional: Add layer control
+            const baseLayers = {
+                'OpenStreetMap': osmLayer,
+                'Satellite': satelliteLayer,
+                'Topographic': topoLayer
+            };
+            
+            const overlays = {
+                "Boundary": gcsez_boundary,
+                "Parcel Data": gcsez_parceldata_02,
+                "Street Line": gcsez_stline,
+                "Access Road": gcsez_accessroad
+            };
+            
+            L.control.layers(baseLayers, overlays, { collapsed: false }).addTo(map);
+            
+        } catch (error) {
+            console.error('Error loading GeoServer layer:', error);
+            alert('Could not connect to GeoServer. Make sure it\'s running on localhost:2020');
+        }
         
         // Add geolocation
         if (navigator.geolocation) {
@@ -746,6 +607,89 @@
                     map.removeLayer(marker);
                 }
             });
+        }
+
+        // cookie-consent.js
+        document.addEventListener('DOMContentLoaded', function() {
+            const cookieBanner = document.getElementById('cookieBanner');
+            const acceptBtn = document.getElementById('acceptCookies');
+            const rejectBtn = document.getElementById('rejectCookies');
+
+            // Check if user has already made a choice
+            if (!getCookie('cookieConsent')) {
+                cookieBanner.style.display = 'block';
+            }
+
+            // Accept cookies
+            acceptBtn.addEventListener('click', function() {
+                setCookie('cookieConsent', 'accepted', 365);
+                setCookie('necessaryCookies', 'true', 365);
+                setCookie('analyticsCookies', 'true', 365);
+                cookieBanner.style.display = 'none';
+                initializeCookies();
+            });
+
+            // Reject cookies
+            rejectBtn.addEventListener('click', function() {
+                setCookie('cookieConsent', 'rejected', 365);
+                // Only set necessary cookies
+                setCookie('necessaryCookies', 'true', 365);
+                setCookie('analyticsCookies', 'false', 365);
+                cookieBanner.style.display = 'none';
+            });
+
+            // Initialize cookies based on user preference
+            if (getCookie('cookieConsent') === 'accepted') {
+                initializeCookies();
+            }
+        });
+
+        // Cookie utility functions
+        function setCookie(name, value, days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            const expires = "expires=" + date.toUTCString();
+            document.cookie = name + "=" + value + ";" + expires + ";path=/;SameSite=Lax";
+        }
+
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for(let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        function initializeCookies() {
+            // Initialize analytics cookies (Google Analytics, etc.)
+            if (getCookie('analyticsCookies') === 'true') {
+                // console.log('Initializing analytics cookies...');
+                // Add your analytics code here
+            }
+            
+            // Initialize other cookies as needed
+            // console.log('Cookies initialized');
+        }
+
+        // Helper function to show notification
+        window.showNotification = function(message, type = 'success') {
+            // You can implement a toast notification system here
+            Toastify({
+                text: message,
+                duration: 10000,
+                close: true,
+                gravity: "top",
+                position: "right",
+                stopOnFocus: true,
+                avatar: type === 'success' ? '../assets/images/notification/ok-48.png' : '../assets/images/notification/high_priority-48.png', // small icon image
+                style: {
+                    background: type === 'success' ? 'linear-gradient(to right, #00b09b, #96c93d)' : 'linear-gradient(to right, #ff5f6d, #ffc371)',
+                    fontSize: "13px",
+                },
+            }).showToast();
         }
     </script>
 </body>

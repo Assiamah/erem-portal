@@ -1,354 +1,457 @@
-<div class="main-content">
-    <!-- main-content-wrap -->
-    <div class="main-content-inner">
-        <!-- main-content-wrap -->
-        <div class="main-content-wrap">
-            <div class="tf-container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="flex gap24 mb-32 flex-md-row flex-column">
-                            <div class="w-100">
-                                <div class="wg-card style-1 bg-Primary mb-25">
-                                    <div class="icon">
-                                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <rect width="48" height="48" rx="16" fill="white"/>
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M30.873 21.9846C31.1968 19.8232 29.55 18.661 27.2999 17.8856L28.03 14.957L26.2481 14.5135L25.5366 17.3648C25.0781 17.2497 24.6078 17.1425 24.1383 17.0355L24.1083 17.0286L24.825 14.1588L23.0431 13.7144L22.313 16.6419L22.2351 16.6241L22.235 16.6241C21.8741 16.5416 21.519 16.4604 21.1746 16.3738L21.1766 16.3645L18.7183 15.751L18.2439 17.6546C18.2439 17.6546 19.5669 17.9577 19.5391 17.9763C20.2609 18.1568 20.3909 18.6342 20.3692 19.0137L19.5381 22.3496C19.5876 22.362 19.6515 22.3806 19.7237 22.4084L19.535 22.362L18.3697 27.0354C18.281 27.254 18.0573 27.583 17.552 27.4582C17.5705 27.484 16.2568 27.1354 16.2568 27.1354L15.372 29.1752L17.6922 29.7537C17.9413 29.8162 18.1877 29.8805 18.4316 29.9442L18.4316 29.9442L18.4321 29.9443C18.61 29.9907 18.7864 30.0368 18.9616 30.0816L18.2243 33.0432L20.0052 33.4866L20.7353 30.558C21.222 30.689 21.6943 30.8106 22.1563 30.9261L21.4283 33.8424L23.2102 34.2858L23.9475 31.3304C26.9875 31.9058 29.2726 31.6738 30.2347 28.9246C31.0102 26.7116 30.1966 25.434 28.5972 24.6018C29.7624 24.3337 30.6389 23.5675 30.873 21.9846ZM26.7998 27.6954C26.2956 29.7264 23.1169 28.8867 21.6619 28.5024C21.5308 28.4678 21.4137 28.4369 21.3138 28.4121L22.2934 24.4883C22.4153 24.5188 22.5642 24.5523 22.733 24.5902C24.2379 24.9283 27.3181 25.6202 26.7998 27.6954ZM23.0352 22.7688C24.2476 23.0925 26.8912 23.7983 27.3515 21.9526C27.8223 20.0649 25.2523 19.4963 23.997 19.2186C23.8555 19.1873 23.7307 19.1597 23.6288 19.1343L22.742 22.692C22.826 22.7129 22.9246 22.7393 23.0352 22.7688Z" fill="#161326"/>
-                                        </svg>
-                                    </div>
-                                    <div class="content">
-                                        <div>
-                                            <h6 class="counter text-White">
-                                                $<span class="number" data-speed="2000" data-to="34" data-inviewport="yes">34</span>,57
-                                            </h6>
-                                            <div class="f12-medium text-White">+4% <span class="text-White">(30 days)</span></div>
-                                        </div>
-                                        <div class="chart-small">
-                                            <div id="small-chart-1"></div>
-                                        </div>
-                                    </div>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<main class="app-wrapper">
+    <div class="container-fluid">
+
+        <div class="main-breadcrumb d-flex align-items-center my-3 position-relative">
+            <h2 class="breadcrumb-title mb-0 flex-grow-1 fs-14">E-Commerce</h2>
+            <div class="flex-shrink-0">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-end mb-0">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">E-Commerce</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xxl-8">
+                <div class="row h-100">
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="card card-h-100">
+                            <div class="card-body d-flex align-items-center justify-content-around">
+                                <div class="h-48px w-50px position-relative d-flex justify-content-center align-items-center text-primary fs-4 rounded-3 shadow-lg border">
+                                    <i class="bi bi-folder2-open"></i>
                                 </div>
-                                <div class="wg-card">
-                                    <div class="icon">
-                                        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <rect width="36" height="36" rx="12" fill="#C0FAA0"/>
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M25.7143 15.4492L25.7143 15.4492V14.962C25.7143 14.9417 25.7041 14.9214 25.694 14.9011C25.6838 14.8808 25.6737 14.8605 25.6737 14.8402C25.5519 14.2718 25.2271 13.8658 24.6586 13.6627C24.4556 13.6221 24.212 13.5815 24.009 13.5815H13.7774C13.6556 13.5815 13.615 13.6221 13.5744 13.7439C13.4729 14.0688 13.3613 14.3936 13.2496 14.7184C13.138 15.0432 13.0263 15.368 12.9248 15.6928C12.9248 15.7096 12.9178 15.7265 12.9097 15.7462C12.8981 15.774 12.8842 15.8077 12.8842 15.8552H22.3444C22.3444 15.9028 22.3304 15.9364 22.3189 15.9643C22.3107 15.984 22.3038 16.0008 22.3038 16.0176C22.0804 16.7281 21.847 17.4387 21.6135 18.1492C21.3801 18.8597 21.1466 19.5703 20.9233 20.2808C20.8827 20.4026 20.8015 20.4432 20.6797 20.4432H11.585C11.4631 20.4432 11.3819 20.4432 11.3413 20.6056C11.1789 21.174 10.9759 21.783 10.7729 22.3515C10.7323 22.4327 10.6917 22.5545 10.6511 22.6763H10.8541C11.9609 22.6763 13.0722 22.6718 14.1864 22.6673C16.424 22.6583 18.6737 22.6492 20.9233 22.6763C22.4256 22.7169 23.806 21.377 24.1308 20.362C24.6586 18.6973 25.1865 17.0733 25.7143 15.4492ZM10.2857 19.1033V19.1846C10.3263 19.1846 10.4075 19.1846 10.4481 19.1439H15.7263C15.8887 19.1439 15.9293 19.1033 15.9699 18.9815L16.5789 17.1545C16.5789 17.1342 16.5891 17.1037 16.5992 17.0733C16.6094 17.0428 16.6195 17.0124 16.6195 16.9921H16.4977H11.1383C11.0571 16.9921 11.0165 17.0327 10.9759 17.1139C10.915 17.2763 10.8643 17.4387 10.8135 17.6011C10.7628 17.7635 10.712 17.9259 10.6511 18.0883C10.5293 18.4537 10.4075 18.7785 10.2857 19.1033Z" fill="#161326"/>
-                                        </svg>
-                                    </div>
-                                    <div class="content">
-                                        <div>
-                                            <h6 class="counter">
-                                                $<span class="number" data-speed="2000" data-to="54" data-inviewport="yes">54</span>,57
-                                            </h6>
-                                            <div class="f12-medium">+4% <span class="text-Gray">(30 days)</span></div>
-                                        </div>
-                                        <div class="chart-small">
-                                            <div id="small-chart-2"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w-100">
-                                <div class="wg-card mb-25">
-                                    <div class="icon">
-                                        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <rect width="36" height="36" rx="12" fill="#161326"/>
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M17.6072 11.1829C17.5928 11.298 17.5737 11.413 17.5545 11.5281C17.5161 11.7582 17.4778 11.9883 17.4778 12.2184C17.3915 13.2971 17.6935 14.2463 18.1681 15.1955C18.3755 15.6334 18.5891 16.0714 18.8031 16.5101C19.3903 17.714 19.9805 18.924 20.4548 20.1573C20.6274 20.5887 20.7569 21.0633 20.8432 21.4948C20.9653 22.187 20.5879 22.6871 20.2187 23.1763L20.1528 23.2638C19.6351 23.9973 19.031 24.6444 18.3407 25.2053C18.3191 25.2197 18.2975 25.2353 18.276 25.2509C18.1681 25.3288 18.0602 25.4067 17.9524 25.3348C17.8469 25.2644 17.8847 25.1368 17.9256 24.9985C17.9349 24.9671 17.9444 24.9352 17.9524 24.9033C18.125 24.3856 18.2544 23.8247 18.3407 23.2638C18.5027 22.3321 18.1323 21.5145 17.765 20.7039L17.6935 20.5456C17.4634 20.0566 17.2285 19.5676 16.9936 19.0786C16.5238 18.1007 16.054 17.1227 15.6225 16.1447C15.3636 15.5838 15.2342 15.0229 15.1047 14.4189C14.9322 13.5991 15.2773 12.9088 15.7951 12.2616C16.2265 11.7007 16.7011 11.1829 17.262 10.7946C17.2727 10.784 17.2833 10.7727 17.2941 10.7613L17.2941 10.7613C17.3709 10.6797 17.4559 10.5895 17.6072 10.6652C17.6297 10.7776 17.617 10.8782 17.6059 10.9672C17.5956 11.049 17.5865 11.1209 17.6072 11.1829ZM24.9852 21.1928C24.8902 21.2244 24.8649 21.3025 24.8411 21.376C24.8325 21.4026 24.8241 21.4287 24.8126 21.4516C24.338 22.4009 23.6476 23.1343 22.871 23.7815C22.8279 23.8247 22.7416 23.911 22.6121 23.8678C22.5464 23.6376 22.631 23.4324 22.7132 23.2333L22.7132 23.2332C22.7388 23.1711 22.7642 23.1096 22.7847 23.048C23.1299 22.0988 23.0004 21.1928 22.569 20.2867C21.9649 19.0786 21.3609 17.8274 20.8432 16.5762C20.6706 16.1447 20.5411 15.7564 20.4548 15.2818C20.2823 14.5052 20.6706 13.9011 21.1452 13.3402C21.4472 12.9951 21.7492 12.693 22.1375 12.4342C22.1622 12.4218 22.1868 12.4025 22.2115 12.3831C22.2731 12.3347 22.3348 12.2862 22.3964 12.3479C22.4601 12.3797 22.4533 12.4587 22.4453 12.5499C22.4425 12.5822 22.4395 12.6161 22.4395 12.6499V12.6499C22.3533 13.3402 22.267 14.0306 22.4395 14.6777C22.5309 15.104 22.7296 15.4872 22.9297 15.873L22.9297 15.873L22.9297 15.873C23.0131 16.034 23.0968 16.1953 23.173 16.3604C23.324 16.684 23.4804 17.0049 23.6368 17.3258C24.1061 18.2885 24.5753 19.2512 24.8989 20.2867C24.9354 20.378 24.9487 20.4771 24.9618 20.5741C24.9796 20.7062 24.9968 20.8344 25.0714 20.9339C24.9852 21.0202 24.9852 21.1065 24.9852 21.1928ZM13.2495 23.3501C13.2063 23.5226 13.1632 23.6952 13.2063 23.8678C13.2495 23.8678 13.3358 23.8678 13.3789 23.7815C14.1987 23.1343 14.889 22.3577 15.3636 21.4085C15.4931 21.1065 15.4931 20.8045 15.4068 20.5024C15.2342 19.9415 15.0616 19.3806 14.8027 18.8629C14.6791 18.5949 14.5554 18.3245 14.4311 18.0528C14.0352 17.187 13.6332 16.3082 13.2063 15.4544C12.9043 14.8503 12.818 14.2894 12.818 13.6422C12.818 13.4637 12.8402 13.2851 12.8631 13.1004C12.8956 12.8388 12.9296 12.565 12.9043 12.2616C12.214 12.693 11.6962 13.2539 11.2648 13.9011C10.9627 14.3757 10.8333 14.8935 11.0059 15.4544C11.0591 15.6141 11.1051 15.7665 11.1497 15.9146C11.2136 16.1266 11.2749 16.3298 11.3511 16.533C11.8257 17.7411 12.4297 18.9492 13.0337 20.1141C13.5515 21.1928 13.6809 22.2283 13.2495 23.3501Z" fill="white"/>
-                                        </svg>
-                                    </div>
-                                    <div class="content">
-                                        <div>
-                                            <h6 class="counter">
-                                                $<span class="number" data-speed="2000" data-to="14" data-inviewport="yes">14</span>,47
-                                            </h6>
-                                            <div class="f12-medium">+4% <span class="text-Gray">(30 days)</span></div>
-                                        </div>
-                                        <div class="chart-small">
-                                            <div id="small-chart-3"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="wg-card style-1 bg-YellowGreen">
-                                    <div class="icon">
-                                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <rect width="48" height="48" rx="16" fill="#161326"/>
-                                            <path d="M29.3372 33.5406C37.0283 26.9062 32.5076 14.8117 16.7143 14.4595C16.8904 25.1449 15.4227 33.3644 26.1668 33.3644C29.5133 28.2566 27.0474 23.2074 21.5873 18.217C26.9887 20.3306 31.5682 26.7888 29.3372 33.5406Z" fill="white"/>
-                                            </svg>
-                                    </div>
-                                    <div class="content">
-                                        <div>
-                                            <h6 class="counter">
-                                                $<span class="number" data-speed="2000" data-to="34" data-inviewport="yes">34</span>,57
-                                            </h6>
-                                            <div class="f12-medium">+4% <span class="text-Gray">(30 days)</span></div>
-                                        </div>
-                                        <div class="chart-small">
-                                            <div id="small-chart-4"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="wg-box style-1 bg-Gainsboro shadow-none widget-tabs mb-32">
-                            <div>
-                                <div class="title mb-16">
-                                    <div class="label-01">Market Overview</div>
-                                    <ul class="widget-menu-tab">
-                                        <li class="item-title f12-medium">
-                                            <span class="inner">Week</span>
-                                        </li>
-                                        <li class="item-title f12-medium active">
-                                            <span class="inner">Month</span>
-                                        </li>
-                                        <li class="item-title f12-medium">
-                                            <span class="inner">Year</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="flex justify-between">
-                                    <div class="flex gap16 items-center flex-wrap">
-                                        <div class="block-legend">
-                                            <div class="dot bg-Orchid"></div>
-                                            <div class="f12-medium"> <span class="text-Gray">Buy</span> <span class="f12-bold">$8,420.50</span></div>
-                                        </div>
-                                        <div class="block-legend">
-                                            <div class="dot bg-Primary"></div>
-                                            <div class="f12-medium"> <span class="text-Gray">Sell</span> <span class="f12-bold">$8,420.50</span></div>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="tf-button style-default gap8 f14-bold text-Orchid">
-                                        <i class="icon icon-receive-square"></i>
-                                        Get Report
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="widget-content-tab">
-                                <div class="widget-content-inner">
-                                    <div id="candlestick-1" class="candlestick-chart"></div>
-                                </div>
-                                <div class="widget-content-inner active">
-                                    <div id="candlestick-4" class="candlestick-chart"></div>
-                                </div>
-                                <div class="widget-content-inner">
-                                    <div id="candlestick-5" class="candlestick-chart"></div>
+                                <div>
+                                    <h3>$2,647 <i class="bi bi-graph-up-arrow text-success fw-normal fs-5"></i></h3>
+                                    <span class="fs-5">Today's Sales</span>
+                                    <p class="fs-12 mb-0">Sales Increment Rate</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="wg-box style-1 bg-Primary shadow-none mb-32">
-                            <div>
-                                <div class="title mb-10">
-                                    <div class="label-01 text-White">Crypto Statistics</div>
-                                    <div class="dropdown default">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span class="icon-more text-White"></span>
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-end">
-                                            <li>  
-                                                <a href="javascript:void(0);">This Week</a>
-                                            </li>
-                                            <li>  
-                                                <a href="javascript:void(0);">This Day</a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="card card-h-100">
+                            <div class="card-body d-flex align-items-center justify-content-around">
+                                <div class="h-48px w-50px position-relative d-flex justify-content-center align-items-center text-primary fs-4 rounded-3 shadow-lg border">
+                                    <i class="bi bi-bookmark"></i>
                                 </div>
-                                <div class="flex gap16 items-center">
-                                    <div class="tf-cart-checkbox style-1">
-                                        <div class="tf-checkbox-wrapp">
-                                            <input class="" type="checkbox" checked="">
-                                            <div>
-                                                <i class="icon-check"></i>
-                                            </div>
-                                        </div>
-                                        <div class="f12-medium text-Gray">
-                                            BTC
-                                        </div>
-                                    </div>
-                                    <div class="tf-cart-checkbox style-1">
-                                        <div class="tf-checkbox-wrapp">
-                                            <input class="" type="checkbox">
-                                            <div>
-                                                <i class="icon-check"></i>
-                                            </div>
-                                        </div>
-                                        <div class="f12-medium text-Gray">
-                                            XRP
-                                        </div>
-                                    </div>
-                                    <div class="tf-cart-checkbox style-1">
-                                        <div class="tf-checkbox-wrapp">
-                                            <input class="" type="checkbox" checked="">
-                                            <div>
-                                                <i class="icon-check"></i>
-                                            </div>
-                                        </div>
-                                        <div class="f12-medium text-Gray">
-                                            ETH
-                                        </div>
-                                    </div>
-                                    <div class="tf-cart-checkbox style-1">
-                                        <div class="tf-checkbox-wrapp">
-                                            <input class="" type="checkbox">
-                                            <div>
-                                                <i class="icon-check"></i>
-                                            </div>
-                                        </div>
-                                        <div class="f12-medium text-Gray">
-                                            ZEC
-                                        </div>
-                                    </div>
-                                    <div class="tf-cart-checkbox style-1">
-                                        <div class="tf-checkbox-wrapp">
-                                            <input class="" type="checkbox">
-                                            <div>
-                                                <i class="icon-check"></i>
-                                            </div>
-                                        </div>
-                                        <div class="f12-medium text-Gray">
-                                            LTC
-                                        </div>
-                                    </div>
+                                <div>
+                                    <h3>$24,057 <i class="bi bi-graph-up-arrow text-success fw-normal fs-5"></i></h3>
+                                    <span class="fs-5">Total Purchase</span>
+                                    <p class="fs-12 mb-0"><span class="text-success">+8%</span> Completion Rate</p>
                                 </div>
                             </div>
-                            <div id="line-chart-twoline" class="line-chart-twoline"></div>
                         </div>
-                        <div class="flex gap24 mb-32 flex-md-row flex-column">
-                            <div class="wg-box gap16">
-                                <div>
-                                    <div class="title mb-12">
-                                        <div class="label-01">Sell Order</div>
-                                        <div class="dropdown default">
-                                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <span class="icon-more"></span>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                <li>  
-                                                    <a href="javascript:void(0);">This Week</a>
-                                                </li>
-                                                <li>  
-                                                    <a href="javascript:void(0);">This Day</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <select class="image-select center w-100">
-                                        <option selected data-thumbnail="images/item/dashcoin.svg">Dash Coin</option>
-                                        <option data-thumbnail="images/item/bitcoin.svg">Bit Coin</option>
-                                    </select>
+                    </div>
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="card card-h-100">
+                            <div class="card-body d-flex align-items-center justify-content-around">
+                                <div class="h-48px w-48px position-relative d-flex justify-content-center align-items-center text-primary fs-4 rounded-3 shadow-lg border">
+                                    <i class="bi bi-bookmark"></i>
                                 </div>
-                                <table class="tab-sell-order">
-                                    <thead>
-                                        <tr>
-                                            <th class="f14-regular text-Gray">Price</th>
-                                            <th class="f14-regular text-Gray">Amount</th>
-                                            <th class="f14-regular text-Gray">Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="f14-regular">98.36</td>
-                                            <td class="f14-regular">0.25</td>
-                                            <td class="f14-regular">$147.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="f14-regular">98.36</td>
-                                            <td class="f14-regular">0.25</td>
-                                            <td class="f14-regular">$147.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="f14-regular">98.36</td>
-                                            <td class="f14-regular">0.25</td>
-                                            <td class="f14-regular">$147.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="f14-regular">98.36</td>
-                                            <td class="f14-regular">0.25</td>
-                                            <td class="f14-regular">$147.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="f14-regular">98.36</td>
-                                            <td class="f14-regular">0.25</td>
-                                            <td class="f14-regular">$147.00</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <a href="#" class="tf-button f12-bold w-100">
-                                    View All
-                                    <i class="icon icon-send"></i>
-                                </a>
+                                <div>
+                                    <h3>47% <i class="bi bi-graph-up-arrow text-success fw-normal fs-5"></i></h3>
+                                    <span class="fs-5">Overall Performance</span>
+                                    <p class="fs-12 mb-0"><span class="text-success">+12%</span>Completion Rate</p>
+                                </div>
                             </div>
-                            <div class="wg-box gap16 bg-YellowGreen">
-                                <div>
-                                    <div class="title mb-12">
-                                        <div class="label-01">Buy Order</div>
-                                        <div class="dropdown default">
-                                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <span class="icon-more"></span>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                <li>  
-                                                    <a href="javascript:void(0);">This Week</a>
-                                                </li>
-                                                <li>  
-                                                    <a href="javascript:void(0);">This Day</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <select class="image-select center w-100">
-                                        <option selected data-thumbnail="images/item/dashcoin.svg">Dash Coin</option>
-                                        <option data-thumbnail="images/item/bitcoin.svg">Bit Coin</option>
-                                    </select>
-                                </div>
-                                <table class="tab-sell-order">
-                                    <thead>
-                                        <tr>
-                                            <th class="f14-regular">Price</th>
-                                            <th class="f14-regular">Amount</th>
-                                            <th class="f14-regular">Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="f14-regular">98.36</td>
-                                            <td class="f14-regular">0.25</td>
-                                            <td class="f14-regular">$147.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="f14-regular">98.36</td>
-                                            <td class="f14-regular">0.25</td>
-                                            <td class="f14-regular">$147.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="f14-regular">98.36</td>
-                                            <td class="f14-regular">0.25</td>
-                                            <td class="f14-regular">$147.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="f14-regular">98.36</td>
-                                            <td class="f14-regular">0.25</td>
-                                            <td class="f14-regular">$147.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="f14-regular">98.36</td>
-                                            <td class="f14-regular">0.25</td>
-                                            <td class="f14-regular">$147.00</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <a href="#" class="tf-button style-1 f12-bold w-100">
-                                    View All
-                                    <i class="icon icon-send"></i>
-                                </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-4">
+                <div class="card overflow-hidden bg-primary card-h-100 p-4">
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="vector-image">
+                                <img class="img-fluid welcome-img w-200px mb-n20 mt-n5" src="assets/images/dashboard/upgrade-img.png" alt="CRM Vector">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="text-end">
+                                <p class="mb-5 fs-16 fw-semibold text-white">Lorem ipsum dolor <br> sit lorem ipsum <br> dolor sit</p>
+                                <a href="javascript:void(0)" class="btn text-white border border-white mt-1">Upgrade</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- /main-content-wrap -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Latest Order</h4>
+                        <div class="d-flex gap-3 align-items-center">
+                            <div class="form-icon">
+                                <input type="text" class="form-control form-control-icon" id="firstNameLayout4" placeholder="Search Here ..." required>
+                                <i class="ri-search-2-line text-muted"></i>
+                            </div>
+                            <div class="btn-group">
+                                <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Weekly
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-start">
+                                    <a class="dropdown-item" href="javascript:void(0)">Weekly</a>
+                                    <a class="dropdown-item" href="javascript:void(0)">In Transit</a>
+                                    <a class="dropdown-item" href="javascript:void(0)">Delivered</a>
+                                    <a class="dropdown-item" href="javascript:void(0)">Pending</a>
+                                    <a class="dropdown-item" href="javascript:void(0)">Delayed</a>
+                                    <a class="dropdown-item" href="javascript:void(0)">Canceled</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-box table-responsive">
+                            <table class="table table-hover text-nowrap">
+                                <thead class="table-light border-0">
+                                    <tr>
+                                        <th>Customer ID</th>
+                                        <th>Email</th>
+                                        <th>Product</th>
+                                        <th>Status</th>
+                                        <th>Tracking</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="flexCheckDefault" id="flexCheckDefault">
+                                                <img src="assets/images/avatar/avatar-1.jpg" class="avatar-sm rounded-2 mx-2" alt="Avatar Image">
+                                                #0051134
+                                            </div>
+                                        </td>
+                                        <td>ela@septi.gmail.com</td>
+                                        <td>MacBook Air</td>
+                                        <td><span class="badge bg-warning-subtle text-warning py-1 rounded-3 border border-warning">On Way</span></td>
+                                        <td>PQ1132G</td>
+                                        <td>
+                                            <div class="dropdown dropdown-menu-end">
+                                                <button class="btn p-0" type="button" data-bs-toggle="dropdown">
+                                                    <i class="bi bi-three-dots"></i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="javascript:void(0)">Edit</a></li>
+                                                    <li><a class="dropdown-item" href="javascript:void(0)">View</a></li>
+                                                    <li><a class="dropdown-item" href="javascript:void(0)">Track</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="flexCheckDefault1" id="flexCheckDefault1" checked>
+                                                <img src="assets/images/avatar/avatar-2.jpg" class="avatar-sm rounded-2 mx-2" alt="Avatar Image">
+                                                #0021598
+                                            </div>
+                                        </td>
+                                        <td>te@shroff.gmail.com</td>
+                                        <td>Magical Pen</td>
+                                        <td><span class="badge bg-primary-subtle text-primary py-1 rounded-3 border border-primary">Waiting</span></td>
+                                        <td>CF0568B</td>
+                                        <td>
+                                            <div class="dropdown dropdown-menu-end">
+                                                <button class="btn p-0" type="button" data-bs-toggle="dropdown">
+                                                    <i class="bi bi-three-dots"></i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="javascript:void(0)">Edit</a></li>
+                                                    <li><a class="dropdown-item" href="javascript:void(0)">View</a></li>
+                                                    <li><a class="dropdown-item" href="javascript:void(0)">Track</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="flexCheckDefault2" id="flexCheckDefault2">
+                                                <img src="assets/images/avatar/avatar-3.jpg" class="avatar-sm rounded-2 mx-2" alt="Avatar Image">
+                                                #0045976
+                                            </div>
+                                        </td>
+                                        <td>te@shroff.gmail.com</td>
+                                        <td>Secret Diary</td>
+                                        <td><span class="badge bg-danger-subtle text-danger py-1 rounded-3 border border-danger">Pending</span></td>
+                                        <td>RY4578K</td>
+                                        <td>
+                                            <div class="dropdown dropdown-menu-end">
+                                                <button class="btn p-0" type="button" data-bs-toggle="dropdown">
+                                                    <i class="bi bi-three-dots"></i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="javascript:void(0)">Edit</a></li>
+                                                    <li><a class="dropdown-item" href="javascript:void(0)">View</a></li>
+                                                    <li><a class="dropdown-item" href="javascript:void(0)">Track</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="flexCheckDefault3" id="flexCheckDefault3">
+                                                <img src="assets/images/avatar/avatar-4.jpg" class="avatar-sm rounded-2 mx-2" alt="Avatar Image">
+                                                #0074564
+                                            </div>
+                                        </td>
+                                        <td>te@shroff.gmail.com</td>
+                                        <td>IdeaPad Azure</td>
+                                        <td><span class="badge bg-success-subtle text-success py-1 rounded-3 border border-success">Delivered</span></td>
+                                        <td>ST9856H</td>
+                                        <td>
+                                            <div class="dropdown dropdown-menu-end">
+                                                <button class="btn p-0" type="button" data-bs-toggle="dropdown">
+                                                    <i class="bi bi-three-dots"></i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="javascript:void(0)">Edit</a></li>
+                                                    <li><a class="dropdown-item" href="javascript:void(0)">View</a></li>
+                                                    <li><a class="dropdown-item" href="javascript:void(0)">Track</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="flexCheckDefault4" id="flexCheckDefault4">
+                                                <img src="assets/images/avatar/avatar-5.jpg" class="avatar-sm rounded-2 mx-2" alt="Avatar Image">
+                                                #0098546
+                                            </div>
+                                        </td>
+                                        <td>te@shroff.gmail.com</td>
+                                        <td>Laxmi Electric Stove</td>
+                                        <td><span class="badge bg-success-subtle text-success py-1 rounded-3 border border-success">Delivered</span></td>
+                                        <td>KI1256G</td>
+                                        <td>
+                                            <div class="dropdown dropdown-menu-end">
+                                                <button class="btn p-0" type="button" data-bs-toggle="dropdown">
+                                                    <i class="bi bi-three-dots"></i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="javascript:void(0)">Edit</a></li>
+                                                    <li><a class="dropdown-item" href="javascript:void(0)">View</a></li>
+                                                    <li><a class="dropdown-item" href="javascript:void(0)">Track</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Average Order Value</h4>
+                        <div class="d-flex align-items-center">
+                            <ul class="nav nav-pills me-3" id="pills-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="average-line-tab" data-bs-toggle="pill" data-bs-target="#average-line" type="button" role="tab" aria-controls="average-line" aria-selected="true">Line</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="average-bar-tab" data-bs-toggle="pill" data-bs-target="#average-bar" type="button" role="tab" aria-controls="average-bar" aria-selected="false">Bar</button>
+                                </li>
+                            </ul>
+                            <div class="dropdown">
+                                <a href="javascript:void(0)" data-bs-toggle="dropdown" class="text-muted">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-start">
+                                    <li><a class="dropdown-item" href="javascript:void(0)">This Week</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)">This Month</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)">This Year</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0" id="average-line" class="apexcharts-container"></div>
+                            <div class="tab-pane fade" id="average-bar" role="tabpanel" aria-labelledby="average-bar-tab" tabindex="0"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card card-h-100">
+                    <div class="card-header">
+                        <h4>Recent Sales</h4>
+                        <a href="javascript:void(0)" class="link">View All</a>
+                    </div>
+                    <div class="card-body">
+                        <div id="gridjs_sort-table"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-4">
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h4>Product Statistics</h4>
+                            <p class="mb-0 text-muted">Track your product sales</p>
+                        </div>
+                        <a href="javascript:void(0)" class="link">View All</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="position-relative">
+                            <div id="product-statistics"></div>
+                            <div class="product-chart text-center">
+                                <h3>9,829</h3>
+                                <p class="mb-0">Product Sales</p>
+                                <span class="badge bg-success py-1 rounded-pill">+5.34%</span>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <div>
+                                <i class="ri-ram-line fs-5 me-3"></i>
+                                Electronic
+                            </div>
+                            <div>
+                                <span class="text-muted me-3">2,482</span>
+                                <span class="badge bg-primary-subtle text-primary px-2 rounded-3">+5.34%</span>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <div>
+                                <i class="bi bi-controller fs-5 me-3"></i>
+                                Games
+                            </div>
+                            <div>
+                                <span class="text-muted me-3">1,828</span>
+                                <span class="badge bg-warning-subtle text-warning px-2 rounded-3">+5.34%</span>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <i class="bi bi-lamp fs-5 me-3"></i>
+                                Furniture
+                            </div>
+                            <div>
+                                <span class="text-muted me-3">1,463</span>
+                                <span class="badge bg-danger-subtle text-danger px-2 rounded-3">+5.34%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-4 col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h4>Customer Growth</h4>
+                            <p class="mb-0 text-muted">Track Customer per location</p>
+                        </div>
+                        <a href="javascript:void(0)" class="link">View All</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="bubble-container">
+                            <div class="bubble bubble1">2,489</div>
+                            <div class="bubble bubble2">1,756</div>
+                            <div class="bubble bubble3">285</div>
+                            <div class="bubble bubble4">812</div>
+                        </div>
+                        <div class="d-flex align-items-center gap-4 mb-5">
+                            <img src="assets/images/flag/us.svg" height="30" width="30" class="object-fit-cover rounded-circle">
+                            <div class="w-100">
+                                <div class="d-flex justify-content-between align-items-center fs-13">
+                                    <p class="text-muted mb-1">United States</p>
+                                </div>
+                                <div class="progress progress-sm" style="stroke-dasharray: 282.6, 282.6; stroke-dashoffset: 282.6;">
+                                    <div class="progress-bar bg-primary" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <img src="assets/images/flag/de.svg" height="30" width="30" class="object-fit-cover rounded-circle">
+                            <div class="w-100">
+                                <div class="d-flex justify-content-between align-items-center fs-13">
+                                    <p class="text-muted mb-1">Andorra</p>
+                                </div>
+                                <div class="progress progress-sm" style="stroke-dasharray: 282.6, 282.6; stroke-dashoffset: 282.6;">
+                                    <div class="progress-bar bg-primary" style="width: 70%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center gap-4 mb-5">
+                            <img src="assets/images/flag/ru.svg" height="30" width="30" class="object-fit-cover rounded-circle">
+                            <div class="w-100">
+                                <div class="d-flex justify-content-between align-items-center fs-13">
+                                    <p class="text-muted mb-1">French</p>
+                                </div>
+                                <div class="progress progress-sm" style="stroke-dasharray: 282.6, 282.6; stroke-dashoffset: 282.6;">
+                                    <div class="progress-bar bg-primary" style="width: 70%"></div>
+                                </div>
+                            </div>
+                            <img src="assets/images/flag/cn.svg" height="30" width="30" class="object-fit-cover rounded-circle">
+                            <div class="w-100">
+                                <div class="d-flex justify-content-between align-items-center fs-13">
+                                    <p class="text-muted mb-1">Chinese</p>
+                                </div>
+                                <div class="progress progress-sm" style="stroke-dasharray: 282.6, 282.6; stroke-dashoffset: 282.6;">
+                                    <div class="progress-bar bg-primary" style="width: 25%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-4 col-lg-6">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header pb-4 mb-2">
+                                <h4>Latest Product</h4>
+                                <div class="dropdown">
+                                    <a href="javascript:void(0)" data-bs-toggle="dropdown" class="text-muted" aria-expanded="false">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="javascript:void(0)">This Week</a></li>
+                                        <li><a class="dropdown-item" href="javascript:void(0)">This Month</a></li>
+                                        <li><a class="dropdown-item" href="javascript:void(0)">This Year</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body product-body bg-body m-4 mt-0">
+                                <img src="assets/images/dashboard/shoeses.png" class="img-fluid mx-auto d-block product-img1" alt="Product Image">
+                                <div class="m-4 mt-0 py-2 px-4 product-gradient">
+                                    <div>
+                                        <span class="fs-12">Shoe</span>
+                                        <p class="fs-5 mb-0">Nike</p>
+                                    </div>
+                                    <div>
+                                        <i class="bi bi-arrow-right-circle-fill fs-3"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-center">
+                                    <img src="assets/images/dashboard/enhanced_image.png" class="img-fluid" alt="Enhanced Image">
+                                </div>
+                                <div class="d-flex gap-3 pt-4">
+                                    <a href="#!" class="btn btn-outline-primary w-50">Login / Sign Up</a>
+                                    <a href="#!" class="btn btn-primary w-50">Get Started</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
-    <!-- /main-content-wrap -->
-    
-</div>
+
+    <!-- Submit Section -->
+</main>

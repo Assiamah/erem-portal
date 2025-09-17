@@ -1,104 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<div class="section-menu-left">
-    <div class="box-logo">
-        <a href="${pageContext.request.contextPath}/dashboard" id="site-logo-inner">
-            <img class="" id="logo_header" alt="" src="${pageContext.request.contextPath}/images/logo/logo.svg" data-light="images/logo/logo.svg" data-dark="images/logo/logo-dark.svg" >
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <aside class="pe-app-sidebar" id="sidebar">
+    <div class="pe-app-sidebar-logo px-6 d-flex align-items-center position-relative">
+        <!-- Brand -->
+        <a href="index.html" class="d-flex align-items-end logo-main">
+            <img height="35" width="34" class="logo-dark" alt="Dark Logo" src="assets/images/logo-md.png">
+            <img height="35" width="34" class="logo-light" alt="Light Logo" src="assets/images/logo-md-light.png">
+            <h3 class="text-body-emphasis fw-bolder mb-0 ms-1">Urbix</h3>
         </a>
-        <div class="button-show-hide">
-            <i class="icon-back"></i>
-        </div>
     </div>
-    <div class="section-menu-left-wrap">
-        <div class="center">
-            <div class="center-item">
-                <div class="center-heading f14-regular text-Gray menu-heading mb-12">Navigation</div>
-            </div>
-            <div class="center-item">
-                <ul class="">
-                    <li class="menu-item">
-                        <a href="${pageContext.request.contextPath}/dashboard" class="menu-item-button active">
-                            <div class="icon">
-                                <i class="icon-category"></i>
-                            </div>
-                            <div class="text">Dashboard</div>
-                        </a>
-                    </li>
-                    <li class="menu-item has-children">
-                        <a href="javascript:void(0);" class="menu-item-button">
-                            <div class="icon">
-                                <i class="icon-wallet1"></i>
-                            </div>
-                            <div class="text">My Wallet</div>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="sub-menu-item">
-                                <a href="my-wallet.html" class="">
-                                    <div class="text">My Wallet</div>
-                                </a>
-                            </li>
-                            <li class="sub-menu-item">
-                                <a href="account.html" class="">
-                                    <div class="text">Account</div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="menu-item">
-                        <a href="transaction.html" class="menu-item-button">
-                            <div class="icon">
-                                <svg class="" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M6.1428 8.50146V14.2182" stroke="#A4A4A9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M10.0317 5.76562V14.2179" stroke="#A4A4A9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M13.8572 11.522V14.2178" stroke="#A4A4A9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M13.9047 1.6665H6.0952C3.37297 1.6665 1.66663 3.59324 1.66663 6.3208V13.6789C1.66663 16.4064 3.36504 18.3332 6.0952 18.3332H13.9047C16.6349 18.3332 18.3333 16.4064 18.3333 13.6789V6.3208C18.3333 3.59324 16.6349 1.6665 13.9047 1.6665Z" stroke="#A4A4A9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <div class="text">Transaction</div>
-                        </a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="crypto.html" class="menu-item-button">
-                            <div class="icon">
-                                <i class="icon-dash1"></i>
-                            </div>
-                            <div class="text">Crypto</div>
-                        </a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="exchange.html" class="menu-item-button">
-                            <div class="icon">
-                                <i class="icon-arrow-swap"></i>
-                            </div>
-                            <div class="text">Exchange</div>
-                        </a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="settings.html" class="menu-item-button">
-                            <div class="icon">
-                                <i class="icon-setting1"></i>
-                            </div>
-                            <div class="text">Settings</div>
-                        </a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="component.html" class="menu-item-button">
-                            <div class="icon">
-                                <i class="icon-search-normal"></i>
-                            </div>
-                            <div class="text">Component</div>
-                        </a>
-                    </li>
-                </ul>
+
+    <nav class="pe-app-sidebar-menu nav nav-pills d-flex flex-column" data-simplebar id="sidebar-simplebar" style="height:100%;">
+        <div class="flex-grow-1 d-flex flex-column w-100">
+            <ul class="pe-main-menu list-unstyled">
+               <li class="pe-menu-title">Main</li>
+                <li class="pe-slide pe-has-sub">
+                    <a href="${pageContext.request.contextPath}/dashboard" class="pe-nav-link">
+                        <i class="ri-dashboard-line pe-nav-icon"></i>
+                        <span class="pe-nav-content">Dashboards</span>
+                    </a>
+                </li>
+                <li class="pe-slide pe-has-sub">
+                    <a href="${pageContext.request.contextPath}/appointments" class="pe-nav-link">
+                        <i class="ri-calendar-line pe-nav-icon"></i>
+                        <span class="pe-nav-content">Appointments</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Moved to bottom: Sticky bottom widget with last login -->
+        <div class="mt-auto">
+            <div class="sidebar-widget text-center pb-3 pt-2 border-top">
+                <p class="text-muted mb-2 small">Last Login: ${lastLogin}</p>
+                <a href="${pageContext.request.contextPath}/logout" class="btn btn-danger rounded-pill w-100" onclick="logoutLink(event, this)">
+                    <i class="bi bi-box-arrow-right me-2"></i> Sign Out
+                </a>
             </div>
         </div>
-        <div class="bottom">
-            <div class="image">
-                <img src="images/item/bot.png" alt="">
-            </div>
-            <div class="content">
-                <p class="f12-regular text-White">For more features</p>
-                <p class="f12-bold text-White">Upgrade to Pro</p>
-            </div>
-        </div>
-    </div>
-</div>
+    </nav>
+</aside>
