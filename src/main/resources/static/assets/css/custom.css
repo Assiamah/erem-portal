@@ -672,7 +672,7 @@
 }
 
 #map {
-    height: 500px;
+    height: 700px;
     border-radius: 10px;
     z-index: 1;
 }
@@ -1712,4 +1712,304 @@
 
 .back-link:hover {
     color: #4e73df;
+}
+
+/* Modal Styles */
+.parcel-modal .modal-content {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* .parcel-modal .modal-header {
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    color: white;
+    border-radius: 15px 15px 0 0;
+    padding: 1.2rem 1.5rem;
+} */
+
+.parcel-modal .modal-title {
+    font-weight: 600;
+}
+
+.parcel-modal .modal-body {
+    padding: 1.5rem;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.parcel-modal .modal-footer {
+    border-top: 1px solid #eee;
+    padding: 1rem 1.5rem;
+}
+
+.property-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.detail-item {
+    background-color: #f8f9fa;
+    padding: 0.8rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary);
+}
+
+.detail-label {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-bottom: 0.3rem;
+}
+
+.detail-value {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.loading-spinner {
+    text-align: center;
+    padding: 2rem;
+}
+
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+    color: var(--primary);
+}
+
+.parcel-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-favorite {
+    background-color: #fff;
+    color: var(--salmon);
+    border: 1px solid var(--salmon);
+}
+
+.btn-favorite:hover {
+    background-color: var(--salmon);
+    color: white;
+}
+
+.btn-contact {
+    background-color: var(--primary);
+    color: white;
+}
+
+.btn-contact:hover {
+    background-color: #4a54d4;
+    color: white;
+}
+
+.no-data-message {
+    text-align: center;
+    padding: 2rem;
+    color: #6c757d;
+}
+
+.error-message {
+    text-align: center;
+    padding: 2rem;
+    color: #dc3545;
+}
+
+/* Land Parcel Modal Styles */
+.land-header {
+    text-align: center;
+    padding: 1rem;
+    background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.land-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.land-title {
+    margin: 0;
+    font-weight: 600;
+}
+
+.land-property-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.land-detail-item {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #4CAF50;
+    transition: all 0.3s ease;
+}
+
+.land-detail-item:hover {
+    background-color: #e8f5e9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.land-detail-item.land-priority {
+    border-left-color: #FF9800;
+    background-color: #fff3e0;
+}
+
+.land-detail-item.land-priority:hover {
+    background-color: #ffe0b2;
+}
+
+.land-detail-label {
+    font-size: 0.85rem;
+    color: #616161;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.land-detail-value {
+    font-weight: 500;
+    color: #212121;
+    font-size: 1.1rem;
+}
+
+.land-actions {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-available, status-0 {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.status-allocated, status-1, status-taken {
+    background-color: #F44336;
+    color: white;
+}
+
+.status-pending {
+    background-color: #FF9800;
+    color: white;
+}
+
+.no-land-data {
+    text-align: center;
+    padding: 2rem;
+    color: #757575;
+}
+
+.no-data-icon {
+    font-size: 3rem;
+    color: #BDBDBD;
+    margin-bottom: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .land-property-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .land-actions {
+        flex-direction: column;
+    }
+    
+    .land-actions .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}
+
+.map-offcanvas {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    z-index: 3;
+    width: 350px;
+    height: auto;
+    max-height: 80%;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+    overflow: hidden;
+    display: block;
+    transition: transform 0.3s ease-in-out;
+}
+
+.map-offcanvas.show {
+    display: block;
+    transform: translateX(0);
+}
+
+.offcanvas-header__parcel {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e9ecef;
+    /* background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%); */
+    /* color: white; */
+}
+
+.offcanvas-title__parcel {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+.btn-close__parcel {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    /* color: var(--gray); */
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+    filter: invert(1);
+}
+
+.btn-close__parcel:hover {
+    opacity: 1;
+    /* color: var(--dark); */
+}
+
+.offcanvas-body__parcel {
+    padding: 1.5rem;
+    max-height: calc(80vh - 70px);
+    overflow-y: auto;
+}
+
+/* Responsive design */
+@media (max-width: 576px) {
+    .map-offcanvas {
+        width: 90%;
+        right: 5%;
+        left: 5%;
+    }
 }

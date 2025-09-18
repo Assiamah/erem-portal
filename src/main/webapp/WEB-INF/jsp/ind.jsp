@@ -396,7 +396,6 @@
         body {
             padding-top: 80px;
         }
-        
     </style>
 </head>
 <body>
@@ -443,8 +442,8 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <h1 class="display-4 fw-bold mb-4 mt-5">Find Your Perfect Piece of Land</h1>
-                    <p class="lead mb-5">Browse available land parcels, save favorites, and apply online with our streamlined process.</p>
+                    <h1 class="display-4 fw-bold mb-4 mt-5">Find Your Dream Property With Us</h1>
+                    <p class="lead mb-5">Browse thousands of properties for sale and rent across the country. Our advanced map technology helps you find the perfect location.</p>
                     
                     <div class="search-bar">
                         <div class="row g-0">
@@ -924,25 +923,6 @@
         </div>
     </div>
 
-    <div class="modal fade modal-blur parcel-modal" id="parcelModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="addUserModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="parcelModalLabel">Parcel Information</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" id="parcelModalBody">
-                    <!-- Content will be loaded dynamically -->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-favorite"><i class="fas fa-heart"></i> Save</button>
-                    <button type="button" class="btn btn-contact"><i class="fas fa-envelope"></i> Contact Agent</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script src="${pageContext.request.contextPath}/assets/libs/swiper/swiper-bundle.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/libs/simplebar/simplebar.min.js"></script>
@@ -1079,6 +1059,25 @@
             console.error('Error loading GeoServer layer:', error);
             alert('Could not connect to GeoServer. Make sure it\'s running on localhost:2020');
         }
+        
+        // Add geolocation
+        // if (navigator.geolocation) {
+        //     navigator.geolocation.getCurrentPosition(function(position) {
+        //         var userLatLng = [position.coords.latitude, position.coords.longitude];
+        //         var userMarker = L.marker(userLatLng, {
+        //             icon: L.divIcon({
+        //                 className: 'user-marker',
+        //                 html: '<i class="fas fa-user"></i>',
+        //                 iconSize: [25, 25],
+        //                 iconAnchor: [12, 12]
+        //             })
+        //         }).addTo(map);
+                
+        //         userMarker.bindPopup("Your Location").openPopup();
+        //         map.setView(userLatLng, 13);
+        //     });
+        // }
+
 
         // Initialize a GeoJSON layer for highlighting
         function initParcelHighlightLayer() {
@@ -1095,7 +1094,7 @@
             }).addTo(map);
         }
 
-        // Function to clear parcel highlight
+         // Function to clear parcel highlight
         function clearParcelHighlight() {
             if (parcelLayer) {
                 parcelLayer.clearLayers();
@@ -1103,7 +1102,7 @@
             highlightedParcel = null;
         }
 
-        // Function to highlight a specific parcel
+         // Function to highlight a specific parcel
         function highlightParcel(geojsonData) {
             if (!parcelLayer || !geojsonData) return;
             
@@ -1123,7 +1122,7 @@
             }
         }
 
-         // Function to get parcel information via WMS GetFeatureInfo
+        // Function to get parcel information via WMS GetFeatureInfo
         function getParcelInfo(latlng) {
             // Show loading state in offcanvas
             document.getElementById('parcelOffcanvasBody').innerHTML = `
@@ -1189,6 +1188,7 @@
                 });
         }
 
+
         // Show the custom offcanvas
         function showParcelOffcanvas() {
             document.getElementById('parcelOffcanvas').classList.add('show');
@@ -1215,7 +1215,8 @@
             }
         });
 
-        // Function to display parcel information in the offcanvas
+
+         // Function to display parcel information in the offcanvas
         function displayParcelInfo(data) {
             console.log(data);
             const offcanvasBody = document.getElementById('parcelOffcanvasBody');
@@ -1331,26 +1332,6 @@
                 .trim();
         }
         
-        //Add geolocation
-        // if (navigator.geolocation) {
-        //     navigator.geolocation.getCurrentPosition(function(position) {
-        //         var userLatLng = [position.coords.latitude, position.coords.longitude];
-        //         var userMarker = L.marker(userLatLng, {
-        //             icon: L.divIcon({
-        //                 className: 'user-marker',
-        //                 html: '<i class="fas fa-user"></i>',
-        //                 iconSize: [25, 25],
-        //                 iconAnchor: [12, 12]
-        //             })
-        //         }).addTo(map);
-
-        //         console.log(userLatLng)
-                
-        //         userMarker.bindPopup("Your Location").openPopup();
-        //         map.setView(userLatLng, 13);
-        //     });
-        // }
-        
         // Add filter functionality
         document.getElementById('forSale').addEventListener('change', updateFilters);
         document.getElementById('forRent').addEventListener('change', updateFilters);
@@ -1457,7 +1438,7 @@
                 },
             }).showToast();
         }
-
+   
         // Initialize Property Slider
         document.addEventListener('DOMContentLoaded', function() {
             const propertySlider = new Swiper('.property-slider', {
@@ -1517,7 +1498,7 @@
         });
 
 
-        // Add this to your existing JavaScript section
+            // Add this to your existing JavaScript section
         document.addEventListener('DOMContentLoaded', function() {
             // Setup image hover functionality
             const propertyCards = document.querySelectorAll('.property-card');
@@ -1609,6 +1590,8 @@
                 }
             });
         });
+
+
     </script>
 </body>
 </html>
