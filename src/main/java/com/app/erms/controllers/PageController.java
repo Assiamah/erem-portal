@@ -41,4 +41,7 @@ public class PageController {
         model.addAttribute("page_name", "Appointments");
         return "layouts/app";
     }
+
+
+    
 }

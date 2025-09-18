@@ -62,6 +62,21 @@ public class AuthController {
         return "index";
     }
 
+
+     @GetMapping("/building-materials")
+    public String showEcommercePage() {
+        // model.addAttribute("content", "../index.jsp");
+        return "pages/ecommerce";
+    }
+
+     @GetMapping("/store-materials")
+    public String StoreMaterials() {
+        // model.addAttribute("content", "../index.jsp");
+        return "pages/storefront";
+    }
+
+
+
     @GetMapping("/logout")
     public String logout(HttpSession session, Model model) {
         // Invalidate the current session

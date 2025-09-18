@@ -62,340 +62,210 @@
             -webkit-text-size-adjust: 100%;
             -ms-text-size-adjust: 100%;
         }
+    
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
         
-        /* Futuristic Property Slider Styles */
-        .property-slider {
+        .py-5 {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+        
+        
+        .carousel-wrapper {
             overflow: hidden;
-            border-radius: 15px;
-            padding: 20px 0;
+            position: relative;
+            padding: 0 40px;
+        }
+        
+        .carousel-track {
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+            margin: 0 -15px;
         }
         
         .property-card {
+            flex: 0 0 auto;
+            width: calc(33.333% - 30px);
+            margin: 0 15px;
+            border: 1px solid #eee;
             border-radius: 12px;
+            background: #fff;
             overflow: hidden;
-            background: var(--white);
-            box-shadow: var(--card-shadow);
-            transition: all 0.4s ease;
-            border: 1px solid rgba(0,0,0,0.05);
-            height: 100%;
-            transform: translateY(0);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
         .property-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-            border-color: rgba(91, 102, 235, 0.2);
-        }
-        .property-image-container {
-            position: relative;
-            overflow: hidden;
-            height: 220px;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
         
-            .property-img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
+        .property-img {
             width: 100%;
+            height: 200px;
             object-fit: cover;
-            transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
-            opacity: 0;
-            transform: scale(1.05);
+            display: block;
         }
-
-        .property-img.active {
-            opacity: 1;
-            z-index: 1;
-            transform: scale(1);
-        }
-
-        .property-card:hover .property-img {
-            transform: scale(1.05);
+        
+        .position-relative {
+            position: relative;
         }
         
         .property-badge {
             position: absolute;
             top: 15px;
             right: 15px;
-            padding: 5px 12px;
-            border-radius: 20px;
+            padding: 5px 10px;
+            border-radius: 4px;
             color: white;
-            font-weight: 600;
+            font-weight: bold;
             font-size: 0.8rem;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .bg-success {
+            background-color: #28a745;
+        }
+        
+        .bg-danger {
+            background-color: #dc3545;
+        }
+        
+        .p-3 {
+            padding: 1rem;
         }
         
         .property-price {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 8px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2C5FAA;
+            margin-bottom: 0.5rem;
         }
         
         .property-price small {
-            font-size: 0.9rem;
-            margin-right: 4px;
-            opacity: 0.8;
+            font-size: 1rem;
+            font-weight: normal;
         }
         
-        /* Slider Navigation */
-        .slider-navigation {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            z-index: 10;
-            transform: translateY(-50%);
-            pointer-events: none;
+        .property-card h5 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .text-gray {
+            color: #6D6D6D;
+            margin-bottom: 0;
+        }
+        
+        .carousel-controls {
             display: flex;
-            justify-content: space-between;
-            padding: 0 -10px;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 2rem;
         }
         
-        .slider-nav-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+        .carousel-btn {
             background: rgba(255, 255, 255, 0.9);
             border: none;
+            font-size: 18px;
+            padding: 10px 14px;
+            cursor: pointer;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            pointer-events: auto;
-            color: var(--primary);
-            font-size: 1.2rem;
+            width: 50px;
+            height: 50px;
         }
         
-        .slider-nav-btn:hover {
-            background: var(--primary);
-            color: white;
+        .carousel-btn:hover:not([disabled]) {
+            background: #007bff;
+            color: #fff;
             transform: scale(1.1);
         }
         
-        .prev-btn {
-            margin-left: -25px;
+        .carousel-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
         
-        .next-btn {
-            margin-right: -25px;
+        .text-center {
+            text-align: center;
         }
         
-        /* Pagination Styles */
-        .swiper-pagination {
-            position: relative;
-            margin-top: 20px;
+        .mt-4 {
+            margin-top: 1.5rem;
         }
         
-        .swiper-pagination-bullet {
-            width: 10px;
-            height: 10px;
-            background: var(--lightgray);
-            opacity: 1;
-            transition: all 0.3s ease;
-        }
-        
-        .swiper-pagination-bullet-active {
-            width: 30px;
-            border-radius: 5px;
-            background: var(--primary);
-        }
-        
-        /* Futuristic Navbar Styles */
-        .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 0.8rem 0;
-        }
-        
-        .navbar.scrolled {
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            padding: 0.5rem 0;
-        }
-        
-        .navbar-brand {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary), #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-decoration: none;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        
-        .navbar-brand::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(135deg, var(--primary), #8b5cf6);
-            transition: width 0.3s ease;
-        }
-        
-        .navbar-brand:hover::after {
-            width: 100%;
-        }
-        
-        .nav-link {
-            color: var(--black) !important;
-            font-weight: 600;
-            font-size: 0.95rem;
-            padding: 0.8rem 1.2rem !important;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .nav-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(91, 102, 235, 0.1), rgba(139, 92, 246, 0.1));
-            transition: left 0.3s ease;
-            z-index: -1;
-        }
-        
-        .nav-link:hover {
-            color: var(--primary) !important;
-            transform: translateY(-2px);
-        }
-        
-        .nav-link:hover::before {
-            left: 0;
-        }
-        
-        .btn {
-            border-radius: 25px;
-            font-weight: 600;
-            padding: 0.6rem 1.5rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            border: none;
-            text-decoration: none;
-        }
         
         .btn-outline-primary {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            position: relative;
-        }
-        
-        .btn-outline-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--primary);
-            transition: left 0.3s ease;
-            z-index: -1;
+            border-color: #007bff;
+            color: #007bff;
         }
         
         .btn-outline-primary:hover {
+            background-color: #007bff;
             color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(91, 102, 235, 0.3);
         }
         
-        .btn-outline-primary:hover::before {
-            left: 0;
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .property-card {
+                width: calc(50% - 30px);
+            }
         }
         
-        .btn-warning {
-            background: linear-gradient(135deg, #ff6b6b, #ffa726);
-            color: white;
-            border: none;
-            position: relative;
-        }
-        
-        .btn-warning::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #ff5252, #ff9800);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-        }
-        
-        .btn-warning:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
-        }
-        
-        .btn-warning:hover::before {
-            opacity: 1;
-        }
-        
-        .navbar-toggler {
-            border: none;
-            padding: 0.5rem;
-            border-radius: 8px;
-            background: rgba(91, 102, 235, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .navbar-toggler:hover {
-            background: rgba(91, 102, 235, 0.2);
-            transform: scale(1.05);
-        }
-        
-        .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2891, 102, 235, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='m4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-        }
-        
-        /* Mobile Responsive */
-        @media (max-width: 991.98px) {
-            .navbar-collapse {
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(20px);
-                border-radius: 15px;
-                margin-top: 1rem;
-                padding: 1.5rem;
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        @media (max-width: 768px) {
+            .property-card {
+                width: calc(100% - 30px);
             }
             
-            .nav-link {
-                margin: 0.3rem 0;
+            .carousel-wrapper {
+                padding: 0 20px;
             }
             
-            .btn {
-                margin: 0.5rem 0;
-                width: 100%;
+            .section-title {
+                font-size: 2rem;
             }
         }
         
-        /* Add padding to body to account for fixed navbar */
-        body {
-            padding-top: 80px;
+        /* Animation for auto slide */
+        @keyframes slide {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
         }
+        
+        /* Dots indicator */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .dot.active {
+            background-color: #007bff;
+        }  
+        
     </style>
 </head>
 <body>
@@ -480,176 +350,115 @@
     </section>
 
     <!-- Featured Properties -->
-    <section class="py-5">
+   <section class="py-5">
         <div class="container py-5">
-            <h2 class="section-title">Featured Collections</h2>
-            <div class="position-relative mt-5">
-                <!-- Slider Navigation -->
-                <div class="slider-navigation">
-                    <button class="slider-nav-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-                    <button class="slider-nav-btn next-btn"><i class="fas fa-chevron-right"></i></button>
-                </div>
-                
-                <!-- Swiper Slider -->
-                <div class="swiper-container property-slider">
-                    <div class="swiper-wrapper">
-                        <!-- Property Card 1 -->
-                        <div class="swiper-slide">
-                            <div class="property-card">
-                                <div class="position-relative property-image-container">
-                                    <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="property-img active" alt="Luxury Villa">
-                                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="property-img" alt="Luxury Villa Interior">
-                                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="property-img" alt="Luxury Villa Kitchen">
-                                    <span class="property-badge" style="background: var(--green);">For Sale</span>
-                                </div>
-                                <div class="p-3">
-                                    <div class="property-price"><small>GHS</small>2,550,000</div>
-                                    <h5>Luxury Villa with Pool</h5>
-                                    <p class="text-gray"><i class="fas fa-map-marker-alt me-2"></i> East Legon, Accra</p>
-                                    <div class="d-flex justify-content-between border-top pt-3">
-                                        <span><i class="fas fa-bed me-2"></i> 4 Beds</span>
-                                        <span><i class="fas fa-bath me-2"></i> 3 Baths</span>
-                                        <span><i class="fas fa-ruler-combined me-2"></i> 2,500 sq.ft.</span>
-                                    </div>
-                                </div>
-                            </div>
+            <h2 class="section-title">Featured Properties</h2>
+            <!-- Carousel wrapper -->
+            <div class="carousel-wrapper position-relative">
+
+                <!-- Track (acts like a sliding row) -->
+                <div class="carousel-track d-flex">
+                    <!-- Property Card 1 -->
+                    <div class="property-card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=800&q=80"
+                                class="property-img" alt="Luxury Villa">
+                            <span class="property-badge bg-success">For Sale</span>
                         </div>
-                        
-                        <!-- Property Card 2 -->
-                        <div class="swiper-slide">
-                            <div class="property-card">
-                                <div class="position-relative property-image-container">
-                                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                        class="property-img active" alt="Modern Apartment Exterior">
-                                    <img src="https://images.unsplash.com/photo-1600585154205-91d4f3a5e6a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                        class="property-img" alt="Modern Apartment Living Room">
-                                    <img src="https://images.unsplash.com/photo-1600585153944-41892c3d4e99?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                        class="property-img" alt="Modern Apartment Kitchen">
-                                    <span class="property-badge" style="background: var(--salmon);">For Rent</span>
-                                </div>
-                                <div class="p-3">
-                                    <div class="property-price"><small>GHS</small>2,800/mo</div>
-                                    <h5>Modern Downtown Apartment</h5>
-                                    <p class="text-gray"><i class="fas fa-map-marker-alt me-2"></i> Abelemkpe, Accra</p>
-                                    <div class="d-flex justify-content-between border-top pt-3">
-                                        <span><i class="fas fa-bed me-2"></i> 2 Beds</span>
-                                        <span><i class="fas fa-bath me-2"></i> 2 Baths</span>
-                                        <span><i class="fas fa-ruler-combined me-2"></i> 1,200 sq.ft.</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Property Card 3 -->
-                        <div class="swiper-slide">
-                            <div class="property-card">
-                                <div class="position-relative property-image-container">
-                                    <img src="https://images.unsplash.com/photo-1574362848149-11496d93a7c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                        class="property-img active" alt="Country House Exterior">
-                                    <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                        class="property-img" alt="Country House Living Room">
-                                    <img src="https://images.unsplash.com/photo-1600585154154-6c99b9a78f8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                        class="property-img" alt="Country House Kitchen">
-                                    <span class="property-badge" style="background: var(--green);">For Sale</span>
-                                </div>
-                                <div class="p-3">
-                                    <div class="property-price"><small>GHS</small>5,425,000</div>
-                                    <h5>Countryside Family Home</h5>
-                                    <p class="text-gray"><i class="fas fa-map-marker-alt me-2"></i> Cantoments, Accra</p>
-                                    <div class="d-flex justify-content-between border-top pt-3">
-                                        <span><i class="fas fa-bed me-2"></i> 3 Beds</span>
-                                        <span><i class="fas fa-bath me-2"></i> 2 Baths</span>
-                                        <span><i class="fas fa-ruler-combined me-2"></i> 2,100 sq.ft.</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Property Card 4 -->
-                        <div class="swiper-slide">
-                           <div class="property-card">
-                                <div class="position-relative property-image-container">
-                                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                        class="property-img active" alt="Modern Villa Exterior">
-                                    <img src="https://images.unsplash.com/photo-1600607687644-c997f5f9c1d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                        class="property-img" alt="Modern Villa Living Room">
-                                    <img src="https://images.unsplash.com/photo-1600585154154-6c99b9a78f8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                        class="property-img" alt="Modern Villa Kitchen">
-                                    <span class="property-badge" style="background: var(--green);">For Sale</span>
-                                </div>
-                                <div class="p-3">
-                                    <div class="property-price"><small>GHS</small>3,750,000</div>
-                                    <h5>Ultra-Modern Smart Home</h5>
-                                    <p class="text-gray"><i class="fas fa-map-marker-alt me-2"></i> Airport Residential, Accra</p>
-                                    <div class="d-flex justify-content-between border-top pt-3">
-                                        <span><i class="fas fa-bed me-2"></i> 5 Beds</span>
-                                        <span><i class="fas fa-bath me-2"></i> 4 Baths</span>
-                                        <span><i class="fas fa-ruler-combined me-2"></i> 3,200 sq.ft.</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Property Card 5 -->
-                        <div class="swiper-slide">
-                           <div class="property-card">
-                                <div class="position-relative property-image-container">
-                                    <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                        class="property-img active" alt="Luxury Beachfront Apartment Exterior">
-                                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                        class="property-img" alt="Luxury Beachfront Apartment Living Room">
-                                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                        class="property-img" alt="Luxury Beachfront Apartment Kitchen">
-                                    <span class="property-badge" style="background: var(--salmon);">For Rent</span>
-                                </div>
-                                <div class="p-3">
-                                    <div class="property-price"><small>GHS</small>3,500/mo</div>
-                                    <h5>Luxury Beachfront Apartment</h5>
-                                    <p class="text-gray"><i class="fas fa-map-marker-alt me-2"></i> Labadi, Accra</p>
-                                    <div class="d-flex justify-content-between border-top pt-3">
-                                        <span><i class="fas fa-bed me-2"></i> 3 Beds</span>
-                                        <span><i class="fas fa-bath me-2"></i> 3 Baths</span>
-                                        <span><i class="fas fa-ruler-combined me-2"></i> 1,800 sq.ft.</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Property Card 6 -->
-                        <div class="swiper-slide">
-                           <div class="property-card">
-                                <div class="position-relative property-image-container">
-                                    <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                        class="property-img active" alt="Premium Office Space Exterior">
-                                    <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                        class="property-img" alt="Premium Office Space Interior">
-                                    <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                        class="property-img" alt="Premium Office Meeting Room">
-                                    <span class="property-badge" style="background: var(--primary);">Commercial</span>
-                                </div>
-                                <div class="p-3">
-                                    <div class="property-price"><small>GHS</small>4,200/mo</div>
-                                    <h5>Premium Office Space</h5>
-                                    <p class="text-gray"><i class="fas fa-map-marker-alt me-2"></i> Ridge, Accra</p>
-                                    <div class="d-flex justify-content-between border-top pt-3">
-                                        <span><i class="fas fa-users me-2"></i> 20 Capacity</span>
-                                        <span><i class="fas fa-door-open me-2"></i> 5 Rooms</span>
-                                        <span><i class="fas fa-ruler-combined me-2"></i> 2,000 sq.ft.</span>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="p-3">
+                            <div class="property-price"><small>GHS</small>2,550,000</div>
+                            <h5>Luxury Villa with Pool</h5>
+                            <p class="text-gray"><i class="fas fa-map-marker-alt me-2"></i> East Legon, Accra</p>
                         </div>
                     </div>
-                    
-                    <!-- Pagination -->
-                    <div class="swiper-pagination"></div>
+
+                    <!-- Property Card 2 -->
+                    <div class="property-card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80"
+                                class="property-img" alt="Modern Apartment">
+                            <span class="property-badge bg-danger">For Rent</span>
+                        </div>
+                        <div class="p-3">
+                            <div class="property-price"><small>GHS</small>2,800/mo</div>
+                            <h5>Modern Downtown Apartment</h5>
+                            <p class="text-gray"><i class="fas fa-map-marker-alt me-2"></i> Abelemkpe, Accra</p>
+                        </div>
+                    </div>
+
+                    <!-- Property Card 3 -->
+                    <div class="property-card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&w=800&q=80"
+                                class="property-img" alt="Country House">
+                            <span class="property-badge bg-success">For Sale</span>
+                        </div>
+                        <div class="p-3">
+                            <div class="property-price"><small>GHS</small>5,425,000</div>
+                            <h5>Countryside Family Home</h5>
+                            <p class="text-gray"><i class="fas fa-map-marker-alt me-2"></i> Cantoments, Accra</p>
+                        </div>
+                    </div>
+
+                    <!-- Property Card 4 -->
+                    <div class="property-card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80"
+                                class="property-img" alt="Townhouse">
+                            <span class="property-badge bg-success">For Sale</span>
+                        </div>
+                        <div class="p-3">
+                            <div class="property-price"><small>GHS</small>3,700,000</div>
+                            <h5>Modern Townhouse</h5>
+                            <p class="text-gray"><i class="fas fa-map-marker-alt me-2"></i> Airport Hills, Accra</p>
+                        </div>
+                    </div>
+
+                    <!-- Property Card 5 -->
+                    <div class="property-card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=800&q=80"
+                                class="property-img" alt="Beach House">
+                            <span class="property-badge bg-danger">For Rent</span>
+                        </div>
+                        <div class="p-3">
+                            <div class="property-price"><small>GHS</small>4,200/mo</div>
+                            <h5>Oceanfront Beach House</h5>
+                            <p class="text-gray"><i class="fas fa-map-marker-alt me-2"></i> Labadi, Accra</p>
+                        </div>
+                    </div>
+
+                    <!-- Property Card 6 -->
+                    <div class="property-card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?auto=format&fit=crop&w=800&q=80"
+                                class="property-img" alt="Penthouse">
+                            <span class="property-badge bg-success">For Sale</span>
+                        </div>
+                        <div class="p-3">
+                            <div class="property-price"><small>GHS</small>8,900,000</div>
+                            <h5>Luxury City Penthouse</h5>
+                            <p class="text-gray"><i class="fas fa-map-marker-alt me-2"></i> Osu, Accra</p>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Carousel controls -->
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                
+                <!-- Dots indicator -->
+                <div class="carousel-dots"></div>
             </div>
+
             <div class="text-center mt-4">
-                <a href="/building-materials" class="btn btn-outline-primary">Explore Our Portfolio <i class="fas fa-arrow-right ms-2"></i></a>
+                <a href="/building-materials" class="btn btn-outline-primary">View All Properties <i class="fas fa-arrow-right ms-2"></i></a>
             </div>
         </div>
     </section>
+
 
     <!-- Interactive Map Section -->
     <section class="py-5 bg-light">
@@ -906,6 +715,144 @@
         </div>
     </div>
 
+     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.querySelector('.carousel-track');
+            const cards = document.querySelectorAll('.property-card');
+            const prevBtn = document.querySelector('.carousel-btn.prev');
+            const nextBtn = document.querySelector('.carousel-btn.next');
+            const dotsContainer = document.querySelector('.carousel-dots');
+            
+            let currentIndex = 0;
+            let autoSlide;
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            function cardsPerView() {
+                if (window.innerWidth < 768) return 1;
+                if (window.innerWidth < 992) return 2;
+                return 3;
+            }
+
+            function updateCarousel() {
+                const cardWidth = cards[0].offsetWidth + 30; // including margin
+                track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+
+                // disable/enable buttons at edges
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex >= cards.length - cardsPerView();
+                
+                // Update dots
+                updateDots();
+            }
+
+            function updateDots() {
+                const totalDots = Math.ceil(cards.length / cardsPerView());
+                dotsContainer.innerHTML = '';
+                
+                for (let i = 0; i < totalDots; i++) {
+                    const dot = document.createElement('div');
+                    dot.classList.add('dot');
+                    if (i === currentIndex) {
+                        dot.classList.add('active');
+                    }
+                    dot.addEventListener('click', () => {
+                        currentIndex = i;
+                        updateCarousel();
+                        stopAutoSlide();
+                    });
+                    dotsContainer.appendChild(dot);
+                }
+            }
+
+            function nextSlide() {
+                if (currentIndex < Math.ceil(cards.length / cardsPerView()) - 1) {
+                    currentIndex++;
+                    updateCarousel();
+                } else {
+                    // Loop back to the beginning
+                    currentIndex = 0;
+                    updateCarousel();
+                }
+            }
+
+            function prevSlide() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                } else {
+                    // Loop to the end
+                    currentIndex = Math.ceil(cards.length / cardsPerView()) - 1;
+                    updateCarousel();
+                }
+            }
+
+            function startAutoSlide() {
+                stopAutoSlide(); // clear any old timer
+                autoSlide = setInterval(nextSlide, 4000);
+            }
+
+            function stopAutoSlide() {
+                clearInterval(autoSlide);
+            }
+
+            // Touch events for mobile swipe
+            track.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+                stopAutoSlide();
+            });
+
+            track.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                const minSwipeDistance = 50;
+                
+                if (touchStartX - touchEndX > minSwipeDistance) {
+                    // Swipe left - next slide
+                    nextSlide();
+                } else if (touchEndX - touchStartX > minSwipeDistance) {
+                    // Swipe right - previous slide
+                    prevSlide();
+                }
+                
+                // Restart auto slide after manual interaction
+                startAutoSlide();
+            }
+
+            // Event listeners
+            nextBtn.addEventListener('click', () => {
+                stopAutoSlide();
+                nextSlide();
+                startAutoSlide();
+            });
+            
+            prevBtn.addEventListener('click', () => {
+                stopAutoSlide();
+                prevSlide();
+                startAutoSlide();
+            });
+
+            // pause on hover
+            document.querySelector('.carousel-wrapper').addEventListener('mouseenter', stopAutoSlide);
+            document.querySelector('.carousel-wrapper').addEventListener('mouseleave', startAutoSlide);
+
+            window.addEventListener('resize', () => {
+                updateCarousel();
+                stopAutoSlide();
+                startAutoSlide();
+            });
+
+            // Initialize
+            updateCarousel();
+            startAutoSlide();
+        });
+    </script>
+
+    
+
     <script src="${pageContext.request.contextPath}/assets/libs/swiper/swiper-bundle.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/libs/simplebar/simplebar.min.js"></script>
@@ -1130,159 +1077,6 @@
                 },
             }).showToast();
         }
-    // Initialize Property Slider
-    document.addEventListener('DOMContentLoaded', function() {
-        const propertySlider = new Swiper('.property-slider', {
-            slidesPerView: 1,
-            spaceBetween: 30, // Increased from 20 to 30 for more space between cards
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.next-btn',
-                prevEl: '.prev-btn',
-            },
-            breakpoints: {
-                640: {
-                    slidesPerView: 1,
-                    spaceBetween: 20, // Added spacing for mobile view
-                },
-                768: {
-                    slidesPerView: 2,
-                    spaceBetween: 25, // Added medium spacing for tablet view
-                },
-                1024: {
-                    slidesPerView: 3,
-                    spaceBetween: 30, // Consistent spacing for desktop view
-                },
-            },
-            effect: 'coverflow',
-            coverflowEffect: {
-                rotate: 5,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: false,
-            },
-            on: {
-                init: function() {
-                    // Add a futuristic glow effect to the active slide
-                    this.slides[this.activeIndex].style.boxShadow = '0 0 20px rgba(91, 102, 235, 0.5)';
-                },
-                slideChange: function() {
-                    // Remove glow from all slides
-                    this.slides.forEach(slide => {
-                        slide.style.boxShadow = 'none';
-                    });
-                    // Add glow to active slide
-                    this.slides[this.activeIndex].style.boxShadow = '0 0 20px rgba(91, 102, 235, 0.5)';
-                }
-            }
-        });
-    });
-
-
-    // Add this to your existing JavaScript section
-document.addEventListener('DOMContentLoaded', function() {
-    // Setup image hover functionality
-    const propertyCards = document.querySelectorAll('.property-card');
-    
-    propertyCards.forEach(card => {
-        const images = card.querySelectorAll('.property-img');
-        if (images.length <= 1) return; // Skip if only one image
-        
-        let currentIndex = 0;
-        let imageInterval;
-        
-        // Start image rotation on hover
-        card.addEventListener('mouseenter', function() {
-            // Clear any existing interval
-            if (imageInterval) clearInterval(imageInterval);
-            
-            // Set up interval to change images
-            imageInterval = setInterval(() => {
-                // Remove active class from current image
-                images[currentIndex].classList.remove('active');
-                
-                // Move to next image
-                currentIndex = (currentIndex + 1) % images.length;
-                
-                // Add active class to new current image
-                images[currentIndex].classList.add('active');
-            }, 4000); // Change image every 1 second
-        });
-        
-        // Stop image rotation when not hovering
-        card.addEventListener('mouseleave', function() {
-            if (imageInterval) {
-                clearInterval(imageInterval);
-                imageInterval = null;
-                
-                // Reset to first image
-                images.forEach((img, index) => {
-                    if (index === 0) {
-                        img.classList.add('active');
-                    } else {
-                        img.classList.remove('active');
-                    }
-                });
-                currentIndex = 0;
-            }
-        });
-    });
-});
-
-// Futuristic Navbar Scroll Effect
-window.addEventListener('scroll', function() {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
-
-// Add smooth scrolling for nav links
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if (href.startsWith('#')) {
-            e.preventDefault();
-            const target = document.querySelector(href);
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        }
-    });
-});
-
-// Add loading animation to buttons
-document.querySelectorAll('.btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-        if (!this.classList.contains('loading')) {
-            this.classList.add('loading');
-            const originalText = this.innerHTML;
-            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
-            
-            setTimeout(() => {
-                this.classList.remove('loading');
-                this.innerHTML = originalText;
-            }, 2000);
-        }
-    });
-});
-
-
     </script>
 </body>
 </html>
