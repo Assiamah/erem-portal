@@ -3,7 +3,7 @@
  <aside class="pe-app-sidebar" id="sidebar">
     <div class="pe-app-sidebar-logo px-6 d-flex align-items-center position-relative">
         <!-- Brand -->
-        <a href="index.html" class="d-flex align-items-end logo-main">
+        <a href="${pageContext.request.contextPath}/" class="d-flex align-items-end logo-main">
             <img height="35" width="34" class="logo-dark" alt="Dark Logo" src="assets/images/logo-md.png">
             <img height="35" width="34" class="logo-light" alt="Light Logo" src="assets/images/logo-md-light.png">
             <h3 class="text-body-emphasis fw-bolder mb-0 ms-1">Urbix</h3>

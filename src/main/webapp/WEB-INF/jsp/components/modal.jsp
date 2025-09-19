@@ -179,3 +179,92 @@
         </div>
     </div>
 </div>
+
+<!-- Cancel Appointment Modal -->
+<div class="modal fade modal-blur" id="cancelAppointmentModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="addUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Cancel Appointment</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to cancel this appointment?</p>
+                <div class="appointment-details mb-3 p-3 bg-light rounded">
+                    <h6 id="cancelAppointmentTitle" class="mb-2"></h6>
+                    <div class="text-muted small" id="cancelAppointmentTime"></div>
+                    <div class="text-muted small" id="cancelAppointmentProvider"></div>
+                </div>
+                <div class="mb-3">
+                    <label for="cancellationReason" class="form-label">Reason for cancellation (optional):</label>
+                    <textarea class="form-control" id="cancellationReason" rows="3" placeholder="Please provide a reason for cancellation..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Keep Appointment</button>
+                <button type="button" class="btn btn-warning" id="confirmCancelBtn">Cancel Appointment</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Appointment Details Modal -->
+<div class="modal fade modal-blur" id="appointmentDetailsModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="appointmentDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Appointment Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="appointment-info mb-4">
+                    <h6 class="text-primary mb-3" id="detailAppointmentType"></h6>
+                    <div class="row mb-2">
+                        <div class="col-4 fw-bold">Date & Time:</div>
+                        <div class="col-8" id="detailDateTime"></div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-4 fw-bold">Provider:</div>
+                        <div class="col-8" id="detailProvider"></div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-4 fw-bold">Status:</div>
+                        <div class="col-8">
+                            <span class="badge" id="detailStatusBadge"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-4 fw-bold">Duration:</div>
+                        <div class="col-8" id="detailDuration"></div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-4 fw-bold">Created:</div>
+                        <div class="col-8" id="detailCreated"></div>
+                    </div>
+                </div>
+                
+                <div class="notes-section mb-3">
+                    <h6 class="mb-2">Notes:</h6>
+                    <div class="bg-light p-3 rounded" id="detailNotes">
+                        <em class="text-muted">No notes provided</em>
+                    </div>
+                </div>
+                
+                <div id="cancellationInfo" class="cancellation-info mt-3 p-3 bg-light rounded" style="display: none;">
+                    <h6 class="text-danger mb-2">Cancellation Information</h6>
+                    <div class="small" id="detailCancelledAt"></div>
+                    <div class="small" id="detailCancellationReason"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-warning" id="detailCancelBtn" style="display: none;">
+                    <i class="bi bi-x-circle"></i> Cancel Appointment
+                </button>
+                <button type="button" class="btn btn-primary" id="detailRescheduleBtn" style="display: none;">
+                    <i class="bi bi-calendar-event"></i> Reschedule
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

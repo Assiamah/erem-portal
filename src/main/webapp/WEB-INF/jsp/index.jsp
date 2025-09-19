@@ -86,13 +86,14 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
             border-color: rgba(91, 102, 235, 0.2);
         }
+
         .property-image-container {
             position: relative;
             overflow: hidden;
             height: 220px;
         }
         
-            .property-img {
+        .property-img {
             position: absolute;
             top: 0;
             left: 0;
@@ -218,6 +219,7 @@
             right: 0;
             z-index: 1000;
             padding: 0.8rem 0;
+            padding-bottom: 25px;
         }
         
         .navbar.scrolled {
@@ -351,6 +353,35 @@
         }
         
         .btn-warning:hover::before {
+            opacity: 1;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #4caf50, #8bc34a);
+            color: white;
+            border: none;
+            position: relative;
+        }
+        
+        .btn-success::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #43a047, #7cb342);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+        }
+        
+        .btn-success:hover::before {
             opacity: 1;
         }
         
@@ -693,13 +724,23 @@
                 </div>
 
                 <!-- Parcel Details Offcanvas -->
-                <div class="map-offcanvas" id="parcelOffcanvas">
+                <div class="map-offcanvas text-small" id="parcelOffcanvas">
                     <div class="offcanvas-header__parcel">
                         <h5 class="offcanvas-title__parcel">Parcel Details</h5>
-                        <button type="button" class="btn-close__parcel text-dark" onclick="hideParcelOffcanvas()"></button>
+                        <button type="button" class="btn-close__parcel text-dark" onclick="hideParcelOffcanvas()"><i class="fas fa-times"></i></button>
                     </div>
                     <div class="offcanvas-body__parcel" id="parcelOffcanvasBody">
                         <!-- Content will be loaded dynamically -->
+                    </div>
+
+                    <!-- Offcanvas footer -->
+                    <div class="offcanvas-footer__parcel">
+                        <button class="btn btn-outline-primary btn-sm me-2" onclick="saveParcel()">
+                        <i class="fas fa-heart" style="color: var(--salmon);"></i> Save Parcel
+                        </button>
+                        <button class="btn btn-success btn-sm" onclick="applyForParcel()">
+                        <i class="fas fa-file-signature"></i> Apply Now
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1191,12 +1232,14 @@
 
         // Show the custom offcanvas
         function showParcelOffcanvas() {
-            document.getElementById('parcelOffcanvas').classList.add('show');
+            const offcanvas = document.getElementById('parcelOffcanvas');
+            offcanvas.style.display = 'block'; // make it visible
         }
 
         // Hide the custom offcanvas
         function hideParcelOffcanvas() {
-            document.getElementById('parcelOffcanvas').classList.remove('show');
+            const offcanvas = document.getElementById('parcelOffcanvas');
+            offcanvas.style.display = 'none'; // hide it
         }
 
         // Close offcanvas when clicking outside
@@ -1224,69 +1267,114 @@
                 const feature = data.features[0];
                 const properties = feature.properties;
                 
+                // Get parcel ID for header
+                const parcelId = properties.parcel_id || properties.plot_no || properties.serial_no || 'Parcel';
+                
                 let html = `
-                    <div class="land-property-grid">
+                    <div class="parcel-header">
+                        <div class="parcel-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h6 class="parcel-title">Plot No.` +parcelId+`</h6>
+                    </div>
+                    
+                    <div class="parcel-details-grid">
                 `;
                 
-                // Define priority order for land-related properties
-                const priorityProperties = [
-                    'parcel_id', 'plot_no', 'serial_no', 'area', 'size', 'acreage', 'dimensions',
-                    'allocation_status', 'zone', 'land_use', 'owner', 'location', 
-                    'coordinates', 'address', 'registry_no', 'survey_no'
+                // Define standardized property groups in priority order
+                const propertyGroups = [
+                    {
+                        title: 'Identification',
+                        properties: ['parcel_id', 'plot_no', 'serial_no', 'registry_no', 'survey_no']
+                    },
+                    {
+                        title: 'Location',
+                        properties: ['zone', 'location', 'address', 'coordinates']
+                    },
+                    {
+                        title: 'Dimensions',
+                        properties: ['area', 'size', 'acreage', 'dimensions', 'length', 'width']
+                    },
+                    {
+                        title: 'Status',
+                        properties: ['allocation_status', 'land_use', 'owner', 'condition', 'type']
+                    },
+                    {
+                        title: 'Administrative',
+                        properties: ['district', 'region', 'municipality', 'ward']
+                    }
                 ];
                 
-                // First show priority properties in order
-                for (const prop of priorityProperties) {
-                    if (properties[prop] !== null && properties[prop] !== undefined) {
+                // Render property groups
+                propertyGroups.forEach(group => {
+                    const groupProperties = group.properties.filter(prop => 
+                        properties[prop] !== null && properties[prop] !== undefined
+                    );
+                    
+                    if (groupProperties.length > 0) {
                         html += `
-                            <div class="land-detail-item land-priority">
-                                <div class="land-detail-label">`+formatPropertyName(prop)+`</div>
-                                <div class="land-detail-value">`+formatLandValue(prop, properties[prop])+`</div>
+                            <div class="property-group">
+                                <div class="property-group-header">`+group.title+`</div>
+                                <div class="property-group-content">
+                        `;
+                        
+                        groupProperties.forEach(prop => {
+                            const allocation_status = prop == 'allocation_status' ? (properties[prop] == 0 ? 'Unallocated' : properties[prop] == 1 ? 'Allocated' : 'Processing') : '';
+                            const parcel_prop = prop == 'allocation_status' ? allocation_status : formatLandValue(prop, properties[prop]);
+                            html += `
+                                <div class="property-item">
+                                    <span class="property-label">`+formatPropertyName(prop)+`:</span>
+                                    <span class="property-value">`+parcel_prop+`</span>
+                                </div>
+                            `;
+                        });
+                        
+                        html += `
+                                </div>
                             </div>
                         `;
                     }
-                }
+                });
                 
-                // Then show other properties alphabetically
-                const otherProperties = Object.keys(properties)
-                    .filter(key => !priorityProperties.includes(key) && properties[key] !== null)
+                // Add any remaining properties not in groups
+                const allGroupedProperties = propertyGroups.flatMap(group => group.properties);
+                const remainingProperties = Object.keys(properties)
+                    .filter(key => !allGroupedProperties.includes(key) && properties[key] !== null)
                     .sort();
                     
-                for (const key of otherProperties) {
+                if (remainingProperties.length > 0) {
                     html += `
-                        <div class="land-detail-item">
-                            <div class="land-detail-label">`+formatPropertyName(key)+`</div>
-                            <div class="land-detail-value">`+formatLandValue(key, properties[key])+`</div>
+                        <div class="property-group">
+                            <div class="property-group-header">Additional Information</div>
+                            <div class="property-group-content">
+                    `;
+                    
+                    remainingProperties.forEach(prop => {
+                        html += `
+                            <div class="property-item">
+                                <span class="property-label">`+formatPropertyName(prop)+`:</span>
+                                <span class="property-value">`+properties[prop]+`</span>
+                            </div>
+                        `;
+                    });
+                    
+                    html += `
+                            </div>
                         </div>
                     `;
                 }
                 
-                html += `</div>`;
-                
-                // Add action buttons specific to land parcels
-                html += `
-                    <div class="land-actions mt-4">
-                        <button class="btn btn-outline-primary btn-sm me-2">
-                            <i class="fas fa-download"></i> Download Survey
-                        </button>
-                        <button class="btn btn-outline-secondary btn-sm me-2">
-                            <i class="fas fa-map"></i> View Boundaries
-                        </button>
-                        <button class="btn btn-outline-info btn-sm">
-                            <i class="fas fa-info-circle"></i> Land Registry
-                        </button>
-                    </div>
-                `;
+                html += `</div>`; // Close parcel-details-grid
                 
                 offcanvasBody.innerHTML = html;
             } else {
                 offcanvasBody.innerHTML = `
-                    <div class="no-land-data">
+                    <div class="no-data-message">
                         <div class="no-data-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        <h5>No Land Parcel Information</h5>
-                        <p>No parcel data found at this location.</p>
+                        <h6>No Parcel Data</h6>
+                        <p>No information found for this location.</p>
                     </div>
                 `;
             }
@@ -1595,20 +1683,20 @@
         });
 
         // Add loading animation to buttons
-        document.querySelectorAll('.btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                if (!this.classList.contains('loading')) {
-                    this.classList.add('loading');
-                    const originalText = this.innerHTML;
-                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+        // document.querySelectorAll('.btn').forEach(btn => {
+        //     btn.addEventListener('click', function() {
+        //         if (!this.classList.contains('loading')) {
+        //             this.classList.add('loading');
+        //             const originalText = this.innerHTML;
+        //             this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
                     
-                    setTimeout(() => {
-                        this.classList.remove('loading');
-                        this.innerHTML = originalText;
-                    }, 2000);
-                }
-            });
-        });
+        //             setTimeout(() => {
+        //                 this.classList.remove('loading');
+        //                 this.innerHTML = originalText;
+        //             }, 2000);
+        //         }
+        //     });
+        // });
     </script>
 </body>
 </html>

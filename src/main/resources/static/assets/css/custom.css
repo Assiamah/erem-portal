@@ -449,19 +449,6 @@
     }
 }
 
-
-.navbar {
-    padding: 1rem 2rem;
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.navbar-brand {
-    font-weight: 700;
-    color: var(--primary);
-    font-size: 1.8rem;
-}
-
 .nav-link {
     font-weight: 500;
     color: var(--dark);
@@ -1629,7 +1616,7 @@
     opacity: 0.9;
 }
 
-.btn-close {
+.btn-close.auth {
     background: none;
     border: none;
     font-size: 1.5rem;
@@ -1640,7 +1627,7 @@
     z-index: 10;
 }
 
-.btn-close:hover {
+.btn-close.auth:hover {
     color: var(--dark);
 }
 
@@ -1960,7 +1947,7 @@
     border-radius: 10px;
     box-shadow: 0 5px 25px rgba(0,0,0,0.15);
     overflow: hidden;
-    display: block;
+    display: none;
     transition: transform 0.3s ease-in-out;
 }
 
@@ -1988,7 +1975,7 @@
     font-size: 1.5rem;
     /* color: var(--gray); */
     position: absolute;
-    top: 20px;
+    top: 7px;
     right: 20px;
     z-index: 10;
     filter: invert(1);
@@ -2001,7 +1988,7 @@
 
 .offcanvas-body__parcel {
     padding: 1.5rem;
-    max-height: calc(80vh - 70px);
+    max-height: 400px;
     overflow-y: auto;
 }
 
@@ -2011,5 +1998,221 @@
         width: 90%;
         right: 5%;
         left: 5%;
+    }
+}
+
+.offcanvas-footer__parcel {
+    border-top: 1px solid #e0e0e0;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+}
+
+.offcanvas-footer__parcel .btn {
+    min-width: 120px;
+}
+
+.appointment-item {
+    border-left: 4px solid #007bff;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.appointment-item:hover {
+    background-color: #f8f9fa;
+    transform: translateX(2px);
+}
+
+.appointment-item.scheduled {
+    border-left-color: #17a2b8;
+}
+
+.appointment-item.confirmed {
+    border-left-color: #28a745;
+}
+
+.appointment-item.completed {
+    border-left-color: #6c757d;
+}
+
+.appointment-item.cancelled {
+    border-left-color: #dc3545;
+}
+
+.status-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.upcoming-item {
+    border-left: 3px solid #28a745;
+}
+
+.appointment-actions {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.appointment-item:hover .appointment-actions {
+    opacity: 1;
+}
+
+.time-display {
+    font-family: 'Courier New', monospace;
+    font-weight: 500;
+}
+
+.loading-spinner {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+}
+
+/* Parcel Information Styles */
+.parcel-header {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+.parcel-icon {
+    margin-right: 0.75rem;
+    font-size: 1.1rem;
+}
+
+.parcel-title {
+    margin: 0;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+}
+
+.parcel-details-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.property-group {
+    background: #f8f9fa;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #e9ecef;
+}
+
+.property-group-header {
+    background: #e9ecef;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #495057;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.property-group-content {
+    padding: 0.5rem;
+}
+
+.property-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0.4rem 0.5rem;
+    border-bottom: 1px solid #f1f3f4;
+    font-size: 0.8rem;
+}
+
+.property-item:last-child {
+    border-bottom: none;
+}
+
+.property-label {
+    font-weight: 500;
+    color: #5f6368;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+    min-width: 100px;
+    font-size: 0.75rem;
+}
+
+.property-value {
+    color: #202124;
+    text-align: right;
+    font-weight: 400;
+    word-break: break-word;
+    font-size: 0.8rem;
+}
+
+/* Status indicators */
+.property-value[data-status="0"],
+.property-value[data-status="available"] {
+    color: #28a745;
+    font-weight: 500;
+}
+
+.property-value[data-status="1"],
+.property-value[data-status="allocated"] {
+    color: #dc3545;
+    font-weight: 500;
+}
+
+.property-value[data-status="pending"] {
+    color: #ffc107;
+    font-weight: 500;
+}
+
+/* No data message */
+.no-data-message {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: #6c757d;
+}
+
+.no-data-icon {
+    font-size: 2rem;
+    color: #ced4da;
+    margin-bottom: 0.75rem;
+}
+
+.no-data-message h6 {
+    margin-bottom: 0.5rem;
+    color: #495057;
+    font-weight: 600;
+}
+
+.no-data-message p {
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+/* Compact layout for small screens */
+@media (max-width: 576px) {
+    .property-item {
+        flex-direction: column;
+        gap: 0.2rem;
+    }
+    
+    .property-label {
+        min-width: auto;
+        font-size: 0.7rem;
+    }
+    
+    .property-value {
+        text-align: left;
+    }
+    
+    .parcel-header {
+        padding: 0.6rem 0.8rem;
+    }
+    
+    .property-group-header {
+        padding: 0.4rem 0.6rem;
     }
 }

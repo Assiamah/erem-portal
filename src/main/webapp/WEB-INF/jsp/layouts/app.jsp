@@ -11,6 +11,10 @@
     
     <!-- layout setup -->
     <script type="module" src="${pageContext.request.contextPath}/assets/js/layout-setup.js"></script>
+    <!-- Bootstrap Css -->
+    <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css">
+    <!-- App Css-->
+    <link href="${pageContext.request.contextPath}/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css">
     
     <!-- App favicon -->
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon.png">    
@@ -21,12 +25,8 @@
     <link href="${pageContext.request.contextPath}/assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Nouislider Css -->
     <link href="${pageContext.request.contextPath}/assets/libs/nouislider/nouislider.min.css" rel="stylesheet">
-    <!-- Bootstrap Css -->
-    <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css">
     <!--icons css-->
     <link href="${pageContext.request.contextPath}/assets/css/icons.min.css" rel="stylesheet" type="text/css">
-    <!-- App Css-->
-    <link href="${pageContext.request.contextPath}/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css">
     <link href="${pageContext.request.contextPath}/assets/css/custom.css" id="app-style" rel="stylesheet" type="text/css">
     <link href="${pageContext.request.contextPath}/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
 
@@ -39,7 +39,7 @@
     <link href="${pageContext.request.contextPath}/assets/libs/datatables.net-select-bs5/css/select.bootstrap5.min.css" rel="stylesheet" type="text/css" />
 
     <!-- Javascript -->
-    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+    <!-- <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -100,18 +100,10 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <!--datatable js-->
-    <script src="${pageContext.request.contextPath}/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/libs/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/libs/datatables.net-buttons/js/buttons.flash.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/libs/datatables.net-select/js/dataTables.select.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/table/datatable.init.js"></script>
+    <link href="${pageContext.request.contextPath}/assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+    <link href="${pageContext.request.contextPath}/assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+    <link href="${pageContext.request.contextPath}/assets/libs/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+    <link href="${pageContext.request.contextPath}/assets/libs/datatables.net-select-bs5/css/select.bootstrap5.min.css" rel="stylesheet" type="text/css" />
 
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
 

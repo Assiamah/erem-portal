@@ -9,16 +9,16 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 public class GlobalExceptionHandler {
 
     // Handle 404 (page not found)
-    @ExceptionHandler(NoHandlerFoundException.class)
-    public String handleNotFound(NoHandlerFoundException ex, Model model) {
-        model.addAttribute("error", "Page not found");
-        return "redirect:/login?error=notfound";
-    }
+    // @ExceptionHandler(NoHandlerFoundException.class)
+    // public String handleNotFound(NoHandlerFoundException ex, Model model) {
+    //     model.addAttribute("error", "Page not found");
+    //     return "redirect:/login?error=notfound";
+    // }
 
     // Handle generic errors (500 etc.)
-    @ExceptionHandler(Exception.class)
-    public String handleGenericError(Exception ex, Model model) {
-        model.addAttribute("error", "Something went wrong");
-        return "redirect:/login?error=server";
-    }
+    // @ExceptionHandler(Exception.class)
+    // public String handleGenericError(Exception ex, Model model) {
+    //     model.addAttribute("error", "Something went wrong");
+    //     return "redirect:/login?error=server";
+    // }
 }

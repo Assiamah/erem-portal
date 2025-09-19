@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="offcanvas_" id="signInForm">
-    <button class="btn-close" id="closeBtn">
+    <button class="btn-close auth" id="closeBtn">
         <i class="fas fa-times"></i>
     </button>
     
