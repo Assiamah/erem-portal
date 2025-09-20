@@ -17,9 +17,9 @@
         <div class="row">
             <div class="col-12">
                 <div class="card card-h-100">
-                    <div class="card-header">
+                    <!-- <div class="card-header">
                         <h5 class="card-title mb-0">Lease Application Process</h5>
-                    </div>
+                    </div> -->
                     <div class="card-body">
                         <div class="stepper">
                             <form action="#" class="form-steps" autocomplete="off">
@@ -54,8 +54,8 @@
                                             <p class="text-muted">Please select a parcel from the map to begin your application.</p>
 
                                             <div class="position-relative">
-                                                <!-- <div class="w-100 min-h-320px" id="map"></div> -->
-                                                <!-- <div class="map-overlay">
+                                                <div class="w-100 min-h-320px" id="map"></div>
+                                                <div class="map-overlay">
                                                     <h5>Filter Properties</h5>
                                                     <div class="form-check form-check-primary">
                                                         <input class="form-check-input" type="checkbox" id="forSale" checked>
@@ -78,7 +78,7 @@
                                                             <small>GHS10,000,000</small>
                                                         </div>
                                                     </div>
-                                                </div> -->
+                                                </div>
 
                                                 <!-- Parcel Details Offcanvas -->
                                                 <div class="map-offcanvas text-small" id="parcelOffcanvas">

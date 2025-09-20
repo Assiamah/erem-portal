@@ -37,6 +37,7 @@
     <link href="${pageContext.request.contextPath}/assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet" type="text/css" />
     <link href="${pageContext.request.contextPath}/assets/libs/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css" rel="stylesheet" type="text/css" />
     <link href="${pageContext.request.contextPath}/assets/libs/datatables.net-select-bs5/css/select.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
 
     <!-- Javascript -->
     <!-- <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> -->
