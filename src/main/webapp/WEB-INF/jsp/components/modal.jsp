@@ -268,3 +268,145 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade modal-blur" id="trackingModal" tabindex="-1" aria-labelledby="trackingModalLabel" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="trackingModalLabel">
+                        <i class="ri-progress-1-line me-2"></i>Application Status Tracking
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body small">
+                    <!-- Application Information -->
+                    <div class="application-info">
+                        <h6 class="mb-3">Application Details</h6>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="info-item">
+                                    <span class="info-label">Application ID:</span>
+                                    <span class="info-value">LAP-23425430032025</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Applicant:</span>
+                                    <span class="info-value">Mr. Emmanuel Oppong</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Parcel ID:</span>
+                                    <span class="info-value">R1203</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-item">
+                                    <span class="info-label">Submitted:</span>
+                                    <span class="info-value">Sept 17, 2025</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Land Use:</span>
+                                    <span class="info-value">Residential</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Status:</span>
+                                    <span class="info-value"><span class="badge bg-warning status-badge">Under Review</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tracking Timeline -->
+                    <h6 class="mb-3">Application Progress</h6>
+                    <div class="tracking-timeline">
+                        <div class="timeline-progress">
+                            <div class="progress-bar" style="height: 60%;"></div>
+                        </div>
+                        
+                        <!-- Milestone 1 -->
+                        <div class="timeline-item completed">
+                            <div class="timeline-icon">
+                                <i class="ri-check-line"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h6 class="timeline-title">Application Submitted</h6>
+                                <div class="timeline-date">Sept 18, 2023 - 10:30 AM</div>
+                                <p class="timeline-description">Your lease application has been successfully submitted and received.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Milestone 2 -->
+                        <div class="timeline-item completed">
+                            <div class="timeline-icon">
+                                <i class="ri-check-line"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h6 class="timeline-title">Initial Screening</h6>
+                                <div class="timeline-date">Sept 20, 2023 - 2:15 PM</div>
+                                <p class="timeline-description">Application passed initial completeness check and documentation review.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Milestone 3 -->
+                        <div class="timeline-item completed">
+                            <div class="timeline-icon">
+                                <i class="ri-check-line"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h6 class="timeline-title">Site Evaluation</h6>
+                                <div class="timeline-date">Sept 25, 2023 - 9:45 AM</div>
+                                <p class="timeline-description">Parcel inspection completed. No issues found with the property.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Milestone 4 -->
+                        <div class="timeline-item active">
+                            <div class="timeline-icon">
+                                <i class="ri-loader-4-line"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h6 class="timeline-title">Zoning Approval</h6>
+                                <div class="timeline-date">In progress</div>
+                                <p class="timeline-description">Awaiting zoning compliance verification from planning department.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Milestone 5 -->
+                        <div class="timeline-item">
+                            <div class="timeline-icon">
+                                <i class="ri-time-line"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h6 class="timeline-title">Environmental Review</h6>
+                                <div class="timeline-date">Pending</div>
+                                <p class="timeline-description">Environmental impact assessment will be conducted.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Milestone 6 -->
+                        <div class="timeline-item">
+                            <div class="timeline-icon">
+                                <i class="ri-time-line"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h6 class="timeline-title">Final Approval</h6>
+                                <div class="timeline-date">Pending</div>
+                                <p class="timeline-description">Lease agreement preparation and final sign-off.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Estimated Completion -->
+                    <div class="estimated-time">
+                        <div class="time-label">Estimated Completion Time</div>
+                        <div class="time-value">15-20 Business Days</div>
+                        <small class="text-muted">Based on current progress and typical processing times</small>
+                    </div>
+                </div>
+                <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-download">
+                        <i class="ri-download-line me-2"></i>Download Progress Report
+                    </button>
+                </div> -->
+            </div>
+        </div>
+    </div>

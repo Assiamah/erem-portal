@@ -21,9 +21,21 @@
                     </a>
                 </li>
                 <li class="pe-slide pe-has-sub">
+                    <a href="${pageContext.request.contextPath}/track_application" class="pe-nav-link">
+                        <i class="ri-search-line pe-nav-icon"></i>
+                        <span class="pe-nav-content">Track Application</span>
+                    </a>
+                </li>
+                <li class="pe-slide pe-has-sub">
                     <a href="${pageContext.request.contextPath}/appointments" class="pe-nav-link">
                         <i class="ri-calendar-line pe-nav-icon"></i>
                         <span class="pe-nav-content">Appointments</span>
+                    </a>
+                </li>
+                <li class="pe-slide pe-has-sub">
+                    <a href="${pageContext.request.contextPath}/lease_application" class="pe-nav-link">
+                        <i class="ri-draft-line pe-nav-icon"></i>
+                        <span class="pe-nav-content">Lease Application</span>
                     </a>
                 </li>
             </ul>

@@ -26,6 +26,7 @@
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
     
     <!-- Javascript -->
     <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
@@ -296,6 +297,10 @@
             overflow: hidden;
             border: none;
             text-decoration: none;
+        }
+
+        .btn.btn-map {
+            border-radius: 5px;
         }
         
         .btn-outline-primary {
@@ -734,11 +739,11 @@
                     </div>
 
                     <!-- Offcanvas footer -->
-                    <div class="offcanvas-footer__parcel">
-                        <button class="btn btn-outline-primary btn-sm me-2" onclick="saveParcel()">
+                    <div class="offcanvas-footer__parcel ps-4 pe-4">
+                        <button class="btn btn-map w-100 btn-outline-primary btn-sm me-2" onclick="saveParcel()">
                         <i class="fas fa-heart" style="color: var(--salmon);"></i> Save Parcel
                         </button>
-                        <button class="btn btn-success btn-sm" onclick="applyForParcel()">
+                        <button class="btn btn-map w-100 btn-warning btn-sm" onclick="applyForParcel()">
                         <i class="fas fa-file-signature"></i> Apply Now
                         </button>
                     </div>
@@ -984,12 +989,38 @@
         </div>
     </div>
 
+    <!-- Apply for Parcel Modal -->
+    <div class="modal fade modal-blur" id="applyParcelModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            
+            <div class="modal-header">
+                <h5 class="modal-title">Apply for Parcel</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            
+            <div class="modal-body">
+                <p>Do you want to apply for this parcel?</p>
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">No, Cancel</button>
+                <button type="button" class="btn btn-outline-primary btn-sm" id="confirmApplyBtn">Yes, Apply!</button>
+            </div>
+            
+            </div>
+        </div>
+    </div>  
+
     <script src="${pageContext.request.contextPath}/assets/libs/swiper/swiper-bundle.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/libs/simplebar/simplebar.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/scroll-top.init.js"></script>
     <!-- Select js -->
     <script src="${pageContext.request.contextPath}/assets/libs/choices.js/public/assets/scripts/choices.min.js"></script>
+
+    <script type="module" src="${pageContext.request.contextPath}/assets/js/app.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/libs/sweetalert2/sweetalert2.all.min.js"></script>
     <!-- App js -->
     <!-- <script src="assets/js/app.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -1118,7 +1149,8 @@
             
         } catch (error) {
             console.error('Error loading GeoServer layer:', error);
-            alert('Could not connect to GeoServer. Make sure it\'s running on localhost:2020');
+            //alert('Could not connect to GeoServer. Make sure it\'s running on localhost:2020');
+            showNotification('Could not connect to GeoServer. Make sure it\'s running on localhost:2020', 'error');
         }
 
         // Initialize a GeoJSON layer for highlighting
@@ -1279,6 +1311,7 @@
                     </div>
                     
                     <div class="parcel-details-grid">
+                    <textarea style="display:none;" id="parcelData" readonly>`+JSON.stringify(properties)+`</textarea>
                 `;
                 
                 // Define standardized property groups in priority order
@@ -1697,6 +1730,62 @@
         //         }
         //     });
         // });
+
+        function applyForParcel() {
+            const parcelData = document.getElementById('parcelData').value;
+            const formData = {
+                ...JSON.parse(parcelData),
+                status: 'pending'
+            };
+
+            console.log(formData);
+
+            // ✅ Ensure modal element exists
+            const modalElement = document.getElementById('applyParcelModal');
+            if (!modalElement) {
+                console.error("Modal element not found");
+                return;
+            }
+
+            const modal = new bootstrap.Modal(modalElement);
+            modal.show();
+
+            // Handle confirm button click
+            document.getElementById('confirmApplyBtn').onclick = function() {
+                fetch('/api/auth/check-authentication')
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.status == 'success') {
+                            postFormData('${pageContext.request.contextPath}/lease_application', formData);
+                        } else {
+                            showNotification('Please sign in to apply for this parcel', 'error');
+                            $(modalElement).modal('hide');
+                            $(".offcanvas_").addClass('active');
+                            $("#overlay").addClass('active');
+                            localStorage.setItem('selectedParcel', JSON.stringify(formData));
+                        }
+                    })
+                    .catch(err => console.error('Error:', err));
+            };
+        }
+
+        function postFormData(url, data) {
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = url;
+
+            // Add hidden input with JSON string
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'formData';
+            input.value = JSON.stringify(data);
+            form.appendChild(input);
+
+            document.body.appendChild(form);
+            form.submit();
+        }
+
+        
     </script>
 </body>
 </html>
