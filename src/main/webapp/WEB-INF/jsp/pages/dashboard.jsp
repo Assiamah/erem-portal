@@ -59,11 +59,15 @@
             border-radius: 12px 12px 0 0 !important;
         }
         
-        .stat-card {
-            padding: 20px;
+       .stat-card {
             display: flex;
-            align-items: center;
+            flex-direction: column;   /* stack items vertically */
+            align-items: center;      /* center horizontally */
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
         }
+
         
         .stat-icon {
             width: 60px;
@@ -306,6 +310,15 @@
         .notification-item.important {
             border-left-color: var(--secondary);
         }
+        
+       .appointment-item {
+    margin-bottom: 1rem; /* adds space between items */
+    padding-left: .5rem;
+}
+.appointment-item:last-child {
+    margin-bottom: 0; /* remove gap after last */
+}
+
     </style>
 
     
