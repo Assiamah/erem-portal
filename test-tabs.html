@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .tab-content {
+            margin-top: 30px;
+        }
+        
+        .tab-pane {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            min-height: 200px;
+        }
+        
+        .tab-pane.active {
+            display: block;
+        }
+        
+        .tab {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #f0f0f0;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        
+        .tab.active {
+            background: #007bff;
+            color: white;
+        }
+        
+        .designs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .design-card {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tabs">
+        <div class="tab active" data-tab="building-materials">
+            Building Materials
+        </div>
+        <div class="tab" data-tab="building-designs">
+            Building Designs
+        </div>
+        <div class="tab" data-tab="properties">
+            Properties
+        </div>
+    </div>
+    
+    <div class="tab-content">
+        <div class="tab-pane active" id="building-materials">
+            <h2>Building Materials Content</h2>
+            <p>This is the building materials tab content.</p>
+        </div>
+        
+        <div class="tab-pane" id="building-designs">
+            <h2>Building Designs & Blueprints</h2>
+            <div class="designs-grid">
+                <div class="design-card">
+                    <h3>Modern House Design</h3>
+                    <p>3 Bedrooms • 2 Bathrooms • 1,800 sq ft</p>
+                    <div>Price: GHS 1,200</div>
+                </div>
+                <div class="design-card">
+                    <h3>Contemporary Apartment</h3>
+                    <p>2 Bedrooms • 1 Bathroom • 950 sq ft</p>
+                    <div>Price: GHS 850</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-pane" id="properties">
+            <h2>Properties Content</h2>
+            <p>This is the properties tab content.</p>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    // Remove active class from all tabs and panes
+                    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+                    
+                    // Show the corresponding tab pane
+                    const tabId = tab.getAttribute('data-tab');
+                    const targetPane = document.getElementById(tabId);
+                    if (targetPane) {
+                        targetPane.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

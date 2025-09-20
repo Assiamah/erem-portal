@@ -10,7 +10,7 @@
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/libs/choices.js/public/assets/styles/choices.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/libs/simplebar/simplebar.min.css">
-    <link href="${pageContext.request.contextPath}/assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet">
+
     <link href="${pageContext.request.contextPath}/assets/libs/nouislider/nouislider.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/assets/css/icons.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/animate_.min.css">
@@ -26,8 +26,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
     
-    <!-- Swiper JS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+
     
     <style>
         /* Tab Content Styles */
@@ -946,17 +945,18 @@
             color: var(--black);
         }
         
-        .swiper {
-            width: 100%;
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
             padding: 20px 10px 40px;
-            overflow: visible;
         }
         
-        .swiper-slide {
+        .featured-item {
             transition: var(--transition);
         }
         
-        .swiper-slide-active {
+        .featured-item:hover {
             transform: translateY(-10px);
         }
         
@@ -1318,6 +1318,38 @@
                 grid-template-columns: 1fr;
             }
         }
+
+           .category-btn {
+            padding: 10px 20px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .category-btn.active, .category-btn:hover {
+            background: #3a8bbb;
+            color: white;
+            border-color: #3a8bbb;
+        }
+
+        .design-features, .property-features, .property-amenities {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .design-features span, .property-features span, .property-amenities span {
+            background: #f8f9fa;
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
     </style>
 </head>
 <body>
@@ -1355,12 +1387,12 @@
     <div class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Building Materials Marketplace</h1>
-                <p class="hero-subtitle">Find high-quality materials for your construction projects</p>
+                <h1 class="hero-title">Our Portfolio & Products</h1>
+                <p class="hero-subtitle">Explore premium building designs, completed projects, and trusted materials in one place.</p>
                 
                 <div class="hero-search">
                     <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Search for materials, brands, categories...">
+                    <input type="text" placeholder="Search properties, designs, or materials.....">
                 </div>
             </div>
         </div>
@@ -1386,163 +1418,323 @@
 <!-- Main Content -->
 <div class="container">
     <!-- Tab Content -->
+
     <div class="tab-content">
-        <!-- Building Materials Tab (Default Active) -->
-        <div class="tab-pane active" id="building-materials">
-            <div class="main-layout">
-            <!-- Filter Sidebar -->
-            <aside class="filter-sidebar">
-                <div class="filter-card">
-                    <div class="filter-header">
-                        <h3 class="filter-title">Categories</h3>
-                        <span class="filter-reset" id="reset-categories">Reset</span>
-                    </div>
-                    <div class="filter-category">
-                        <ul class="category-list">
-                            <li class="category-item active" data-category="all">
-                                <span>All Categories</span>
-                                <span class="category-count">(128)</span>
-                            </li>
-                            <li class="category-item" data-category="properties">
-                                <span>Selling Properties</span>
-                                <span class="category-count">(42)</span>
-                            </li>
-                            <li class="category-item" data-category="materials">
-                                <span>Building Materials</span>
-                                <span class="category-count">(56)</span>
-                            </li>
-                            <li class="category-item" data-category="designs">
-                                <span>Building Designs</span>
-                                <span class="category-count">(30)</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="filter-card">
-                    <div class="filter-header">
-                        <h3 class="filter-title">Price Range</h3>
-                        <span class="filter-reset" id="reset-price">Reset</span>
-                    </div>
-                    
-                    <div class="price-filter">
-                        <div class="price-range">
-                            <div class="price-range-fill" id="price-range-fill"></div>
+            <!-- Building Materials Tab (Default Active) -->
+            <div class="tab-pane active" id="building-materials">
+                <div class="main-layout">
+                    <!-- Filter Sidebar -->
+                    <aside class="filter-sidebar">
+                        <!-- Filter content as provided -->
+                        <div class="filter-card">
+                            <div class="filter-header">
+                                <h3 class="filter-title">Categories</h3>
+                                <span class="filter-reset" id="reset-categories">Reset</span>
+                            </div>
+                            <div class="filter-category">
+                                <ul class="category-list">
+                                    <li class="category-item active" data-category="all">
+                                        <span>All Categories</span>
+                                        <span class="category-count">(128)</span>
+                                    </li>
+                                    <li class="category-item" data-category="properties">
+                                        <span>Selling Properties</span>
+                                        <span class="category-count">(42)</span>
+                                    </li>
+                                    <li class="category-item" data-category="materials">
+                                        <span>Building Materials</span>
+                                        <span class="category-count">(56)</span>
+                                    </li>
+                                    <li class="category-item" data-category="designs">
+                                        <span>Building Designs</span>
+                                        <span class="category-count">(30)</span>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                         
-                        <div class="price-inputs">
-                            <div class="price-input">
-                                <label for="min-price">Min</label>
-                                <input type="text" id="min-price" value="$250">
+                        <div class="filter-card">
+                            <div class="filter-header">
+                                <h3 class="filter-title">Price Range</h3>
+                                <span class="filter-reset" id="reset-price">Reset</span>
                             </div>
-                            <div class="price-input">
-                                <label for="max-price">Max</label>
-                                <input type="text" id="max-price" value="$5,000">
+                            
+                            <div class="price-filter">
+                                <div class="price-range">
+                                    <div class="price-range-fill" id="price-range-fill"></div>
+                                </div>
+                                
+                                <div class="price-inputs">
+                                    <div class="price-input">
+                                        <label for="min-price">Min</label>
+                                        <input type="text" id="min-price" value="GHS 250">
+                                    </div>
+                                    <div class="price-input">
+                                        <label for="max-price">Max</label>
+                                        <input type="text" id="max-price" value="GHS 5,000">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="filter-card">
-                    <div class="filter-header">
-                        <h3 class="filter-title">Brand</h3>
-                        <span class="filter-reset" id="reset-brand">Reset</span>
-                    </div>
-                    
-                    <div class="filter-category">
-                        <ul class="category-list">
-                            <li class="category-item" data-brand="constructplus">
-                                <span>ConstructPlus</span>
-                                <span class="category-count">(32)</span>
-                            </li>
-                            <li class="category-item" data-brand="buildmaster">
-                                <span>BuildMaster</span>
-                                <span class="category-count">(24)</span>
-                            </li>
-                            <li class="category-item" data-brand="ecomaterials">
-                                <span>EcoMaterials</span>
-                                <span class="category-count">(18)</span>
-                            </li>
-                            <li class="category-item" data-brand="designcraft">
-                                <span>DesignCraft</span>
-                                <span class="category-count">(14)</span>
-                            </li>
-                            <li class="category-item" data-brand="urbanliving">
-                                <span>UrbanLiving</span>
-                                <span class="category-count">(9)</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="filter-card">
-                    <div class="filter-header">
-                        <h3 class="filter-title">Filters</h3>
-                        <span class="filter-reset" id="reset-filters">Reset</span>
-                    </div>
-                    
-                    <div class="filter-tags">
-                        <div class="filter-tag" data-filter="stock">
-                            <span>In Stock</span>
-                            <i class="fas fa-times"></i>
+                        
+                        <div class="filter-card">
+                            <div class="filter-header">
+                                <h3 class="filter-title">Brand</h3>
+                                <span class="filter-reset" id="reset-brand">Reset</span>
+                            </div>
+                            
+                            <div class="filter-category">
+                                <ul class="category-list">
+                                    <li class="category-item" data-brand="constructplus">
+                                        <span>ConstructPlus</span>
+                                        <span class="category-count">(32)</span>
+                                    </li>
+                                    <li class="category-item" data-brand="buildmaster">
+                                        <span>BuildMaster</span>
+                                        <span class="category-count">(24)</span>
+                                    </li>
+                                    <li class="category-item" data-brand="ecomaterials">
+                                        <span>EcoMaterials</span>
+                                        <span class="category-count">(18)</span>
+                                    </li>
+                                    <li class="category-item" data-brand="designcraft">
+                                        <span>DesignCraft</span>
+                                        <span class="category-count">(14)</span>
+                                    </li>
+                                    <li class="category-item" data-brand="urbanliving">
+                                        <span>UrbanLiving</span>
+                                        <span class="category-count">(9)</span>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="filter-tag" data-filter="sale">
-                            <span>On Sale</span>
-                            <i class="fas fa-times"></i>
+                        
+                        <div class="filter-card">
+                            <div class="filter-header">
+                                <h3 class="filter-title">Filters</h3>
+                                <span class="filter-reset" id="reset-filters">Reset</span>
+                            </div>
+                            
+                            <div class="filter-tags">
+                                <div class="filter-tag" data-filter="stock">
+                                    <span>In Stock</span>
+                                    <i class="fas fa-times"></i>
+                                </div>
+                                <div class="filter-tag" data-filter="sale">
+                                    <span>On Sale</span>
+                                    <i class="fas fa-times"></i>
+                                </div>
+                                <div class="filter-tag" data-filter="shipping">
+                                    <span>Free Shipping</span>
+                                    <i class="fas fa-times"></i>
+                                </div>
+                                <div class="filter-tag" data-filter="eco">
+                                    <span>Eco-Friendly</span>
+                                    <i class="fas fa-times"></i>
+                                </div>
+                            </div>
+                            <div class="filter-category">
+                                <h4>Availability</h4>
+                                <ul class="category-list">
+                                    <li class="category-item">
+                                        <span>In Stock</span>
+                                        <span class="category-count">(98)</span>
+                                    </li>
+                                    <li class="category-item">
+                                        <span>Pre-Order</span>
+                                        <span class="category-count">(24)</span>
+                                    </li>
+                                    <li class="category-item">
+                                        <span>Out of Stock</span>
+                                        <span class="category-count">(6)</span>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="filter-tag" data-filter="shipping">
-                            <span>Free Shipping</span>
-                            <i class="fas fa-times"></i>
-                        </div>
-                        <div class="filter-tag" data-filter="eco">
-                            <span>Eco-Friendly</span>
-                            <i class="fas fa-times"></i>
-                        </div>
-                    </div>
-                    <div class="filter-category">
-                        <h4>Availability</h4>
-                        <ul class="category-list">
-                            <li class="category-item">
-                                <span>In Stock</span>
-                                <span class="category-count">(98)</span>
-                            </li>
-                            <li class="category-item">
-                                <span>Pre-Order</span>
-                                <span class="category-count">(24)</span>
-                            </li>
-                            <li class="category-item">
-                                <span>Out of Stock</span>
-                                <span class="category-count">(6)</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </aside>
+                    </aside>
 
-            <!-- Products Content -->
-            <div class="products-content">
-                <!-- Featured Products Carousel -->
-                <section class="featured-section">
-                    <div class="section-header">
-                        <h2 class="section-title">Featured Materials</h2>
-                        <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    
-                    <div class="swiper featured-swiper">
-                        <div class="swiper-wrapper">
-                            <!-- Product 1 -->
-                            <div class="swiper-slide">
+                    <!-- Products Content -->
+                  <div class="products-content">
+                        <!-- Featured Products Carousel -->
+                        <section class="featured-section">
+                            <div class="section-header">
+                                <h2 class="section-title">Featured Materials</h2>
+                                <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                            
+                            <div class="featured-grid">
+                                <!-- Product 1 -->
+                                <div class="featured-item">
+                                    <div class="product-card">
+                                        <div class="product-image">
+                                            <img src="https://images.unsplash.com/photo-1737093787984-b6e492231135?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Premium Hardwood">
+                                            <span class="product-badge">Sale</span>
+                                            
+                                            <div class="product-actions">
+                                                <div class="product-action">
+                                                    <i class="fas fa-heart"></i>
+                                                </div>
+                                                <div class="product-action">
+                                                    <i class="fas fa-search"></i>
+                                                </div>
+                                                <div class="product-action">
+                                                    <i class="fas fa-share"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="product-info">
+                                            <div class="product-category">Hardwood</div>
+                                            <h3 class="product-title">Premium Oak Flooring</h3>
+                                            
+                                            <div class="product-rating">
+                                                <div class="stars">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star-half-alt"></i>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="product-price">
+                                                <span class="current-price">GHS 89.99</span>
+                                                <span class="old-price">GHS 129.99</span>
+                                            </div>
+                                            
+                                            <button class="add-to-cart">
+                                                <i class="fas fa-shopping-cart"></i>
+                                                Add to Cart
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Product 2 -->
+                                <div class="featured-item">
+                                    <div class="product-card">
+                                        <div class="product-image">
+                                            <img src="https://images.unsplash.com/photo-1626021546852-7565729c98c2?q=80&w=2667&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Building Bricks">
+                                            <span class="product-badge">New</span>
+                                            
+                                            <div class="product-actions">
+                                                <div class="product-action">
+                                                    <i class="fas fa-heart"></i>
+                                                </div>
+                                                <div class="product-action">
+                                                    <i class="fas fa-search"></i>
+                                                </div>
+                                                <div class="product-action">
+                                                    <i class="fas fa-share"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="product-info">
+                                            <div class="product-category">Masonry</div>
+                                            <h3 class="product-title">Interlocking Bricks</h3>
+                                            
+                                            <div class="product-rating">
+                                                <div class="stars">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="product-price">
+                                                <span class="current-price">GHS 4.50</span>
+                                                <span class="old-price">GHS 5.20</span>
+                                            </div>
+                                            
+                                            <button class="add-to-cart">
+                                                <i class="fas fa-shopping-cart"></i>
+                                                Add to Cart
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Product 3 -->
+                                <div class="featured-item">
+                                    <div class="product-card">
+                                        <div class="product-image">
+                                            <img src="https://images.unsplash.com/photo-1703960062125-ced834e903da?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Roofing Materials">
+                                            <span class="product-badge">Popular</span>
+                                            
+                                            <div class="product-actions">
+                                                <div class="product-action">
+                                                    <i class="fas fa-heart"></i>
+                                                </div>
+                                                <div class="product-action">
+                                                    <i class="fas fa-search"></i>
+                                                </div>
+                                                <div class="product-action">
+                                                    <i class="fas fa-share"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="product-info">
+                                            <div class="product-category">Roofing</div>
+                                            <h3 class="product-title">Classic Roof Tiles</h3>
+                                            
+                                            <div class="product-rating">
+                                                <div class="stars">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="product-price">
+                                                <span class="current-price">GHS 12.75</span>
+                                            </div>
+                                            
+                                            <button class="add-to-cart">
+                                                <i class="fas fa-shopping-cart"></i>
+                                                Add to Cart
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Product Grid Section -->
+                        <section class="products-section">
+                            <div class="section-header">
+                                <h2 class="section-title">All Building Materials</h2>
+                                
+                                <div class="filter-bar">
+                                    <div class="filter-options">
+                                        <div class="filter-option active">All</div>
+                                        <div class="filter-option">Flooring</div>
+                                        <div class="filter-option">Lumber</div>
+                                        <div class="filter-option">Concrete</div>
+                                        <div class="filter-option">Roofing</div>
+                                    </div>
+                                    
+                                    <select class="sort-select">
+                                        <option>Sort by: Featured</option>
+                                        <option>Price: Low to High</option>
+                                        <option>Price: High to Low</option>
+                                        <option>Newest First</option>
+                                        <option>Best Rated</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="products-grid">
+                                <!-- Product Cards -->
+                                <!-- Product 1 -->
                                 <div class="product-card">
                                     <div class="product-image">
-                                        <div class="product-image-carousel">
-                                            <img src="https://images.unsplash.com/photo-1620371350502-999c9c3e5a38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Premium Hardwood">
-                                            <img src="https://images.unsplash.com/photo-1594844181066-07891a5ed9fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Premium Hardwood Detail">
-                                            <img src="https://images.unsplash.com/photo-1605117882932-f9e32b03fea9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Premium Hardwood Installation">
-                                        </div>
-                                        <div class="product-image-nav">
-                                            <span class="product-image-prev"><i class="fas fa-chevron-left"></i></span>
-                                            <span class="product-image-next"><i class="fas fa-chevron-right"></i></span>
-                                        </div>
+                                        <img src="https://www.chaluminium.com/wp-content/uploads/2024/03/aluminium-roofing-sheet.jpg" alt="Aluminium Roofing Sheets">
                                         <span class="product-badge">Sale</span>
                                         
                                         <div class="product-actions">
@@ -1560,7 +1752,7 @@
                                     
                                     <div class="product-info">
                                         <div class="product-category">Hardwood</div>
-                                        <h3 class="product-title">Premium Oak Flooring</h3>
+                                    <h3 class="product-title">Aluminium Roofing Sheets</h3>
                                         
                                         <div class="product-rating">
                                             <div class="stars">
@@ -1573,8 +1765,139 @@
                                         </div>
                                         
                                         <div class="product-price">
-                                            <span class="current-price">$89.99</span>
-                                            <span class="old-price">$129.99</span>
+                                            <span class="current-price">GHS 89.99</span>
+                                            <span class="old-price">GHS 129.99</span>
+                                        </div>
+                                        
+                                        <button class="add-to-cart">
+                                            <i class="fas fa-shopping-cart"></i>
+                                            Add to Cart
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <!-- Product 2 -->
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <img src="https://goodpappa.com/wp-content/uploads/2024/09/ghacem-cement-super-opn-500x500-1.jpg" alt="Cement Bags">
+                                        <span class="product-badge">Best Value</span>
+                                        
+                                        <div class="product-actions">
+                                            <div class="product-action">
+                                                <i class="fas fa-heart"></i>
+                                            </div>
+                                            <div class="product-action">
+                                                <i class="fas fa-search"></i>
+                                            </div>
+                                            <div class="product-action">
+                                                <i class="fas fa-share"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="product-info">
+                                        <div class="product-category">Concrete</div>
+                                        <h3 class="product-title">Ghacem Cement (50kg)</h3>
+                                        
+                                        <div class="product-rating">
+                                            <div class="stars">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="product-price">
+                                            <span class="current-price">GHS 45.00</span>
+                                        </div>
+                                        
+                                        <button class="add-to-cart">
+                                            <i class="fas fa-shopping-cart"></i>
+                                            Add to Cart
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <!-- Product 3 -->
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <img src="https://nyconstructionmall.com/cdn/shop/products/ironrods.jpg?v=1712659826" alt="Steel Rods">
+                                        <span class="product-badge">Eco-Friendly</span>
+                                        
+                                        <div class="product-actions">
+                                            <div class="product-action">
+                                                <i class="fas fa-heart"></i>
+                                            </div>
+                                            <div class="product-action">
+                                                <i class="fas fa-search"></i>
+                                            </div>
+                                            <div class="product-action">
+                                                <i class="fas fa-share"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="product-info">
+                                        <div class="product-category">Steel</div>
+                                        <h3 class="product-title"> Iron Rods</h3>
+                                        
+                                        <div class="product-rating">
+                                            <div class="stars">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star-half-alt"></i>
+                                                <i class="far fa-star"></i>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="product-price">
+                                            <span class="current-price">GHS 320.00</span>
+                                        </div>
+                                        
+                                        <button class="add-to-cart">
+                                            <i class="fas fa-shopping-cart"></i>
+                                            Add to Cart
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <!-- Product 4 -->
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <img src="https://5.imimg.com/data5/MM/ZZ/HV/SELLER-31403626/rigid-pvc-pipe-500x500.jpg" alt="PVC Pipes">
+                                        
+                                        <div class="product-actions">
+                                            <div class="product-action">
+                                                <i class="fas fa-heart"></i>
+                                            </div>
+                                            <div class="product-action">
+                                                <i class="fas fa-search"></i>
+                                            </div>
+                                            <div class="product-action">
+                                                <i class="fas fa-share"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="product-info">
+                                        <div class="product-category">Plumbing</div>
+                                        <h3 class="product-title">PVC Plumbing Pipes</h3>
+                                        
+                                        <div class="product-rating">
+                                            <div class="stars">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="product-price">
+                                            <span class="current-price">GHS 18.50</span>
                                         </div>
                                         
                                         <button class="add-to-cart">
@@ -1585,338 +1908,580 @@
                                 </div>
                             </div>
                             
-                            <!-- More product slides here -->
-                        </div>
-                        
-                        <!-- Pagination -->
-                        <div class="swiper-pagination"></div>
-                        
-                        <!-- Navigation -->
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div>
+                            <!-- Pagination -->
+                            <div class="pagination">
+                                <div class="page-item"><i class="fas fa-chevron-left"></i></div>
+                                <div class="page-item active">1</div>
+                                <div class="page-item">2</div>
+                                <div class="page-item">3</div>
+                                <div class="page-item">...</div>
+                                <div class="page-item">10</div>
+                                <div class="page-item"><i class="fas fa-chevron-right"></i></div>
+                            </div>
+                        </section>
                     </div>
-                </section>
 
-                <!-- Product Grid Section -->
-                <section class="products-section">
-                    <div class="section-header">
-                        <h2 class="section-title">All Building Materials</h2>
-                        
-                        <div class="filter-bar">
-                            <div class="filter-options">
-                                <div class="filter-option active">All</div>
-                                <div class="filter-option">Flooring</div>
-                                <div class="filter-option">Lumber</div>
-                                <div class="filter-option">Concrete</div>
-                                <div class="filter-option">Roofing</div>
+
+                </div>
+            </div>
+            
+            <!-- Building Designs Tab -->
+            <div class="tab-pane" id="building-designs">
+                <div class="main-layout">
+                    <!-- Filter Sidebar -->
+                    <aside class="filter-sidebar">
+                        <div class="filter-card">
+                            <div class="filter-header">
+                                <h3 class="filter-title">Design Categories</h3>
+                                <span class="filter-reset" id="reset-design-categories">Reset</span>
                             </div>
-                            
-                            <select class="sort-select">
-                                <option>Sort by: Featured</option>
-                                <option>Price: Low to High</option>
-                                <option>Price: High to Low</option>
-                                <option>Newest First</option>
-                                <option>Best Rated</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <div class="products-grid">
-                        <!-- Product Cards -->
-                        <!-- Product 1 -->
-                        <div class="product-card">
-                            <div class="product-image">
-                                <img src="https://images.unsplash.com/photo-1620371350502-999c9c3e5a38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Premium Hardwood">
-                                <span class="product-badge">Sale</span>
-                                
-                                <div class="product-actions">
-                                    <div class="product-action">
-                                        <i class="fas fa-heart"></i>
-                                    </div>
-                                    <div class="product-action">
-                                        <i class="fas fa-search"></i>
-                                    </div>
-                                    <div class="product-action">
-                                        <i class="fas fa-share"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="product-info">
-                                <div class="product-category">Hardwood</div>
-                                <h3 class="product-title">Premium Oak Flooring</h3>
-                                
-                                <div class="product-rating">
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half-alt"></i>
-                                    </div>
-                                </div>
-                                
-                                <div class="product-price">
-                                    <span class="current-price">$89.99</span>
-                                    <span class="old-price">$129.99</span>
-                                </div>
-                                
-                                <button class="add-to-cart">
-                                    <i class="fas fa-shopping-cart"></i>
-                                    Add to Cart
-                                </button>
+                            <div class="filter-category">
+                                <ul class="category-list">
+                                    <li class="category-item active" data-category="all">
+                                        <span>All Designs</span>
+                                        <span class="category-count">(45)</span>
+                                    </li>
+                                    <li class="category-item" data-category="residential">
+                                        <span>Residential</span>
+                                        <span class="category-count">(28)</span>
+                                    </li>
+                                    <li class="category-item" data-category="commercial">
+                                        <span>Commercial</span>
+                                        <span class="category-count">(12)</span>
+                                    </li>
+                                    <li class="category-item" data-category="modern">
+                                        <span>Modern</span>
+                                        <span class="category-count">(18)</span>
+                                    </li>
+                                    <li class="category-item" data-category="traditional">
+                                        <span>Traditional</span>
+                                        <span class="category-count">(15)</span>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                         
-                        <!-- More product cards here -->
+                        <div class="filter-card">
+                            <div class="filter-header">
+                                <h3 class="filter-title">Price Range</h3>
+                                <span class="filter-reset" id="reset-design-price">Reset</span>
+                            </div>
+                            
+                            <div class="price-filter">
+                                <div class="price-range">
+                                    <div class="price-range-fill" id="design-price-range-fill"></div>
+                                </div>
+                                
+                                <div class="price-inputs">
+                                    <div class="price-input">
+                                        <label for="design-min-price">Min</label>
+                                        <input type="text" id="design-min-price" value="GHS 500">
+                                    </div>
+                                    <div class="price-input">
+                                        <label for="design-max-price">Max</label>
+                                        <input type="text" id="design-max-price" value="GHS 3,000">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-card">
+                            <div class="filter-header">
+                                <h3 class="filter-title">Design Type</h3>
+                                <span class="filter-reset" id="reset-design-type">Reset</span>
+                            </div>
+                            
+                            <div class="filter-category">
+                                <ul class="category-list">
+                                    <li class="category-item" data-type="floor-plans">
+                                        <span>Floor Plans</span>
+                                        <span class="category-count">(35)</span>
+                                    </li>
+                                    <li class="category-item" data-type="3d-models">
+                                        <span>3D Models</span>
+                                        <span class="category-count">(28)</span>
+                                    </li>
+                                    <li class="category-item" data-type="blueprints">
+                                        <span>Blueprints</span>
+                                        <span class="category-count">(22)</span>
+                                    </li>
+                                    <li class="category-item" data-type="elevations">
+                                        <span>Elevations</span>
+                                        <span class="category-count">(18)</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-card">
+                            <div class="filter-header">
+                                <h3 class="filter-title">Features</h3>
+                                <span class="filter-reset" id="reset-design-features">Reset</span>
+                            </div>
+                            
+                            <div class="filter-tags">
+                                <div class="filter-tag" data-filter="eco-friendly">
+                                    <span>Eco-Friendly</span>
+                                    <i class="fas fa-times"></i>
+                                </div>
+                                <div class="filter-tag" data-filter="energy-efficient">
+                                    <span>Energy Efficient</span>
+                                    <i class="fas fa-times"></i>
+                                </div>
+                                <div class="filter-tag" data-filter="customizable">
+                                    <span>Customizable</span>
+                                    <i class="fas fa-times"></i>
+                                </div>
+                            </div>
+                            <div class="filter-category">
+                                <h4>Square Footage</h4>
+                                <ul class="category-list">
+                                    <li class="category-item">
+                                        <span>Under 1,000 sq ft</span>
+                                        <span class="category-count">(8)</span>
+                                    </li>
+                                    <li class="category-item">
+                                        <span>1,000 - 2,000 sq ft</span>
+                                        <span class="category-count">(22)</span>
+                                    </li>
+                                    <li class="category-item">
+                                        <span>Over 2,000 sq ft</span>
+                                        <span class="category-count">(15)</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <!-- Products Content -->
+                    <div class="products-content">
+                        <div class="tab-header">
+                            <h2 class="tab-title">Building Designs & Blueprints</h2>
+                            <p class="tab-description">Explore our collection of professionally designed building plans and architectural blueprints</p>
+                        </div>
+                        
+                        <div class="designs-categories">
+                    <div class="category-filter">
+                        <button class="category-btn active" data-category="all">All Designs</button>
+                        <button class="category-btn" data-category="residential">Residential</button>
+                        <button class="category-btn" data-category="commercial">Commercial</button>
+                        <button class="category-btn" data-category="modern">Modern</button>
+                        <button class="category-btn" data-category="traditional">Traditional</button>
+                    </div>
+                </div>
+                
+                <div class="designs-grid">
+                    <!-- Design 1 -->
+                    <div class="design-card" data-category="residential modern">
+                        <div class="design-image">
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modern House Design">
+                            <div class="design-overlay">
+                                <div class="design-actions">
+                                    <div class="design-action" title="Add to Favorites"><i class="fas fa-heart"></i></div>
+                                    <div class="design-action" title="Quick View"><i class="fas fa-search"></i></div>
+                                    <div class="design-action" title="Share"><i class="fas fa-share"></i></div>
+                                    <div class="design-action" title="Download"><i class="fas fa-download"></i></div>
+                                </div>
+                            </div>
+                            <div class="design-badge popular">Popular</div>
+                        </div>
+                        <div class="design-info">
+                            <div class="design-category">Residential • Modern</div>
+                            <h3 class="design-title">Modern Minimalist House</h3>
+                            <p class="design-meta">3 Bedrooms • 2 Bathrooms • 1,800 sq ft</p>
+                            <div class="design-features">
+                                <span><i class="fas fa-ruler-combined"></i> Floor Plans</span>
+                                <span><i class="fas fa-cube"></i> 3D Views</span>
+                                <span><i class="fas fa-file-pdf"></i> PDF Plans</span>
+                            </div>
+                            <div class="design-footer">
+                                <div class="design-price">GHS 1,200</div>
+                                <button class="design-btn">View Details</button>
+                            </div>
+                        </div>
                     </div>
                     
-                    <!-- Pagination -->
-                    <div class="pagination">
-                        <div class="page-item"><i class="fas fa-chevron-left"></i></div>
-                        <div class="page-item active">1</div>
-                        <div class="page-item">2</div>
-                        <div class="page-item">3</div>
-                        <div class="page-item">...</div>
-                        <div class="page-item">10</div>
-                        <div class="page-item"><i class="fas fa-chevron-right"></i></div>
-                    </div>
-                </section>
-            </div>
-        </div>
-        
-        <!-- Building Designs Tab -->
-        <div class="tab-pane" id="building-designs">
-            <div class="designs-grid">
-                <div class="design-card">
-                    <div class="design-image">
-                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modern House Design">
-                        <div class="design-overlay">
-                            <div class="design-actions">
-                                <div class="design-action"><i class="fas fa-heart"></i></div>
-                                <div class="design-action"><i class="fas fa-search"></i></div>
-                                <div class="design-action"><i class="fas fa-share"></i></div>
+                    <!-- Design 2 -->
+                    <div class="design-card" data-category="residential modern">
+                        <div class="design-image">
+                            <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Contemporary Apartment Design">
+                            <div class="design-overlay">
+                                <div class="design-actions">
+                                    <div class="design-action" title="Add to Favorites"><i class="fas fa-heart"></i></div>
+                                    <div class="design-action" title="Quick View"><i class="fas fa-search"></i></div>
+                                    <div class="design-action" title="Share"><i class="fas fa-share"></i></div>
+                                    <div class="design-action" title="Download"><i class="fas fa-download"></i></div>
+                                </div>
+                            </div>
+                            <div class="design-badge new">New</div>
+                        </div>
+                        <div class="design-info">
+                            <div class="design-category">Residential • Contemporary</div>
+                            <h3 class="design-title">Contemporary Apartment</h3>
+                            <p class="design-meta">2 Bedrooms • 1 Bathroom • 950 sq ft</p>
+                            <div class="design-features">
+                                <span><i class="fas fa-ruler-combined"></i> Floor Plans</span>
+                                <span><i class="fas fa-cube"></i> 3D Views</span>
+                                <span><i class="fas fa-file-pdf"></i> PDF Plans</span>
+                            </div>
+                            <div class="design-footer">
+                                <div class="design-price">GHS 850</div>
+                                <button class="design-btn">View Details</button>
                             </div>
                         </div>
                     </div>
-                    <div class="design-info">
-                        <h3 class="design-title">Modern Minimalist House</h3>
-                        <p class="design-meta">3 Bedrooms • 2 Bathrooms • 1,800 sq ft</p>
-                        <div class="design-footer">
-                            <div class="design-price">$1,200</div>
-                            <button class="design-btn">View Details</button>
+                    
+                    <!-- Design 3 -->
+                    <div class="design-card" data-category="commercial modern">
+                        <div class="design-image">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Office Building Design">
+                            <div class="design-overlay">
+                                <div class="design-actions">
+                                    <div class="design-action" title="Add to Favorites"><i class="fas fa-heart"></i></div>
+                                    <div class="design-action" title="Quick View"><i class="fas fa-search"></i></div>
+                                    <div class="design-action" title="Share"><i class="fas fa-share"></i></div>
+                                    <div class="design-action" title="Download"><i class="fas fa-download"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="design-info">
+                            <div class="design-category">Commercial • Modern</div>
+                            <h3 class="design-title">Modern Office Building</h3>
+                            <p class="design-meta">5 Floors • 50,000 sq ft • Parking</p>
+                            <div class="design-features">
+                                <span><i class="fas fa-ruler-combined"></i> Floor Plans</span>
+                                <span><i class="fas fa-cube"></i> 3D Views</span>
+                                <span><i class="fas fa-file-pdf"></i> PDF Plans</span>
+                            </div>
+                            <div class="design-footer">
+                                <div class="design-price">GHS 5,200</div>
+                                <button class="design-btn">View Details</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="design-card">
-                    <div class="design-image">
-                        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Contemporary Apartment Design">
-                        <div class="design-overlay">
-                            <div class="design-actions">
-                                <div class="design-action"><i class="fas fa-heart"></i></div>
-                                <div class="design-action"><i class="fas fa-search"></i></div>
-                                <div class="design-action"><i class="fas fa-share"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="design-info">
-                        <h3 class="design-title">Contemporary Apartment</h3>
-                        <p class="design-meta">2 Bedrooms • 1 Bathroom • 950 sq ft</p>
-                        <div class="design-footer">
-                            <div class="design-price">$850</div>
-                            <button class="design-btn">View Details</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="design-card">
-                    <div class="design-image">
-                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Suburban Family Home Design">
-                        <div class="design-overlay">
-                            <div class="design-actions">
-                                <div class="design-action"><i class="fas fa-heart"></i></div>
-                                <div class="design-action"><i class="fas fa-search"></i></div>
-                                <div class="design-action"><i class="fas fa-share"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="design-info">
-                        <h3 class="design-title">Suburban Family Home</h3>
-                        <p class="design-meta">4 Bedrooms • 3 Bathrooms • 2,500 sq ft</p>
-                        <div class="design-footer">
-                            <div class="design-price">$1,800</div>
-                            <button class="design-btn">View Details</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="design-card">
-                    <div class="design-image">
-                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Luxury Villa Design">
-                        <div class="design-overlay">
-                            <div class="design-actions">
-                                <div class="design-action"><i class="fas fa-heart"></i></div>
-                                <div class="design-action"><i class="fas fa-search"></i></div>
-                                <div class="design-action"><i class="fas fa-share"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="design-info">
-                        <h3 class="design-title">Luxury Villa</h3>
-                        <p class="design-meta">5 Bedrooms • 4 Bathrooms • 3,800 sq ft</p>
-                        <div class="design-footer">
-                            <div class="design-price">$3,500</div>
-                            <button class="design-btn">View Details</button>
-                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <!-- Properties Tab -->
-        <div class="tab-pane" id="properties">
-            <div class="properties-grid">
-                <div class="property-card">
-                    <div class="property-image">
-                        <div class="property-image-carousel">
+            
+            <!-- Properties Tab -->
+            <div class="tab-pane" id="properties">
+                <div class="main-layout">
+                    <!-- Filter Sidebar -->
+                    <aside class="filter-sidebar">
+                        <div class="filter-card">
+                            <div class="filter-header">
+                                <h3 class="filter-title">Property Type</h3>
+                                <span class="filter-reset" id="reset-property-type">Reset</span>
+                            </div>
+                            <div class="filter-category">
+                                <ul class="category-list">
+                                    <li class="category-item active" data-category="all">
+                                        <span>All Properties</span>
+                                        <span class="category-count">(156)</span>
+                                    </li>
+                                    <li class="category-item" data-category="residential">
+                                        <span>Residential</span>
+                                        <span class="category-count">(89)</span>
+                                    </li>
+                                    <li class="category-item" data-category="commercial">
+                                        <span>Commercial</span>
+                                        <span class="category-count">(42)</span>
+                                    </li>
+                                    <li class="category-item" data-category="land">
+                                        <span>Land</span>
+                                        <span class="category-count">(25)</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-card">
+                            <div class="filter-header">
+                                <h3 class="filter-title">Price Range</h3>
+                                <span class="filter-reset" id="reset-property-price">Reset</span>
+                            </div>
+                            
+                            <div class="price-filter">
+                                <div class="price-range">
+                                    <div class="price-range-fill" id="property-price-range-fill"></div>
+                                </div>
+                                
+                                <div class="price-inputs">
+                                    <div class="price-input">
+                                        <label for="property-min-price">Min</label>
+                                        <input type="text" id="property-min-price" value="GHS 50,000">
+                                    </div>
+                                    <div class="price-input">
+                                        <label for="property-max-price">Max</label>
+                                        <input type="text" id="property-max-price" value="GHS 2,000,000">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-card">
+                            <div class="filter-header">
+                                <h3 class="filter-title">Listing Type</h3>
+                                <span class="filter-reset" id="reset-listing-type">Reset</span>
+                            </div>
+                            
+                            <div class="filter-category">
+                                <ul class="category-list">
+                                    <li class="category-item" data-type="sale">
+                                        <span>For Sale</span>
+                                        <span class="category-count">(98)</span>
+                                    </li>
+                                    <li class="category-item" data-type="rent">
+                                        <span>For Rent</span>
+                                        <span class="category-count">(58)</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-card">
+                            <div class="filter-header">
+                                <h3 class="filter-title">Property Features</h3>
+                                <span class="filter-reset" id="reset-property-features">Reset</span>
+                            </div>
+                            
+                            <div class="filter-tags">
+                                <div class="filter-tag" data-filter="furnished">
+                                    <span>Furnished</span>
+                                    <i class="fas fa-times"></i>
+                                </div>
+                                <div class="filter-tag" data-filter="parking">
+                                    <span>Parking</span>
+                                    <i class="fas fa-times"></i>
+                                </div>
+                                <div class="filter-tag" data-filter="pool">
+                                    <span>Swimming Pool</span>
+                                    <i class="fas fa-times"></i>
+                                </div>
+                            </div>
+                            <div class="filter-category">
+                                <h4>Bedrooms</h4>
+                                <ul class="category-list">
+                                    <li class="category-item">
+                                        <span>1 Bedroom</span>
+                                        <span class="category-count">(18)</span>
+                                    </li>
+                                    <li class="category-item">
+                                        <span>2 Bedrooms</span>
+                                        <span class="category-count">(35)</span>
+                                    </li>
+                                    <li class="category-item">
+                                        <span>3+ Bedrooms</span>
+                                        <span class="category-count">(42)</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-card">
+                            <div class="filter-header">
+                                <h3 class="filter-title">Location</h3>
+                                <span class="filter-reset" id="reset-location">Reset</span>
+                            </div>
+                            
+                            <div class="filter-category">
+                                <ul class="category-list">
+                                    <li class="category-item">
+                                        <span>Accra</span>
+                                        <span class="category-count">(78)</span>
+                                    </li>
+                                    <li class="category-item">
+                                        <span>Kumasi</span>
+                                        <span class="category-count">(45)</span>
+                                    </li>
+                                    <li class="category-item">
+                                        <span>Tamale</span>
+                                        <span class="category-count">(23)</span>
+                                    </li>
+                                    <li class="category-item">
+                                        <span>Cape Coast</span>
+                                        <span class="category-count">(10)</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <!-- Products Content -->
+                    <div class="products-content">
+                        <div class="tab-header">
+                            <h2 class="tab-title">Real Estate Properties</h2>
+                            <p class="tab-description">Discover premium properties for sale and rent in prime locations</p>
+                        </div>
+                        
+                        <div class="properties-categories">
+                    <div class="category-filter">
+                        <button class="category-btn active" data-category="all">All Properties</button>
+                        <button class="category-btn" data-category="sale">For Sale</button>
+                        <button class="category-btn" data-category="rent">For Rent</button>
+                        <button class="category-btn" data-category="residential">Residential</button>
+                        <button class="category-btn" data-category="commercial">Commercial</button>
+                    </div>
+                </div>
+                
+                <div class="properties-grid">
+                    <!-- Property 1 -->
+                    <div class="property-card" data-category="sale residential">
+                        <div class="property-image">
                             <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modern House Property">
-                            <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modern House Interior">
-                            <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modern House Kitchen">
+                            <div class="property-actions">
+                                <div class="property-action" title="Add to Favorites"><i class="fas fa-heart"></i></div>
+                                <div class="property-action" title="Share"><i class="fas fa-share"></i></div>
+                                <div class="property-action" title="Virtual Tour"><i class="fas fa-street-view"></i></div>
+                            </div>
+                            <div class="property-badge sale">For Sale</div>
                         </div>
-                        <div class="property-image-nav">
-                            <span class="property-image-prev"><i class="fas fa-chevron-left"></i></span>
-                            <span class="property-image-next"><i class="fas fa-chevron-right"></i></span>
-                        </div>
-                        <div class="property-badge">For Sale</div>
-                    </div>
-                    <div class="property-info">
-                        <h3 class="property-title">Modern Family Home</h3>
-                        <p class="property-location"><i class="fas fa-map-marker-alt"></i> 123 Main St, Anytown</p>
-                        <div class="property-features">
-                            <span><i class="fas fa-bed"></i> 3 Beds</span>
-                            <span><i class="fas fa-bath"></i> 2 Baths</span>
-                            <span><i class="fas fa-ruler-combined"></i> 1,800 sq ft</span>
-                        </div>
-                        <div class="property-footer">
-                            <div class="property-price">$450,000</div>
-                            <button class="property-btn">View Details</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="property-card">
-                    <div class="property-image">
-                        <div class="property-image-carousel">
-                            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Luxury Villa Property">
-                            <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Luxury Villa Interior">
-                            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Luxury Villa Pool">
-                        </div>
-                        <div class="property-image-nav">
-                            <span class="property-image-prev"><i class="fas fa-chevron-left"></i></span>
-                            <span class="property-image-next"><i class="fas fa-chevron-right"></i></span>
-                        </div>
-                        <div class="property-badge">Luxury</div>
-                    </div>
-                    <div class="property-info">
-                        <h3 class="property-title">Luxury Beachfront Villa</h3>
-                        <p class="property-location"><i class="fas fa-map-marker-alt"></i> 456 Ocean Dr, Beachtown</p>
-                        <div class="property-features">
-                            <span><i class="fas fa-bed"></i> 5 Beds</span>
-                            <span><i class="fas fa-bath"></i> 4 Baths</span>
-                            <span><i class="fas fa-ruler-combined"></i> 3,800 sq ft</span>
-                        </div>
-                        <div class="property-footer">
-                            <div class="property-price">$1,250,000</div>
-                            <button class="property-btn">View Details</button>
+                        <div class="property-info">
+                            <div class="property-type">Residential • House</div>
+                            <h3 class="property-title">Modern Family Home</h3>
+                            <p class="property-location"><i class="fas fa-map-marker-alt"></i> 123 Main St, Anytown</p>
+                            <div class="property-features">
+                                <span><i class="fas fa-bed"></i> 3 Beds</span>
+                                <span><i class="fas fa-bath"></i> 2 Baths</span>
+                                <span><i class="fas fa-ruler-combined"></i> 1,800 sq ft</span>
+                                <span><i class="fas fa-car"></i> 2 Garage</span>
+                            </div>
+                            <div class="property-amenities">
+                                <span><i class="fas fa-swimming-pool"></i> Pool</span>
+                                <span><i class="fas fa-tree"></i> Garden</span>
+                                <span><i class="fas fa-shield-alt"></i> Security</span>
+                            </div>
+                            <div class="property-footer">
+                                <div class="property-price">GHS 450,000</div>
+                                <button class="property-btn">View Details</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="property-card">
-                    <div class="property-image">
-                        <div class="property-image-carousel">
-                            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Suburban Home Property">
-                            <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Suburban Home Interior">
-                            <img src="https://images.unsplash.com/photo-1600585154526-990dced4db3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Suburban Home Backyard">
+                    
+                    <!-- Property 2 -->
+                    <div class="property-card" data-category="rent residential">
+                        <div class="property-image">
+                            <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modern Apartment">
+                            <div class="property-actions">
+                                <div class="property-action" title="Add to Favorites"><i class="fas fa-heart"></i></div>
+                                <div class="property-action" title="Share"><i class="fas fa-share"></i></div>
+                                <div class="property-action" title="Virtual Tour"><i class="fas fa-street-view"></i></div>
+                            </div>
+                            <div class="property-badge rent">For Rent</div>
                         </div>
-                        <div class="property-image-nav">
-                            <span class="property-image-prev"><i class="fas fa-chevron-left"></i></span>
-                            <span class="property-image-next"><i class="fas fa-chevron-right"></i></span>
+                        <div class="property-info">
+                            <div class="property-type">Residential • Apartment</div>
+                            <h3 class="property-title">Downtown Luxury Apartment</h3>
+                            <p class="property-location"><i class="fas fa-map-marker-alt"></i> 321 City Center, Downtown</p>
+                            <div class="property-features">
+                                <span><i class="fas fa-bed"></i> 2 Beds</span>
+                                <span><i class="fas fa-bath"></i> 2 Baths</span>
+                                <span><i class="fas fa-ruler-combined"></i> 1,100 sq ft</span>
+                                <span><i class="fas fa-car"></i> 1 Parking</span>
+                            </div>
+                            <div class="property-amenities">
+                                <span><i class="fas fa-dumbbell"></i> Gym</span>
+                                <span><i class="fas fa-concierge-bell"></i> Concierge</span>
+                                <span><i class="fas fa-city"></i> City View</span>
+                            </div>
+                            <div class="property-footer">
+                                <div class="property-price">GHS 2,800/mo</div>
+                                <button class="property-btn">View Details</button>
+                            </div>
                         </div>
-                        <div class="property-badge">New</div>
                     </div>
-                    <div class="property-info">
-                        <h3 class="property-title">Charming Suburban Home</h3>
-                        <p class="property-location"><i class="fas fa-map-marker-alt"></i> 789 Maple Ave, Suburbia</p>
-                        <div class="property-features">
-                            <span><i class="fas fa-bed"></i> 4 Beds</span>
-                            <span><i class="fas fa-bath"></i> 2.5 Baths</span>
-                            <span><i class="fas fa-ruler-combined"></i> 2,200 sq ft</span>
+                    
+                    <!-- Property 3 -->
+                    <div class="property-card" data-category="sale commercial">
+                        <div class="property-image">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Office Building">
+                            <div class="property-actions">
+                                <div class="property-action" title="Add to Favorites"><i class="fas fa-heart"></i></div>
+                                <div class="property-action" title="Share"><i class="fas fa-share"></i></div>
+                                <div class="property-action" title="Virtual Tour"><i class="fas fa-street-view"></i></div>
+                            </div>
+                            <div class="property-badge sale">For Sale</div>
                         </div>
-                        <div class="property-footer">
-                            <div class="property-price">$375,000</div>
-                            <button class="property-btn">View Details</button>
+                        <div class="property-info">
+                            <div class="property-type">Commercial • Office</div>
+                            <h3 class="property-title">Premium Office Building</h3>
+                            <p class="property-location"><i class="fas fa-map-marker-alt"></i> 555 Business Ave, Financial District</p>
+                            <div class="property-features">
+                                <span><i class="fas fa-building"></i> 12 Floors</span>
+                                <span><i class="fas fa-users"></i> 200+ Capacity</span>
+                                <span><i class="fas fa-ruler-combined"></i> 25,000 sq ft</span>
+                                <span><i class="fas fa-car"></i> 50 Parking</span>
+                            </div>
+                            <div class="property-amenities">
+                                <span><i class="fas fa-city"></i> Panoramic View</span>
+                                <span><i class="fas fa-coffee"></i> Cafeteria</span>
+                                <span><i class="fas fa-wifi"></i> High-Speed Internet</span>
+                            </div>
+                            <div class="property-footer">
+                                <div class="property-price">GHS 4,200,000</div>
+                                <button class="property-btn">View Details</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+                    </div>
+                </div>
+            </div>
+          
+        </div>
 
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    
     <!-- Custom JS -->
     <script>
-    // Initialize Featured Swiper
-    const featuredSwiper = new Swiper('.featured-swiper', {
-        slidesPerView: 1,
-        spaceBetween: 30,
-        loop: true,
-        autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-        },
-        pagination: {
-            el: '.featured-swiper .swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.featured-swiper .swiper-button-next',
-            prevEl: '.featured-swiper .swiper-button-prev',
-        },
-        breakpoints: {
-            640: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-            },
-            1024: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-            },
-        },
-    });
-    
-    // Tab functionality
-    const tabs = document.querySelectorAll('.tab');
-    const tabPanes = document.querySelectorAll('.tab-pane');
-    
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            // Remove active class from all tabs
-            tabs.forEach(t => t.classList.remove('active'));
-            // Add active class to clicked tab
-            tab.classList.add('active');
+
+    // Wait for DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        // Tab functionality
+            const tabs = document.querySelectorAll('.tab');
+            const tabPanes = document.querySelectorAll('.tab-pane');
             
-            // Hide all tab panes
-            tabPanes.forEach(pane => pane.classList.remove('active'));
-            // Show the corresponding tab pane
-            const tabId = tab.getAttribute('data-tab');
-            document.getElementById(tabId).classList.add('active');
-        });
-    });
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+                    
+                    // Get the target tab pane ID
+                    const tabId = tab.getAttribute('data-tab');
+                    
+                    // Hide all tab panes
+                    tabPanes.forEach(pane => pane.classList.remove('active'));
+                    
+                    // Show the target tab pane
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Additional interactivity for filter options
+            const filterOptionsS = document.querySelectorAll('.filter-option');
+            filterOptionsS.forEach(option => {
+                option.addEventListener('click', () => {
+                    filterOptionsS.forEach(o => o.classList.remove('active'));
+                    option.classList.add('active');
+                });
+            });
+            
+            // Category buttons for designs and properties
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    categoryButtons.forEach(b => b.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    // In a real application, you would filter the content here
+                    // based on the selected category
+                    const category = button.getAttribute('data-category');
+                    console.log(`Selected category: ${category}`);
+                });
+            });
     
     // Initialize product image carousels
     function initImageCarousels() {
@@ -2017,8 +2582,8 @@
     });
     
     document.getElementById('reset-price').addEventListener('click', () => {
-        document.getElementById('min-price').value = '$250';
-        document.getElementById('max-price').value = '$5,000';
+        document.getElementById('min-price').value = 'GHS 250';
+        document.getElementById('max-price').value = '$GHS,000';
         document.getElementById('price-range-fill').style.left = '20%';
         document.getElementById('price-range-fill').style.right = '30%';
     });
@@ -2062,6 +2627,8 @@
             document.querySelector('.filter-sidebar').classList.remove('active');
         });
     }
+    
+    }); // Close DOMContentLoaded
     </script>
 </body>
 </html>

@@ -62,7 +62,8 @@ public class AuthController {
         return "index";
     }
 
-    @GetMapping("/building-materials")
+
+     @GetMapping("/building-materials")
     public String showEcommercePage() {
         // model.addAttribute("content", "../index.jsp");
         return "pages/ecommerce";

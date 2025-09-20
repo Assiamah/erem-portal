@@ -678,7 +678,7 @@
                 </div>
             </div>
             <div class="text-center mt-4">
-                <a href="/building-materials" class="btn btn-outline-primary">Explore Our Portfolio <i class="fas fa-arrow-right ms-2"></i></a>
+                <a href="/store-materials" class="btn btn-outline-primary">Explore Our Portfolio <i class="fas fa-arrow-right ms-2"></i></a>
             </div>
         </div>
     </section>

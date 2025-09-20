@@ -1,448 +1,604 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<main class="app-wrapper">
-    <div class="container-fluid">
 
-        <div class="main-breadcrumb d-flex align-items-center my-3 position-relative">
-            <h2 class="breadcrumb-title mb-0 flex-grow-1 fs-14">E-Commerce</h2>
-            <div class="flex-shrink-0">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb justify-content-end mb-0">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">E-Commerce</li>
-                    </ol>
-                </nav>
+
+  <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --accent: #3498db;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            --lease: #5b66eb;
+            --rent: #1abc9c;
+            --ecommerce: #f1c40f;
+            --appointment: #e67e22;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+        }
+        
+        .app-wrapper {
+            padding: 20px;
+        }
+        
+        .user-welcome {
+            background: linear-gradient(120deg, #5b66eb, var(--accent));
+            color: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 24px;
+        }
+        
+        .breadcrumb-title {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-header {
+            background-color: white;
+            border-bottom: 1px solid #eef2f6;
+            padding: 16px 20px;
+            border-radius: 12px 12px 0 0 !important;
+        }
+        
+        .stat-card {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            margin-right: 15px;
+            font-size: 24px;
+        }
+        
+        .stat-icon.primary {
+            background-color: rgba(44, 62, 80, 0.1);
+            color: var(--primary);
+        }
+        
+        .stat-icon.lease {
+            background-color: rgba(91, 102, 235, 0.1);
+            color: var(--lease);
+        }
+        
+        .stat-icon.rent {
+            background-color: rgba(26, 188, 156, 0.1);
+            color: var(--rent);
+        }
+        
+        .stat-icon.ecommerce {
+            background-color: rgba(241, 196, 15, 0.1);
+            color: var(--ecommerce);
+        }
+        
+        .stat-icon.appointment {
+            background-color: rgba(230, 126, 34, 0.1);
+            color: var(--appointment);
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .stat-title {
+            color: #6c757d;
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+        
+        .badge {
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        
+        .badge-confirmed {
+            background-color: rgba(39, 174, 96, 0.15);
+            color: var(--success);
+        }
+        
+        .badge-pending {
+            background-color: rgba(243, 156, 18, 0.15);
+            color: var(--warning);
+        }
+        
+        .badge-cancelled {
+            background-color: rgba(231, 76, 60, 0.15);
+            color: var(--danger);
+        }
+        
+        .badge-completed {
+            background-color: rgba(52, 152, 219, 0.15);
+            color: var(--accent);
+        }
+        
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        
+        .action-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 15px;
+            border-radius: 12px;
+            background-color: white;
+            text-align: center;
+            transition: all 0.2s;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .action-btn:hover {
+            background-color: var(--light);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .action-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+        }
+        
+        .action-icon.lease {
+            background-color: rgba(91, 102, 235, 0.1);
+            color: var(--lease);
+        }
+        
+        .action-icon.rent {
+            background-color: rgba(26, 188, 156, 0.1);
+            color: var(--rent);
+        }
+        
+        .action-icon.ecommerce {
+            background-color: rgba(241, 196, 15, 0.1);
+            color: var(--ecommerce);
+        }
+        
+        .action-icon.appointment {
+            background-color: rgba(230, 126, 34, 0.1);
+            color: var(--appointment);
+        }
+        
+        .action-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 250px;
+        }
+        
+        .dashboard-section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eef2f6;
+        }
+        
+        .property-thumb {
+            width: 60px;
+            height: 40px;
+            border-radius: 4px;
+            object-fit: cover;
+        }
+        
+        .agent-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .table th {
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background-color: #1a2530;
+            border-color: #1a2530;
+        }
+        
+        .btn-lease {
+            background-color: var(--lease);
+            border-color: var(--lease);
+            color: white;
+        }
+        
+        .btn-rent {
+            background-color: var(--rent);
+            border-color: var(--rent);
+            color: white;
+        }
+        
+        .btn-ecommerce {
+            background-color: var(--ecommerce);
+            border-color: var(--ecommerce);
+            color: white;
+        }
+        
+        .btn-appointment {
+            background-color: var(--appointment);
+            border-color: var(--appointment);
+            color: white;
+        }
+        
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        
+        .notification-item {
+            padding: 12px 15px;
+            border-left: 3px solid var(--accent);
+            margin-bottom: 10px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+        
+        .notification-item.warning {
+            border-left-color: var(--warning);
+        }
+        
+        .notification-item.important {
+            border-left-color: var(--secondary);
+        }
+    </style>
+
+    
+ <main class="app-wrapper">
+        <div class="container-fluid">
+            <!-- User Welcome Section -->
+            <div class="user-welcome">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h2>Welcome back, ${userInfo.first_name} ${userInfo.last_name}</h2>
+                        <p class="mb-0">Here's what's happening with your properties and applications today.</p>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-xxl-8">
-                <div class="row h-100">
-                    <div class="col-xl-4 col-sm-6">
-                        <div class="card card-h-100">
-                            <div class="card-body d-flex align-items-center justify-content-around">
-                                <div class="h-48px w-50px position-relative d-flex justify-content-center align-items-center text-primary fs-4 rounded-3 shadow-lg border">
-                                    <i class="bi bi-folder2-open"></i>
+
+            <!-- Quick Actions -->
+           
+
+            <!-- Statistics Overview -->
+            <div class="row">
+                <div class="col-xl-3 col-md-6">
+                    <div class="card stat-card">
+                        <div class="stat-icon lease">
+                            <i class="bi bi-house-door"></i>
+                        </div>
+                        <div>
+                            <div class="stat-number">2</div>
+                            <div class="stat-title">My Properties</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card stat-card">
+                        <div class="stat-icon rent">
+                            <i class="bi bi-cash-stack"></i>
+                        </div>
+                        <div>
+                            <div class="stat-number">GHS 850</div>
+                            <div class="stat-title">Monthly Rent</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card stat-card">
+                        <div class="stat-icon ecommerce">
+                            <i class="bi bi-bag"></i>
+                        </div>
+                        <div>
+                            <div class="stat-number">3</div>
+                            <div class="stat-title">Active Orders</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card stat-card">
+                        <div class="stat-icon appointment">
+                            <i class="bi bi-calendar-check"></i>
+                        </div>
+                        <div>
+                            <div class="stat-number">2</div>
+                            <div class="stat-title">Upcoming Viewings</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Left Column -->
+                <div class="col-lg-8">
+                    <!-- Notifications & Alerts -->
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h4 class="mb-0">Notifications & Reminders</h4>
+                            <a href="#" class="btn btn-sm btn-outline-primary">View All</a>
+                        </div>
+                        <div class="card-body">
+                            <div class="notification-item">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="mb-1">Rent Payment Due</h6>
+                                    <small class="text-muted">2 days ago</small>
                                 </div>
-                                <div>
-                                    <h3>$2,647 <i class="bi bi-graph-up-arrow text-success fw-normal fs-5"></i></h3>
-                                    <span class="fs-5">Today's Sales</span>
-                                    <p class="fs-12 mb-0">Sales Increment Rate</p>
+                                <p class="mb-0">Your rent payment of GHS 850 for Modern Apartment B34 is due in 5 days.</p>
+                            </div>
+                            <div class="notification-item warning">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="mb-1">Application Update</h6>
+                                    <small class="text-muted">1 day ago</small>
                                 </div>
+                                <p class="mb-0">Your lease application for Luxury Villa A12 is pending review.</p>
+                            </div>
+                            <div class="notification-item important">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="mb-1">Appointment Reminder</h6>
+                                    <small class="text-muted">Today</small>
+                                </div>
+                                <p class="mb-0">You have a property viewing scheduled for tomorrow at 11:30 AM.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-sm-6">
-                        <div class="card card-h-100">
-                            <div class="card-body d-flex align-items-center justify-content-around">
-                                <div class="h-48px w-50px position-relative d-flex justify-content-center align-items-center text-primary fs-4 rounded-3 shadow-lg border">
-                                    <i class="bi bi-bookmark"></i>
-                                </div>
-                                <div>
-                                    <h3>$24,057 <i class="bi bi-graph-up-arrow text-success fw-normal fs-5"></i></h3>
-                                    <span class="fs-5">Total Purchase</span>
-                                    <p class="fs-12 mb-0"><span class="text-success">+8%</span> Completion Rate</p>
-                                </div>
-                            </div>
+
+                    <!-- My Properties -->
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h4 class="mb-0">My Properties</h4>
+                            <a href="#" class="btn btn-sm btn-lease">View All</a>
                         </div>
-                    </div>
-                    <div class="col-xl-4 col-sm-6">
-                        <div class="card card-h-100">
-                            <div class="card-body d-flex align-items-center justify-content-around">
-                                <div class="h-48px w-48px position-relative d-flex justify-content-center align-items-center text-primary fs-4 rounded-3 shadow-lg border">
-                                    <i class="bi bi-bookmark"></i>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="card h-100">
+                                        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Property Image">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Modern Apartment B34</h5>
+                                            <p class="card-text">3 Bedroom • 2 Bathroom • 1200 sq ft</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span class="badge bg-success">Rented</span>
+                                                <span class="fw-bold">GHS 850/mo</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h3>47% <i class="bi bi-graph-up-arrow text-success fw-normal fs-5"></i></h3>
-                                    <span class="fs-5">Overall Performance</span>
-                                    <p class="fs-12 mb-0"><span class="text-success">+12%</span>Completion Rate</p>
+                                <div class="col-md-6 mb-4">
+                                    <div class="card h-100">
+                                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Property Image">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Luxury Villa A12</h5>
+                                            <p class="card-text">4 Bedroom • 3 Bathroom • 2400 sq ft</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span class="badge bg-warning">Application Pending</span>
+                                                <span class="fw-bold">GHS 2,200/mo</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xxl-4">
-                <div class="card overflow-hidden bg-primary card-h-100 p-4">
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="vector-image">
-                                <img class="img-fluid welcome-img w-200px mb-n20 mt-n5" src="assets/images/dashboard/upgrade-img.png" alt="CRM Vector">
-                            </div>
+
+                <!-- Right Column -->
+                <div class="col-lg-4">
+                    <!-- Upcoming Appointments -->
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h4 class="mb-0">Upcoming Appointments</h4>
+                            <a href="#" class="btn btn-sm btn-appointment">Schedule New</a>
                         </div>
-                        <div class="col-4">
-                            <div class="text-end">
-                                <p class="mb-5 fs-16 fw-semibold text-white">Lorem ipsum dolor <br> sit lorem ipsum <br> dolor sit</p>
-                                <a href="javascript:void(0)" class="btn text-white border border-white mt-1">Upgrade</a>
+                        <div class="card-body">
+                            <div class="appointment-item">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h6 class="mb-0">Tomorrow, 11:30 AM</h6>
+                                    <span class="badge badge-confirmed">Confirmed</span>
+                                </div>
+                                <p class="mb-1">Property Viewing - Luxury Villa A12</p>
+                                <small class="text-muted">Agent: Emma Johnson</small>
+                            </div>
+                            <div class="appointment-item">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h6 class="mb-0">Nov 15, 2:00 PM</h6>
+                                    <span class="badge badge-pending">Pending</span>
+                                </div>
+                                <p class="mb-1">Lease Signing - Modern Apartment B34</p>
+                                <small class="text-muted">Agent: John Smith</small>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Latest Order</h4>
-                        <div class="d-flex gap-3 align-items-center">
-                            <div class="form-icon">
-                                <input type="text" class="form-control form-control-icon" id="firstNameLayout4" placeholder="Search Here ..." required>
-                                <i class="ri-search-2-line text-muted"></i>
+
+                    <!-- Recent Transactions -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="mb-0">Recent Transactions</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div>
+                                    <h6 class="mb-0">Rent Payment</h6>
+                                    <small class="text-muted">Oct 28, 2025</small>
+                                </div>
+                                <div class="text-end">
+                                    <h6 class="mb-0 text-success">-GHS 850</h6>
+                                    <small class="text-success">Completed</small>
+                                </div>
                             </div>
-                            <div class="btn-group">
-                                <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Weekly
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-start">
-                                    <a class="dropdown-item" href="javascript:void(0)">Weekly</a>
-                                    <a class="dropdown-item" href="javascript:void(0)">In Transit</a>
-                                    <a class="dropdown-item" href="javascript:void(0)">Delivered</a>
-                                    <a class="dropdown-item" href="javascript:void(0)">Pending</a>
-                                    <a class="dropdown-item" href="javascript:void(0)">Delayed</a>
-                                    <a class="dropdown-item" href="javascript:void(0)">Canceled</a>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div>
+                                    <h6 class="mb-0">Building Materials</h6>
+                                    <small class="text-muted">Oct 25, 2025</small>
+                                </div>
+                                <div class="text-end">
+                                    <h6 class="mb-0 text-danger">-GHS 420</h6>
+                                    <small class="text-success">Delivered</small>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-0">Security Deposit</h6>
+                                    <small class="text-muted">Oct 15, 2025</small>
+                                </div>
+                                <div class="text-end">
+                                    <h6 class="mb-0 text-danger">-GHS 1,700</h6>
+                                    <small class="text-success">Completed</small>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <div class="table-box table-responsive">
-                            <table class="table table-hover text-nowrap">
-                                <thead class="table-light border-0">
-                                    <tr>
-                                        <th>Customer ID</th>
-                                        <th>Email</th>
-                                        <th>Product</th>
-                                        <th>Status</th>
-                                        <th>Tracking</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="flexCheckDefault" id="flexCheckDefault">
-                                                <img src="assets/images/avatar/avatar-1.jpg" class="avatar-sm rounded-2 mx-2" alt="Avatar Image">
-                                                #0051134
-                                            </div>
-                                        </td>
-                                        <td>ela@septi.gmail.com</td>
-                                        <td>MacBook Air</td>
-                                        <td><span class="badge bg-warning-subtle text-warning py-1 rounded-3 border border-warning">On Way</span></td>
-                                        <td>PQ1132G</td>
-                                        <td>
-                                            <div class="dropdown dropdown-menu-end">
-                                                <button class="btn p-0" type="button" data-bs-toggle="dropdown">
-                                                    <i class="bi bi-three-dots"></i>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item" href="javascript:void(0)">Edit</a></li>
-                                                    <li><a class="dropdown-item" href="javascript:void(0)">View</a></li>
-                                                    <li><a class="dropdown-item" href="javascript:void(0)">Track</a></li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="flexCheckDefault1" id="flexCheckDefault1" checked>
-                                                <img src="assets/images/avatar/avatar-2.jpg" class="avatar-sm rounded-2 mx-2" alt="Avatar Image">
-                                                #0021598
-                                            </div>
-                                        </td>
-                                        <td>te@shroff.gmail.com</td>
-                                        <td>Magical Pen</td>
-                                        <td><span class="badge bg-primary-subtle text-primary py-1 rounded-3 border border-primary">Waiting</span></td>
-                                        <td>CF0568B</td>
-                                        <td>
-                                            <div class="dropdown dropdown-menu-end">
-                                                <button class="btn p-0" type="button" data-bs-toggle="dropdown">
-                                                    <i class="bi bi-three-dots"></i>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item" href="javascript:void(0)">Edit</a></li>
-                                                    <li><a class="dropdown-item" href="javascript:void(0)">View</a></li>
-                                                    <li><a class="dropdown-item" href="javascript:void(0)">Track</a></li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="flexCheckDefault2" id="flexCheckDefault2">
-                                                <img src="assets/images/avatar/avatar-3.jpg" class="avatar-sm rounded-2 mx-2" alt="Avatar Image">
-                                                #0045976
-                                            </div>
-                                        </td>
-                                        <td>te@shroff.gmail.com</td>
-                                        <td>Secret Diary</td>
-                                        <td><span class="badge bg-danger-subtle text-danger py-1 rounded-3 border border-danger">Pending</span></td>
-                                        <td>RY4578K</td>
-                                        <td>
-                                            <div class="dropdown dropdown-menu-end">
-                                                <button class="btn p-0" type="button" data-bs-toggle="dropdown">
-                                                    <i class="bi bi-three-dots"></i>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item" href="javascript:void(0)">Edit</a></li>
-                                                    <li><a class="dropdown-item" href="javascript:void(0)">View</a></li>
-                                                    <li><a class="dropdown-item" href="javascript:void(0)">Track</a></li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="flexCheckDefault3" id="flexCheckDefault3">
-                                                <img src="assets/images/avatar/avatar-4.jpg" class="avatar-sm rounded-2 mx-2" alt="Avatar Image">
-                                                #0074564
-                                            </div>
-                                        </td>
-                                        <td>te@shroff.gmail.com</td>
-                                        <td>IdeaPad Azure</td>
-                                        <td><span class="badge bg-success-subtle text-success py-1 rounded-3 border border-success">Delivered</span></td>
-                                        <td>ST9856H</td>
-                                        <td>
-                                            <div class="dropdown dropdown-menu-end">
-                                                <button class="btn p-0" type="button" data-bs-toggle="dropdown">
-                                                    <i class="bi bi-three-dots"></i>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item" href="javascript:void(0)">Edit</a></li>
-                                                    <li><a class="dropdown-item" href="javascript:void(0)">View</a></li>
-                                                    <li><a class="dropdown-item" href="javascript:void(0)">Track</a></li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="flexCheckDefault4" id="flexCheckDefault4">
-                                                <img src="assets/images/avatar/avatar-5.jpg" class="avatar-sm rounded-2 mx-2" alt="Avatar Image">
-                                                #0098546
-                                            </div>
-                                        </td>
-                                        <td>te@shroff.gmail.com</td>
-                                        <td>Laxmi Electric Stove</td>
-                                        <td><span class="badge bg-success-subtle text-success py-1 rounded-3 border border-success">Delivered</span></td>
-                                        <td>KI1256G</td>
-                                        <td>
-                                            <div class="dropdown dropdown-menu-end">
-                                                <button class="btn p-0" type="button" data-bs-toggle="dropdown">
-                                                    <i class="bi bi-three-dots"></i>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item" href="javascript:void(0)">Edit</a></li>
-                                                    <li><a class="dropdown-item" href="javascript:void(0)">View</a></li>
-                                                    <li><a class="dropdown-item" href="javascript:void(0)">Track</a></li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+
+                    <!-- Quick Links -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="mb-0">Quick Links</h4>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-8">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Average Order Value</h4>
-                        <div class="d-flex align-items-center">
-                            <ul class="nav nav-pills me-3" id="pills-tab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="average-line-tab" data-bs-toggle="pill" data-bs-target="#average-line" type="button" role="tab" aria-controls="average-line" aria-selected="true">Line</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="average-bar-tab" data-bs-toggle="pill" data-bs-target="#average-bar" type="button" role="tab" aria-controls="average-bar" aria-selected="false">Bar</button>
-                                </li>
-                            </ul>
-                            <div class="dropdown">
-                                <a href="javascript:void(0)" data-bs-toggle="dropdown" class="text-muted">
-                                    <i class="bi bi-three-dots-vertical"></i>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="#" class="btn btn-outline-primary btn-sm text-start">
+                                    <i class="bi bi-file-text me-2"></i> My Lease Agreements
                                 </a>
-                                <ul class="dropdown-menu dropdown-menu-start">
-                                    <li><a class="dropdown-item" href="javascript:void(0)">This Week</a></li>
-                                    <li><a class="dropdown-item" href="javascript:void(0)">This Month</a></li>
-                                    <li><a class="dropdown-item" href="javascript:void(0)">This Year</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0" id="average-line" class="apexcharts-container"></div>
-                            <div class="tab-pane fade" id="average-bar" role="tabpanel" aria-labelledby="average-bar-tab" tabindex="0"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4">
-                <div class="card card-h-100">
-                    <div class="card-header">
-                        <h4>Recent Sales</h4>
-                        <a href="javascript:void(0)" class="link">View All</a>
-                    </div>
-                    <div class="card-body">
-                        <div id="gridjs_sort-table"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xxl-4">
-                <div class="card">
-                    <div class="card-header">
-                        <div>
-                            <h4>Product Statistics</h4>
-                            <p class="mb-0 text-muted">Track your product sales</p>
-                        </div>
-                        <a href="javascript:void(0)" class="link">View All</a>
-                    </div>
-                    <div class="card-body">
-                        <div class="position-relative">
-                            <div id="product-statistics"></div>
-                            <div class="product-chart text-center">
-                                <h3>9,829</h3>
-                                <p class="mb-0">Product Sales</p>
-                                <span class="badge bg-success py-1 rounded-pill">+5.34%</span>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-between mb-2">
-                            <div>
-                                <i class="ri-ram-line fs-5 me-3"></i>
-                                Electronic
-                            </div>
-                            <div>
-                                <span class="text-muted me-3">2,482</span>
-                                <span class="badge bg-primary-subtle text-primary px-2 rounded-3">+5.34%</span>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-between mb-2">
-                            <div>
-                                <i class="bi bi-controller fs-5 me-3"></i>
-                                Games
-                            </div>
-                            <div>
-                                <span class="text-muted me-3">1,828</span>
-                                <span class="badge bg-warning-subtle text-warning px-2 rounded-3">+5.34%</span>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <div>
-                                <i class="bi bi-lamp fs-5 me-3"></i>
-                                Furniture
-                            </div>
-                            <div>
-                                <span class="text-muted me-3">1,463</span>
-                                <span class="badge bg-danger-subtle text-danger px-2 rounded-3">+5.34%</span>
+                                <a href="#" class="btn btn-outline-primary btn-sm text-start">
+                                    <i class="bi bi-receipt me-2"></i> Payment History
+                                </a>
+                                <a href="#" class="btn btn-outline-primary btn-sm text-start">
+                                    <i class="bi bi-question-circle me-2"></i> Support Center
+                                </a>
+                                <a href="#" class="btn btn-outline-primary btn-sm text-start">
+                                    <i class="bi bi-gear me-2"></i> Account Settings
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xxl-4 col-lg-6">
-                <div class="card">
-                    <div class="card-header">
-                        <div>
-                            <h4>Customer Growth</h4>
-                            <p class="mb-0 text-muted">Track Customer per location</p>
-                        </div>
-                        <a href="javascript:void(0)" class="link">View All</a>
-                    </div>
-                    <div class="card-body">
-                        <div class="bubble-container">
-                            <div class="bubble bubble1">2,489</div>
-                            <div class="bubble bubble2">1,756</div>
-                            <div class="bubble bubble3">285</div>
-                            <div class="bubble bubble4">812</div>
-                        </div>
-                        <div class="d-flex align-items-center gap-4 mb-5">
-                            <img src="assets/images/flag/us.svg" height="30" width="30" class="object-fit-cover rounded-circle">
-                            <div class="w-100">
-                                <div class="d-flex justify-content-between align-items-center fs-13">
-                                    <p class="text-muted mb-1">United States</p>
-                                </div>
-                                <div class="progress progress-sm" style="stroke-dasharray: 282.6, 282.6; stroke-dashoffset: 282.6;">
-                                    <div class="progress-bar bg-primary" style="width: 90%"></div>
-                                </div>
-                            </div>
-                            <img src="assets/images/flag/de.svg" height="30" width="30" class="object-fit-cover rounded-circle">
-                            <div class="w-100">
-                                <div class="d-flex justify-content-between align-items-center fs-13">
-                                    <p class="text-muted mb-1">Andorra</p>
-                                </div>
-                                <div class="progress progress-sm" style="stroke-dasharray: 282.6, 282.6; stroke-dashoffset: 282.6;">
-                                    <div class="progress-bar bg-primary" style="width: 70%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center gap-4 mb-5">
-                            <img src="assets/images/flag/ru.svg" height="30" width="30" class="object-fit-cover rounded-circle">
-                            <div class="w-100">
-                                <div class="d-flex justify-content-between align-items-center fs-13">
-                                    <p class="text-muted mb-1">French</p>
-                                </div>
-                                <div class="progress progress-sm" style="stroke-dasharray: 282.6, 282.6; stroke-dashoffset: 282.6;">
-                                    <div class="progress-bar bg-primary" style="width: 70%"></div>
-                                </div>
-                            </div>
-                            <img src="assets/images/flag/cn.svg" height="30" width="30" class="object-fit-cover rounded-circle">
-                            <div class="w-100">
-                                <div class="d-flex justify-content-between align-items-center fs-13">
-                                    <p class="text-muted mb-1">Chinese</p>
-                                </div>
-                                <div class="progress progress-sm" style="stroke-dasharray: 282.6, 282.6; stroke-dashoffset: 282.6;">
-                                    <div class="progress-bar bg-primary" style="width: 25%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xxl-4 col-lg-6">
+
+            <!-- Recent Orders Section -->
+            <div class="dashboard-section">
+                <h3 class="section-title">My Recent Orders</h3>
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header pb-4 mb-2">
-                                <h4>Latest Product</h4>
-                                <div class="dropdown">
-                                    <a href="javascript:void(0)" data-bs-toggle="dropdown" class="text-muted" aria-expanded="false">
-                                        <i class="bi bi-three-dots-vertical"></i>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a class="dropdown-item" href="javascript:void(0)">This Week</a></li>
-                                        <li><a class="dropdown-item" href="javascript:void(0)">This Month</a></li>
-                                        <li><a class="dropdown-item" href="javascript:void(0)">This Year</a></li>
-                                    </ul>
-                                </div>
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h4 class="mb-0">Building Materials Orders</h4>
+                                <a href="#" class="btn btn-sm btn-ecommerce">Shop Now</a>
                             </div>
-                            <div class="card-body product-body bg-body m-4 mt-0">
-                                <img src="assets/images/dashboard/shoeses.png" class="img-fluid mx-auto d-block product-img1" alt="Product Image">
-                                <div class="m-4 mt-0 py-2 px-4 product-gradient">
-                                    <div>
-                                        <span class="fs-12">Shoe</span>
-                                        <p class="fs-5 mb-0">Nike</p>
-                                    </div>
-                                    <div>
-                                        <i class="bi bi-arrow-right-circle-fill fs-3"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="card">
                             <div class="card-body">
-                                <div class="d-flex justify-content-center">
-                                    <img src="assets/images/dashboard/enhanced_image.png" class="img-fluid" alt="Enhanced Image">
-                                </div>
-                                <div class="d-flex gap-3 pt-4">
-                                    <a href="#!" class="btn btn-outline-primary w-50">Login / Sign Up</a>
-                                    <a href="#!" class="btn btn-primary w-50">Get Started</a>
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Order ID</th>
+                                                <th>Date</th>
+                                                <th>Items</th>
+                                                <th>Amount</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>#ORD-7841</td>
+                                                <td>Oct 25, 2025</td>
+                                                <td>Paint, Brushes, Tools</td>
+                                                <td>GHS 420</td>
+                                                <td><span class="badge bg-success">Delivered</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary">
+                                                        <i class="bi bi-eye"></i> View
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>#ORD-7830</td>
+                                                <td>Oct 18, 2025</td>
+                                                <td>Ceramic Tiles, Grout</td>
+                                                <td>GHS 780</td>
+                                                <td><span class="badge bg-success">Delivered</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary">
+                                                        <i class="bi bi-eye"></i> View
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>#ORD-7815</td>
+                                                <td>Oct 5, 2025</td>
+                                                <td>Tool Kit, Hardware</td>
+                                                <td>GHS 350</td>
+                                                <td><span class="badge bg-success">Delivered</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary">
+                                                        <i class="bi bi-eye"></i> View
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -450,8 +606,4 @@
                 </div>
             </div>
         </div>
-
-    </div>
-
-    <!-- Submit Section -->
-</main>
+    </main>

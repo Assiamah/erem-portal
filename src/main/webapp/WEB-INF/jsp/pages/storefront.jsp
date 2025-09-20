@@ -219,6 +219,7 @@
             right: 0;
             z-index: 1000;
             padding: 0.8rem 0;
+            padding-bottom: 25px;
         }
         
         .navbar.scrolled {
@@ -394,9 +395,16 @@
         }
         
         /* Add padding to body to account for fixed navbar */
-        body {
+         body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--black);
+            background-color: var(--white);
+            line-height: 1.6;
             padding-top: 80px;
+
         }
+
+
         
                 .category-tabs {
             background: var(--white);
@@ -840,12 +848,6 @@
             box-sizing: border-box;
         }
         
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: var(--black);
-            background-color: var(--white);
-            line-height: 1.6;
-        }
         
         h1, h2, h3, h4, h5, h6 {
             font-weight: 700;
@@ -1811,7 +1813,7 @@
     </div>
 
 
-     <div class="container">
+<div class="container">
     <div class="category-tabs">
         <div class="tabs">
             <div class="tab active" data-tab="building-materials">
@@ -1836,134 +1838,146 @@
             <div class="tab-pane active" id="building-materials">
                 <div class="main-layout">
                     <!-- Filter Sidebar -->
-                    <aside class="filter-sidebar">
-                        <!-- Filter content as provided -->
-                        <div class="filter-card">
-                            <div class="filter-header">
-                                <h3 class="filter-title">Categories</h3>
-                                <span class="filter-reset" id="reset-categories">Reset</span>
-                            </div>
-                            <div class="filter-category">
-                                <ul class="category-list">
-                                    <li class="category-item active" data-category="all">
-                                        <span>All Categories</span>
-                                        <span class="category-count">(128)</span>
-                                    </li>
-                                    <li class="category-item" data-category="properties">
-                                        <span>Selling Properties</span>
-                                        <span class="category-count">(42)</span>
-                                    </li>
-                                    <li class="category-item" data-category="materials">
-                                        <span>Building Materials</span>
-                                        <span class="category-count">(56)</span>
-                                    </li>
-                                    <li class="category-item" data-category="designs">
-                                        <span>Building Designs</span>
-                                        <span class="category-count">(30)</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <div class="filter-card">
-                            <div class="filter-header">
-                                <h3 class="filter-title">Price Range</h3>
-                                <span class="filter-reset" id="reset-price">Reset</span>
-                            </div>
-                            
-                            <div class="price-filter">
-                                <div class="price-range">
-                                    <div class="price-range-fill" id="price-range-fill"></div>
-                                </div>
-                                
-                                <div class="price-inputs">
-                                    <div class="price-input">
-                                        <label for="min-price">Min</label>
-                                        <input type="text" id="min-price" value="GHS 250">
-                                    </div>
-                                    <div class="price-input">
-                                        <label for="max-price">Max</label>
-                                        <input type="text" id="max-price" value="GHS 5,000">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="filter-card">
-                            <div class="filter-header">
-                                <h3 class="filter-title">Brand</h3>
-                                <span class="filter-reset" id="reset-brand">Reset</span>
-                            </div>
-                            
-                            <div class="filter-category">
-                                <ul class="category-list">
-                                    <li class="category-item" data-brand="constructplus">
-                                        <span>ConstructPlus</span>
-                                        <span class="category-count">(32)</span>
-                                    </li>
-                                    <li class="category-item" data-brand="buildmaster">
-                                        <span>BuildMaster</span>
-                                        <span class="category-count">(24)</span>
-                                    </li>
-                                    <li class="category-item" data-brand="ecomaterials">
-                                        <span>EcoMaterials</span>
-                                        <span class="category-count">(18)</span>
-                                    </li>
-                                    <li class="category-item" data-brand="designcraft">
-                                        <span>DesignCraft</span>
-                                        <span class="category-count">(14)</span>
-                                    </li>
-                                    <li class="category-item" data-brand="urbanliving">
-                                        <span>UrbanLiving</span>
-                                        <span class="category-count">(9)</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <div class="filter-card">
-                            <div class="filter-header">
-                                <h3 class="filter-title">Filters</h3>
-                                <span class="filter-reset" id="reset-filters">Reset</span>
-                            </div>
-                            
-                            <div class="filter-tags">
-                                <div class="filter-tag" data-filter="stock">
-                                    <span>In Stock</span>
-                                    <i class="fas fa-times"></i>
-                                </div>
-                                <div class="filter-tag" data-filter="sale">
-                                    <span>On Sale</span>
-                                    <i class="fas fa-times"></i>
-                                </div>
-                                <div class="filter-tag" data-filter="shipping">
-                                    <span>Free Shipping</span>
-                                    <i class="fas fa-times"></i>
-                                </div>
-                                <div class="filter-tag" data-filter="eco">
-                                    <span>Eco-Friendly</span>
-                                    <i class="fas fa-times"></i>
-                                </div>
-                            </div>
-                            <div class="filter-category">
-                                <h4>Availability</h4>
-                                <ul class="category-list">
-                                    <li class="category-item">
-                                        <span>In Stock</span>
-                                        <span class="category-count">(98)</span>
-                                    </li>
-                                    <li class="category-item">
-                                        <span>Pre-Order</span>
-                                        <span class="category-count">(24)</span>
-                                    </li>
-                                    <li class="category-item">
-                                        <span>Out of Stock</span>
-                                        <span class="category-count">(6)</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </aside>
+                  <aside class="filter-sidebar">
+    <!-- Categories -->
+    <div class="filter-card">
+        <div class="filter-header">
+            <h3 class="filter-title">Material Categories</h3>
+            <span class="filter-reset" id="reset-categories">Reset</span>
+        </div>
+        <div class="filter-category">
+            <ul class="category-list">
+                <li class="category-item active" data-category="all">
+                    <span>All Materials</span>
+                    <span class="category-count">(128)</span>
+                </li>
+                <li class="category-item" data-category="cement">
+                    <span>Cement & Plaster</span>
+                    <span class="category-count">(42)</span>
+                </li>
+                <li class="category-item" data-category="boards">
+                    <span>POP & Plasterboards</span>
+                    <span class="category-count">(30)</span>
+                </li>
+                <li class="category-item" data-category="pipes">
+                    <span>PVC Pipes & Fittings</span>
+                    <span class="category-count">(25)</span>
+                </li>
+                <li class="category-item" data-category="metal">
+                    <span>Steel & Metal Works</span>
+                    <span class="category-count">(18)</span>
+                </li>
+                <li class="category-item" data-category="wood">
+                    <span>Wood & Timber</span>
+                    <span class="category-count">(13)</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Price Range -->
+    <div class="filter-card">
+        <div class="filter-header">
+            <h3 class="filter-title">Price Range</h3>
+            <span class="filter-reset" id="reset-price">Reset</span>
+        </div>
+        
+        <div class="price-filter">
+            <div class="price-range">
+                <div class="price-range-fill" id="price-range-fill"></div>
+            </div>
+            
+            <div class="price-inputs">
+                <div class="price-input">
+                    <label for="min-price">Min</label>
+                    <input type="text" id="min-price" value="GHS 50">
+                </div>
+                <div class="price-input">
+                    <label for="max-price">Max</label>
+                    <input type="text" id="max-price" value="GHS 10,000">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Brand -->
+    <div class="filter-card">
+        <div class="filter-header">
+            <h3 class="filter-title">Popular Brands</h3>
+            <span class="filter-reset" id="reset-brand">Reset</span>
+        </div>
+        
+        <div class="filter-category">
+            <ul class="category-list">
+                <li class="category-item" data-brand="dangote">
+                    <span>Dangote Cement</span>
+                    <span class="category-count">(32)</span>
+                </li>
+                <li class="category-item" data-brand="ghacem">
+                    <span>GHACEM</span>
+                    <span class="category-count">(24)</span>
+                </li>
+                <li class="category-item" data-brand="kalsi">
+                    <span>Kalsi Boards</span>
+                    <span class="category-count">(18)</span>
+                </li>
+                <li class="category-item" data-brand="interplast">
+                    <span>Interplast Pipes</span>
+                    <span class="category-count">(14)</span>
+                </li>
+                <li class="category-item" data-brand="titan">
+                    <span>Titan Steel</span>
+                    <span class="category-count">(9)</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Filters -->
+    <div class="filter-card">
+        <div class="filter-header">
+            <h3 class="filter-title">Filters</h3>
+            <span class="filter-reset" id="reset-filters">Reset</span>
+        </div>
+        
+        <div class="filter-tags">
+            <div class="filter-tag" data-filter="stock">
+                <span>In Stock</span>
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="filter-tag" data-filter="sale">
+                <span>Discounted</span>
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="filter-tag" data-filter="shipping">
+                <span>Free Delivery</span>
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="filter-tag" data-filter="eco">
+                <span>Eco-Friendly</span>
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        
+        <div class="filter-category">
+            <h4>Availability</h4>
+            <ul class="category-list">
+                <li class="category-item">
+                    <span>In Stock</span>
+                    <span class="category-count">(98)</span>
+                </li>
+                <li class="category-item">
+                    <span>Pre-Order</span>
+                    <span class="category-count">(24)</span>
+                </li>
+                <li class="category-item">
+                    <span>Out of Stock</span>
+                    <span class="category-count">(6)</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</aside>
 
                     <!-- Products Content -->
                   <div class="products-content">
