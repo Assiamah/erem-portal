@@ -32,7 +32,9 @@
                         </button>
                         <div class="dropdown-menu dropdown-mega-md header-dropdown-menu pe-noti-dropdown-menu p-0">
                             <div class="p-3 border-bottom">
-                                <h6 class="d-flex align-items-center mb-0">Notification <span class="badge bg-success-subtle text-success ms-auto">4 Unread</span></h6>
+                                <h6 class="d-flex align-items-center mb-0">Notification 
+                                    <!-- <span class="badge bg-success-subtle text-success ms-auto">0 Unread</span> -->
+                                </h6>
                             </div>
                             <div>
                                 <div class="noti-item">
@@ -52,7 +54,7 @@
                                         <i class="bi bi-x"></i>
                                     </a>
                                 </div>
-                                <div class="noti-item">
+                                <!-- <div class="noti-item">
                                     <img src="assets/images/avatar/avatar-8.jpg" alt="Avatar Iamge" class="avatar-md">
                                     <div>
                                         <a href="#!" class="stretched-link">
@@ -117,91 +119,10 @@
                                         </div>
                                     </div>
                                     <a href="#!" class="position-absolute top-10 end-0 fs-18 z-1 link link-danger me-3"><i class="bi bi-x"></i></a>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
-                    <div class="dropdown pe-dropdown-mega d-none d-md-block">
-                        <button class="btn btn-icon header-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Messages">
-                            <i class="bi bi-cart position-relative"></i>
-                            <div class="icon-dot"></div>
-                        </button>
-                        <ul class="dropdown-menu dropdown-mega-md header-dropdown-menu p-0">
-                            <div class="card mb-0">
-                                <div class="p-5 border-bottom d-flex justify-content-between align-items-center">
-                                    <h5 class="card-title">Cart Items</h5>
-                                    <span class="badge text-primary bg-primary-subtle">3</span>
-                                </div>
-                                <ul class="list-unstyled list-none mb-0 p-4" id="header-cart-items-scroll">
-                                    <li class="cart-item">
-                                        <div class="d-flex items-start cart-dropdown-item">
-                                            <img src="assets/images/product/img-02.png" class="avatar-lg me-4 p-1 rounded border" alt="img">
-                                            <div class="flex-grow-1">
-                                                <div>
-                                                    <h6><a href="apps-ecommerce-products-details.html" class="text-reset">Stop Watch</a></h6>
-                                                    <p class="mb-0 fs-12 text-muted">Quantity: <span>2 x $159</span></p>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex align-items-center px-2">
-                                                <h6 class="m-0 fw-normal">$<span class="cart-item-price">318</span></h6>
-                                            </div>
-                                            <div class="ps-2 d-flex">
-                                                <button type="button" class="btn btn-sm"><i class="ri-close-fill fs-16"></i></button>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="cart-item">
-                                        <div class="d-flex items-start cart-dropdown-item">
-                                            <img src="assets/images/product/img-03.png" class="avatar-lg me-4 p-1 rounded border" alt="img">
-                                            <div class="flex-grow-1">
-                                                <div>
-                                                    <h6><a href="apps-ecommerce-products-details.html" class="text-reset">Jeens Shoes</a></h6>
-                                                    <p class="mb-0 fs-12 text-muted">Quantity: <span>1 x $399</span></p>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex align-items-center px-2">
-                                                <h6 class="m-0 fw-normal">$<span class="cart-item-price">399</span></h6>
-                                            </div>
-                                            <div class="ps-2 d-flex">
-                                                <button type="button" class="btn btn-sm"><i class="ri-close-fill fs-16"></i></button>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="cart-item">
-                                        <div class="d-flex items-start cart-dropdown-item">
-                                            <img src="assets/images/product/img-04.png" class="avatar-lg me-4 p-1 rounded border" alt="img">
-                                            <div class="flex-grow-1">
-                                                <div>
-                                                    <h6><a href="apps-ecommerce-products-details.html" class="text-reset">Solder Less T-shirt</a></h6>
-                                                    <p class="mb-0 fs-12 text-muted">Quantity: <span>3 x $259</span></p>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex align-items-center px-2">
-                                                <h6 class="m-0 fw-normal">$<span class="cart-item-price">777</span></h6>
-                                            </div>
-                                            <div class="ps-2 d-flex">
-                                                <button type="button" class="btn btn-sm"><i class="ri-close-fill fs-16"></i></button>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div class="px-5 py-4 bg-light-subtle d-flex justify-content-between align-items-center">
-                                    <h6 class="mb-0">Order Total:</h6>
-                                    <span class="fw-semibold">$1494.00</span>
-                                </div>
-                                <div class="p-5 d-flex justify-content-end gap-3">
-                                    <a href="apps-ecommerce-cart.html"><button class="btn btn-light" type="button">View Cart</button></a>
-                                    <a class="btn btn-primary view-checkout" href="apps-ecommerce-checkout.html">Checkout </a>
-                                </div>
-                            </div>
-                        </ul>
-                    </div>
-                    <button class="btn header-btn d-block d-md-none" type="button" data-bs-toggle="modal" data-bs-target="#searchModal">
-                        <i class="ri-search-line"></i>
-                    </button>
-                    <button class="btn header-btn d-none d-md-block" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" aria-label="Settings">
-                        <i class="bi bi-gear"></i>
-                    </button>
                 </div>
                 <div class="dark-mode-btn" id="toggleMode">
                     <button class="btn header-btn active" id="lightModeBtn" type="button" aria-label="Switch to light mode">

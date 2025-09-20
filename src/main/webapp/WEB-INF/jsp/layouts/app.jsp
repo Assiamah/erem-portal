@@ -27,7 +27,7 @@
     <link href="${pageContext.request.contextPath}/assets/libs/nouislider/nouislider.min.css" rel="stylesheet">
     <!--icons css-->
     <link href="${pageContext.request.contextPath}/assets/css/icons.min.css" rel="stylesheet" type="text/css">
-    <link href="${pageContext.request.contextPath}/assets/css/custom.css" id="app-style" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/custom.css">
     <link href="${pageContext.request.contextPath}/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
@@ -37,9 +37,11 @@
     <link href="${pageContext.request.contextPath}/assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet" type="text/css" />
     <link href="${pageContext.request.contextPath}/assets/libs/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css" rel="stylesheet" type="text/css" />
     <link href="${pageContext.request.contextPath}/assets/libs/datatables.net-select-bs5/css/select.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
 
     <!-- Javascript -->
     <!-- <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script> -->
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -73,6 +75,9 @@
         <jsp:include page="../components/sidebar.jsp"></jsp:include>
         <!-- End Footer -->
 
+         <!-- Begin Footer -->
+        <jsp:include page="../components/footer.jsp"></jsp:include>
+        <!-- End Footer -->
 
     </div>
     <!-- END page -->
@@ -100,10 +105,18 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <!--datatable js-->
-    <link href="${pageContext.request.contextPath}/assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css" />
-    <link href="${pageContext.request.contextPath}/assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet" type="text/css" />
-    <link href="${pageContext.request.contextPath}/assets/libs/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css" rel="stylesheet" type="text/css" />
-    <link href="${pageContext.request.contextPath}/assets/libs/datatables.net-select-bs5/css/select.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+    <script src="${pageContext.request.contextPath}/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/libs/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/libs/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/libs/datatables.net-select/js/dataTables.select.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/table/datatable.init.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
 
